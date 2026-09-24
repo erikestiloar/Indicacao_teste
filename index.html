@@ -141,10 +141,11 @@
   /* ===== LOGIN TELA CHEIA (estilo dividido) ===== */
   .login-wrap{padding:0;display:block;min-height:100vh}
   .split{display:grid;grid-template-columns:1fr 1fr;max-width:none;min-height:100vh;border:none;border-radius:0;box-shadow:none;background:#fff}
-  .login{order:1;position:relative;padding:110px 40px 60px;align-items:center;justify-content:flex-start;border:none}
+  .login{order:1;position:relative;padding:72px 40px 60px;align-items:center;justify-content:flex-start;border:none}
   .login > form{width:100%;max-width:360px}
-  .logo-card{position:absolute;top:28px;left:32px;width:124px;margin:0}
-  .login h1{text-align:center;font-size:26px;font-weight:600;color:#1b1f24;margin:40px 0 28px;letter-spacing:-.3px}
+  /* logo centralizado em cima do título */
+  .logo-card{position:relative;width:118px;margin:0 auto 26px}
+  .login h1{text-align:center;font-size:26px;font-weight:600;color:#1b1f24;margin:0 0 28px;letter-spacing:-.3px}
   .login label{text-transform:none;letter-spacing:0;font-size:14.5px;font-weight:500;color:#1b1f24;margin:18px 0 8px}
   .login input,.login select{background:#fff;border:1px solid #cfd6de;border-radius:6px;font-size:15px;padding:12px 13px}
   .login input:focus,.login select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,155,224,.18)}
@@ -190,9 +191,8 @@
   .k-topbtn:hover{background:#eef8fe}
   @media(max-width:900px){
     .split{grid-template-columns:1fr}
-    .login{padding:96px 22px 44px}
-    .login h1{margin-top:10px}
-    .logo-card{left:22px;top:24px;width:116px}
+    .login{padding:44px 22px 44px}
+    .logo-card{width:110px;margin-bottom:24px}
     .info{padding:48px 24px 100px}
     .info h2{font-size:30px}
     .k-topbtn{display:none}
@@ -211,9 +211,9 @@
   .login .cad input,.login .cad select{padding:11px 12px;font-size:14.5px;border-color:#d5dce4;border-radius:8px}
   .login .cad input::placeholder{color:#a3adba}
   .login .fi input{padding-right:44px}
-  .login .cad label.aceite{display:flex;align-items:flex-start;gap:10px;margin:18px 0 0;font-size:13px;font-weight:400;color:#5b6b82;line-height:1.45;cursor:pointer}
-  .login .cad .aceite input{width:16px;height:16px;flex:none;margin-top:2px;padding:0;accent-color:var(--blue);cursor:pointer}
-  .aceite a{color:var(--blue);text-decoration:none;font-weight:500}
+  .login .cad label.aceite{display:flex;align-items:flex-start;gap:8px;margin:16px 0 0;font-size:12px;font-weight:400;color:#8a94a3;line-height:1.5;cursor:pointer}
+  .login .cad .aceite input{width:14px;height:14px;flex:none;margin-top:2px;padding:0;accent-color:var(--blue);cursor:pointer}
+  .aceite a{color:#5b8fb9;text-decoration:none;font-weight:500}
   .aceite a:hover{text-decoration:underline}
   .login input.invalido,.login input.invalido:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,83,79,.15)}
   .login .aceite input.invalido{outline:2px solid var(--red)!important;outline-offset:2px}
@@ -225,7 +225,7 @@
   .esqueci{text-align:left;margin-top:4px;font-size:13px}
   .esqueci a{color:var(--blue);font-weight:600;text-decoration:none}
   .esqueci a:hover{text-decoration:underline}
-  .aceite abbr{text-decoration:none;font-weight:600;color:#344256;cursor:help}
+  .aceite abbr{text-decoration:none;font-weight:500;color:#6b7686;cursor:help}
   .login .cad .btn{margin-top:20px;border-radius:8px}
   .login .cad .links{margin-top:18px}
 
@@ -275,16 +275,20 @@
   .login .div{margin:22px 0 14px}
   .login .btn-out{border-radius:8px;font-weight:600;font-size:15px}
   .login > form#form-rapida{max-width:440px}
-  .r-step{display:flex;align-items:center;gap:12px;margin:24px 0 2px}
-  .r-step.dois{margin-top:26px;padding-top:22px;border-top:1px solid #eef1f5}
-  .r-step > span{flex:none;width:28px;height:28px;border-radius:50%;background:#e3f2fc;color:#0c6fae;font-size:13px;font-weight:700;
+  /* etapas: número pequeno contornado + título, sem textos extras */
+  .r-step{display:flex;align-items:center;gap:10px;margin:22px 0 0}
+  .r-step.dois{margin-top:28px}
+  .r-step > span{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid #b9dcf3;color:#0c6fae;font-size:12px;font-weight:700;
     display:flex;align-items:center;justify-content:center}
-  .r-step b{display:block;font-size:15px;font-weight:600;color:var(--ink)}
-  .r-step small{display:block;font-size:12.5px;color:#8a94a3;margin-top:1px}
-  .login #form-rapida .btn{margin-top:26px}
+  .r-step b{font-size:14.5px;font-weight:600;color:var(--ink)}
+  .login #form-rapida label,.login #form-cad label:not(.aceite){margin-top:12px}
+  .login #form-cad .regras{margin-bottom:2px}
+  .login #form-rapida .btn{margin-top:28px}
+  .links.voltar a{color:#8a94a3;font-weight:500;font-size:13.5px}
+  .links.voltar a:hover{color:var(--blue);text-decoration:none}
 
   /* listas de seleção com a mesma altura e cara dos campos */
-  #tela-login select,#tela-app .d-dialog select{-webkit-appearance:none;appearance:none;padding-right:38px;cursor:pointer;
+  #tela-login select,#tela-app .d-dialog select,#tela-app .cf-indicar select{-webkit-appearance:none;appearance:none;padding-right:38px;cursor:pointer;
     background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;
     text-overflow:ellipsis;white-space:nowrap}
   .btn-seta{display:flex;align-items:center;justify-content:center;gap:8px}
@@ -339,11 +343,8 @@
   .k-dots button:hover{background:#fff}
 
   /* ===== PAINEL DO CLIENTE ===== */
-  .app{display:none;min-height:100vh;position:relative;isolation:isolate;
-    background:linear-gradient(135deg,#1596da 0%,#0c6fae 100%) fixed}
-  /* mesma foto do login (ar na cabine), tingida de azul, parada no fundo enquanto rola */
-  .app::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:url("IMG/img2.jpg") center 30%/cover no-repeat;mix-blend-mode:luminosity;opacity:.18}
+  /* fundo claro na conta do cliente */
+  .app{display:none;min-height:100vh;position:relative;background:#f5f7fa}
   .d-main{position:relative;z-index:1}
   .app svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
@@ -430,12 +431,13 @@
   .forca[data-n="3"] i{background:#2fa84f}
   .forca[data-n="3"] span{color:#1e7a39}
   /* regras da senha, marcam sozinhas enquanto digita */
-  .regras{list-style:none;margin-top:14px;padding:12px 14px;background:#f7f9fb;border:1px solid #eef1f5;border-radius:10px;display:grid;gap:7px}
-  .regras li{position:relative;padding-left:24px;font-size:13px;color:#8a94a3;transition:color .2s}
-  .regras li::before{content:"";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;border:1.5px solid #cfd6de;transition:all .2s}
-  .regras li::after{content:"";position:absolute;left:6px;top:4px;width:3px;height:7px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);opacity:0;transition:opacity .2s}
-  .regras li.ok{color:#1e7a39}
-  .regras li.ok::before{background:#2fa84f;border-color:#2fa84f}
+  /* regras da senha: pequenas e discretas, lado a lado */
+  .regras{list-style:none;margin-top:8px;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px}
+  .regras li{position:relative;padding-left:15px;font-size:12px;line-height:1.5;color:#a3adba;transition:color .2s}
+  .regras li::before{content:"";position:absolute;left:1px;top:6px;width:6px;height:6px;border-radius:50%;background:#cfd6de;transition:all .2s}
+  .regras li::after{content:"";position:absolute;left:3px;top:3px;width:3px;height:7px;border-right:1.6px solid #2fa84f;border-bottom:1.6px solid #2fa84f;transform:rotate(45deg);opacity:0;transition:opacity .2s}
+  .regras li.ok{color:#5b9a6d}
+  .regras li.ok::before{opacity:0}
   .regras li.ok::after{opacity:1}
   #modal-conta input.invalido{border-color:var(--red)}
   .d-btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
@@ -453,23 +455,23 @@
   .d-btn-sec:hover{background:#f3f6f9}
 
   /* indicadores */
-  /* valores no estilo do painel azul do login: vidro translúcido + destaque branco no saldo */
-  .d-kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:20px;border-radius:14px;overflow:hidden;
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-  .d-kpi{padding:16px 20px;border-left:1px solid rgba(255,255,255,.16);min-width:0}
+  /* valores: cartão branco, crédito disponível em destaque azul-claro */
+  .d-kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:20px;border-radius:12px;overflow:hidden;
+    background:#fff;border:1px solid #e6ebf1;box-shadow:0 1px 2px rgba(16,40,70,.04)}
+  .d-kpi{padding:16px 20px;border-left:1px solid #eef1f5;min-width:0}
   .d-kpi:first-child{border-left:none}
-  .d-kpi-h{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:#d6efff}
-  .d-kpi-h svg{width:15px;height:15px;flex:none;color:rgba(255,255,255,.75)}
-  .d-kpi-v{font-size:22px;font-weight:700;color:#fff;letter-spacing:-.3px;margin-top:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
-  .d-kpi.main{background:#fff;border-left:none}
-  .d-kpi.main .d-kpi-h{color:#5b6b82}
+  .d-kpi-h{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:#5b6b82}
+  .d-kpi-h svg{width:15px;height:15px;flex:none;color:#98a3b3}
+  .d-kpi-v{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-top:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .d-kpi.main{background:#f4faff;box-shadow:inset 3px 0 0 var(--blue)}
   .d-kpi.main .d-kpi-h svg{color:var(--blue)}
   .d-kpi.main .d-kpi-v{color:#0c6fae}
   .d-kpi-i{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:#eef6fd;color:var(--blue)}
   .d-kpi-i svg{width:18px;height:18px}
 
   /* tabela de indicações */
-  .d-card{background:#fff;border:none;border-radius:14px;box-shadow:0 18px 44px rgba(3,35,64,.18);overflow:hidden}
+  /* tabela quadrada */
+  .d-card{background:#fff;border:1px solid #e6ebf1;border-radius:0;box-shadow:0 1px 3px rgba(16,40,70,.06);overflow:hidden}
   .d-card-h{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 20px 0}
   .d-card-h h2{font-size:16px;font-weight:600;color:var(--ink)}
   .d-card-h p{font-size:13px;color:#8a94a3;margin-top:3px}
@@ -509,12 +511,11 @@
 
   /* ajuda no rodapé */
   .d-help{margin-top:20px}
-  .d-help > div{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
-    border-radius:14px;padding:18px 20px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-  .d-help .d-kpi-i{flex:none;background:rgba(255,255,255,.16);color:#fff}
-  .d-help b{display:block;font-size:14.5px;color:#fff;margin-bottom:3px}
-  .d-help p{font-size:13.5px;color:#e6f4fd;line-height:1.55}
-  .d-help a{color:#fff;font-weight:600;text-decoration:underline}
+  .d-help > div{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #e6ebf1;border-radius:12px;padding:18px 20px}
+  .d-help .d-kpi-i{flex:none}
+  .d-help b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:3px}
+  .d-help p{font-size:13.5px;color:#5b6b82;line-height:1.55}
+  .d-help a{color:var(--blue);font-weight:600;text-decoration:none}
   .d-help a:hover{text-decoration:underline}
 
   /* janela de nova indicação */
@@ -580,7 +581,7 @@
   @media(max-width:980px){
     .d-kpis{grid-template-columns:1fr 1fr}
     .d-kpi:nth-child(odd){border-left:none}
-    .d-kpi:nth-child(n+3){border-top:1px solid rgba(255,255,255,.16)}
+    .d-kpi:nth-child(n+3){border-top:1px solid #eef1f5}
   }
   @media(max-width:760px){
     .d-user-txt{display:none}
@@ -625,15 +626,15 @@
     /* login / cadastro */
     .split{min-height:0}
     .login{padding:28px 20px 36px;justify-content:flex-start}
-    .logo-card{position:relative;top:auto;left:auto;width:108px;margin:0 auto 22px}
+    .logo-card{position:relative;top:auto;left:auto;width:96px;margin:0 auto 20px}
     .login h1{font-size:24px;margin:6px 0 22px}
     .login p.sub,.login .cad p.sub{margin:-12px 0 8px}
     .login label,.login .cad label{font-size:14px;margin:16px 0 7px}
     /* 16px nos campos: evita o zoom automático do iPhone ao tocar */
     .login input,.login select,.login .cad input,.login .cad select{font-size:16px;padding:13px 14px;border-radius:10px}
     .login .btn,.login .btn-out,.login .cad .btn{min-height:50px;border-radius:10px;font-size:16px}
-    .login .cad label.aceite{font-size:13.5px}
-    .login .cad .aceite input{width:20px;height:20px;margin-top:0}
+    .login .cad label.aceite{font-size:12px}
+    .login .cad .aceite input{width:17px;height:17px;margin-top:0}
     .olho{right:4px;padding:11px}
     .links{font-size:14.5px;margin-top:14px}
     .links a{display:inline-block;padding:4px 2px}
@@ -672,11 +673,11 @@
     /* valores: saldo em destaque em cima, os outros 3 em linha embaixo */
     .d-kpis{grid-template-columns:repeat(3,1fr);margin-bottom:16px}
     .d-kpi{padding:12px 12px 13px}
-    .d-kpi.main{grid-column:1/-1;padding:16px 16px 18px;border-left:none}
+    .d-kpi.main{grid-column:1/-1;padding:16px 16px 18px;border-left:none;border-bottom:1px solid #e6ebf1}
     .d-kpi.main .d-kpi-v{font-size:28px;margin-top:6px}
     .d-kpi:nth-child(2){border-left:none}
     .d-kpi:nth-child(n+3){border-top:none}
-    .d-kpi:nth-child(odd):not(.main){border-left:1px solid rgba(255,255,255,.16)}
+    .d-kpi:nth-child(odd):not(.main){border-left:1px solid #eef1f5}
     .d-kpi-h{font-size:11.5px}
     .d-kpi-h svg{display:none}
     .d-kpi.main .d-kpi-h{font-size:13px}
@@ -693,8 +694,7 @@
     .st{font-size:13.5px}
 
     /* lista de indicações no celular */
-    .d-card{border-radius:16px;overflow:visible}
-    .d-table tbody tr:last-child{border-radius:0 0 16px 16px}
+    .d-card{border-radius:0;overflow:visible}
     .d-card-h h2{font-size:17px}
     /* no lugar das abas: busca + botão de 3 barrinhas lado a lado */
     .d-tabs{display:none}
@@ -719,9 +719,7 @@
 
     /* "Nova indicação" numa barra branca fixa embaixo, fácil de ver e de alcançar com o polegar */
     .d-card-acts .d-btn{display:none}
-    .d-dock{display:block}
-    .d-main{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
-    .d-toast{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+    .d-toast{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
     .d-help > div{padding:16px}
 
     /* janelas viram "gaveta" que sobe de baixo */
@@ -738,6 +736,422 @@
     .d-dialog-f{flex-direction:column-reverse;align-items:stretch;gap:8px;padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));border-radius:0}
     .d-dialog-f .d-btn{width:100%;min-height:50px;border-radius:10px;font-size:16px}
     .d-dialog-f .err{order:10;margin:0;text-align:center}
+  }
+
+  /* ===================================================================
+     CONTA DO CLIENTE — layout com menu lateral (estilo painel Cloudflare)
+     =================================================================== */
+  .app{background:#f7f8fa}
+  .cf-layout{display:flex;min-height:100vh;align-items:stretch}
+  .app svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+  /* menu lateral */
+  .cf-side{width:236px;flex:none;position:sticky;top:0;height:100vh;overflow-y:auto;background:#fff;border-right:1px solid #e6e8eb;
+    padding:16px 12px 20px;display:flex;flex-direction:column;gap:14px;z-index:40}
+  .cf-side-logo{padding:4px 8px 2px}
+  .cf-logo{height:20px;width:auto;display:block}
+  /* caixa da conta escondida (o código ainda usa os botões de dentro); Configurações e Sair ficam no menu */
+  .cf-conta{display:none}
+  /* topo do menu: só o símbolo quadrado do logo + nome e e-mail ao lado (texto, não é botão) */
+  .cf-side-logo{display:flex;align-items:center;gap:10px;padding:4px 6px 10px;border-bottom:1px solid #eceef1;min-width:0}
+  .cf-ic{width:52px;height:30px;flex:none;overflow:hidden;border-radius:6px;display:block}
+  .cf-ic img{height:30px;width:auto;max-width:none;display:block}
+  .cf-quem{min-width:0;line-height:1.3}
+  .cf-quem b{display:block;font-size:13px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-quem small{display:block;font-size:11.5px;color:#8a94a3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-conta .d-menu-btn{width:100%;justify-content:space-between;gap:8px;background:#fff;border:1px solid #e6e8eb;border-radius:8px;
+    padding:8px 10px;box-shadow:none;text-align:left}
+  .cf-conta .d-menu-btn:hover,.cf-conta .d-menu-btn[aria-expanded="true"]{background:#f7f8fa;border-color:#d8dde3;box-shadow:none}
+  .cf-conta .d-user-txt{display:block!important;min-width:0;line-height:1.3}
+  .cf-conta .d-user-txt b{display:block;font-size:13px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-conta .d-user-txt small{display:block;font-size:11.5px;color:#8a94a3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-conta .d-menu-btn .chev{width:14px;height:14px;flex:none;color:#8a94a3;transform:none!important}
+  .cf-conta .d-menu{left:0;right:0;width:auto;min-width:0}
+  .cf-nav{display:flex;flex-direction:column;gap:2px}
+  .cf-nav button,.cf-nav a{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border-radius:7px;
+    font-size:13.5px;color:#3b4656;cursor:pointer;text-decoration:none}
+  .cf-nav svg{width:16px;height:16px;flex:none;color:#7b8594}
+  .cf-nav button:hover,.cf-nav a:hover{background:#f3f4f6;color:var(--ink)}
+  .cf-nav .on{background:#eef1f4;color:var(--ink);font-weight:600}
+  .cf-nav .on svg{color:#0c6fae}
+  .cf-grupo{font-size:11.5px;font-weight:500;color:#8a94a3;padding:14px 10px 4px}
+  .cf-sep{height:1px;background:#eceef1;margin:10px 6px}
+  .cf-fundo{position:fixed;inset:0;background:rgba(15,30,50,.38);z-index:39;animation:fadein .2s ease}
+  .cf-fundo[hidden]{display:none}
+
+  /* corpo */
+  .cf-corpo{flex:1;min-width:0;display:flex;flex-direction:column}
+  .cf-top{position:sticky;top:0;z-index:20;height:52px;display:flex;align-items:center;gap:12px;padding:0 20px;
+    background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid #e6e8eb}
+  .cf-hamb{display:none;width:36px;height:36px;border:1px solid #e6e8eb;border-radius:8px;background:#fff;color:#3b4656;cursor:pointer;align-items:center;justify-content:center}
+  .cf-hamb svg{width:18px;height:18px}
+  .cf-logo-top{display:none;height:16px;width:auto}
+  .cf-top-dir{margin-left:auto;display:flex;align-items:center;gap:16px}
+  .cf-top-link{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#3b4656;text-decoration:none;padding:6px 8px;border-radius:6px}
+  .cf-top-link:hover{background:#f3f4f6}
+  button.cf-top-link{border:none;background:none;cursor:pointer;font-family:inherit}
+
+  /* barra do topo: sem logo, menu sem borda, "Ajuda" em pílula */
+  .cf-logo-top{display:none!important}
+  .cf-hamb{border:none!important;background:transparent!important;width:38px;height:38px;border-radius:10px;margin-left:-6px;transition:background .15s}
+  .cf-hamb:hover,.cf-hamb:active{background:#f1f3f6!important}
+  .cf-hamb svg{width:20px;height:20px;stroke-width:2}
+  .cf-top .cf-top-link{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 10px;border:none;border-radius:8px;
+    background:transparent;color:#5b6b82;font-size:13px;font-weight:500;transition:background .15s,color .15s}
+  .cf-top .cf-top-link:hover{background:#f1f3f6;color:var(--ink)}
+  .cf-top .cf-top-link svg{width:16px;height:16px;stroke-width:1.9}
+  .cf-top-link svg{width:15px;height:15px}
+
+  .cf-main{max-width:900px;width:100%;margin:0 auto;padding:28px 28px 56px}
+
+  /* topo central */
+  .cf-hero{text-align:center;padding:26px 0 8px}
+  .cf-pill{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:#3b4656;background:#fff;border:1px solid #e3e6ea;border-radius:99px;padding:6px 14px}
+  .cf-pill b{color:#0c6fae;font-weight:600}
+  .cf-hero h1{font-size:28px;font-weight:600;color:var(--ink);letter-spacing:-.4px;margin:6px 0 22px}
+  .cf-search{width:100%;max-width:none}
+  .cf-search input{height:44px;padding-left:38px;font-size:14px;border:1px solid #e3e6ea;border-radius:8px;background:#fff;box-shadow:0 0 0 4px #f0f2f5}
+  .cf-search input:focus{border-color:#b9dcf3;box-shadow:0 0 0 4px #eaf5fc!important}
+  .cf-search svg{left:13px}
+  .cf-atalhos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:26px;text-align:left}
+  .cf-rot{font-size:12.5px;color:#5b6b82;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+  .cf-rot span{color:#a3adba}
+  .cf-acao{all:unset;box-sizing:border-box;width:100%;height:40px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:8px;
+    background:#eef0f3;color:#4b5870;font-size:12.5px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .15s}
+  .cf-acao:hover{background:#e5e8ec;color:var(--ink)}
+  .cf-acao svg{width:14px;height:14px}
+  /* "Nova indicação" em azul, como ação principal */
+  #abrir-ind.cf-acao{background:var(--blue);color:#fff;font-weight:600;box-shadow:0 1px 2px rgba(12,111,174,.25)}
+  #abrir-ind.cf-acao:hover{background:var(--blue-d);color:#fff}
+  #abrir-ind.cf-acao svg{stroke-width:2.2}
+  .cf-recentes{display:flex;flex-direction:column}
+  .cf-rec{display:flex;align-items:center;gap:8px;padding:8px 2px;border-bottom:1px solid #eceef1;font-size:12.5px;color:#8a94a3;min-width:0}
+  .cf-rec svg{width:13px;height:13px;flex:none;color:#a3adba}
+  .cf-rec b{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cf-rec span{white-space:nowrap}
+  .cf-rec-vazio{font-size:12.5px;color:#a3adba;padding:8px 2px}
+
+  /* formulário de nova indicação no lugar do topo (sem caixa) */
+  .cf-indicar{max-width:none;margin:0;animation:fadein .25s ease;text-align:left}
+  .cf-indicar h1{font-size:24px;text-align:left}
+  .cf-indicar .fi > svg{left:12px;width:16px;height:16px;stroke:#98a3b3}
+  .cf-indicar .fi:focus-within > svg{stroke:var(--blue)}
+  .cf-indicar .fi input,#tela-app .cf-indicar .fi select{padding-left:38px}
+  .cf-nota{display:flex;align-items:flex-start;gap:8px;margin-top:18px;font-size:13px;color:#5b6b82;line-height:1.5}
+  .cf-nota svg{width:16px;height:16px;flex:none;margin-top:1px;color:#0c6fae}
+  .cf-nota b{color:var(--ink);font-weight:600}
+  /* linha fina embaixo dos botões, separando o formulário da tabela */
+  .cf-indicar-acts{border-bottom:1px solid #e6e8eb;padding-bottom:22px}
+  .cf-indicar-acts .d-btn-pri svg{width:16px;height:16px;stroke-width:2.2}
+  .cf-indicar[hidden]{display:none}
+  #hero-inicio[hidden]{display:none}
+  #hero-inicio{animation:fadein .25s ease}
+  .cf-indicar h1{margin-bottom:8px}
+  .cf-indicar-sub{font-size:14px;color:#5b6b82;margin-bottom:24px}
+  .cf-campos{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;text-align:left}
+  .cf-indicar label{display:block;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500;color:#3b4656;margin:0 0 6px}
+  .cf-indicar input,.cf-indicar select{height:44px;padding:0 12px;font-size:14.5px;border:1px solid #e3e6ea;border-radius:8px;background-color:#fff}
+  .cf-indicar input:focus,.cf-indicar select:focus{border-color:var(--blue)}
+  .cf-indicar-acts{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .cf-indicar-acts .err{margin:0 auto 0 0;text-align:left;min-height:0}
+  .cf-indicar-acts .d-btn{height:42px;padding:0 18px}
+
+  /* visão "Configurações": só as configurações da conta, na página e sem caixa */
+  .so-config .cf-hero,.so-config .cf-sec-h,.so-config .d-kpis,.so-config .d-card,.so-config .d-help{display:none}
+  .cf-config[hidden]{display:none}
+  .cf-config{max-width:780px;margin:0 auto;padding-top:14px;animation:fadein .25s ease}
+  .cfg-cab h1{font-size:24px;font-weight:600;letter-spacing:-.3px;color:var(--ink)}
+  .cfg-cab p{font-size:13.5px;color:#5b6b82;margin-top:4px}
+  .cf-config .cfg .d-seg{padding:0;margin:22px 0 0}
+  /* cada item numa linha: nome + explicação à esquerda, campo à direita */
+  .cfg-linha{display:grid;grid-template-columns:250px 1fr;gap:28px;padding:22px 0;border-bottom:1px solid #eceef1;align-items:start}
+  .cfg-l label,.cfg-l .cfg-lbl{display:block;margin:0 0 4px;font-size:14px;font-weight:600;color:var(--ink);text-transform:none;letter-spacing:0}
+  .cfg-l p:not(.cfg-lbl){font-size:12.5px;color:#8a94a3;line-height:1.5}
+  .cfg-c{min-width:0;max-width:420px}
+  .cfg-c input{height:42px;padding:0 12px;font-size:14.5px;border:1px solid #dfe5ec;border-radius:8px;background:#fff}
+  .cfg-c input:focus{border-color:var(--blue)}
+  #modal-conta .cfg-c .fi input{padding-left:12px!important}
+  .cfg-c .cfg-atual{height:42px;padding:0 12px;background:#f7f9fb;border-color:#eceef1}
+  .cfg-c .forca{margin-top:10px}
+  .cf-config .d-dialog-f{background:none;border-radius:0;border-top:none;margin-top:4px;padding:20px 0 0}
+  @media(max-width:760px){
+    .cf-config{padding-top:4px}
+    .cfg-cab h1{font-size:21px}
+    .cf-config .cfg .d-seg{padding:0}
+    .cfg-linha{grid-template-columns:1fr;gap:10px;padding:18px 0}
+    .cfg-c{max-width:none}
+    .cf-config .d-dialog-f{padding:16px 0 0}
+  }
+
+  /* no Painel o resumo de valores não aparece; ele fica só em "Suas indicações" */
+  .app:not(.so-indicacoes) #sec-resumo,.app:not(.so-indicacoes) .d-kpis{display:none}
+
+  /* visão "Comunidade": vídeos de depoimento */
+  .so-comunidade .cf-hero,.so-comunidade .cf-sec-h,.so-comunidade .d-kpis,.so-comunidade .d-card,.so-comunidade .d-help{display:none!important}
+  .cf-com[hidden]{display:none}
+  .cf-com{padding-top:14px;animation:fadein .25s ease}
+  .com-cab{padding-bottom:20px;border-bottom:1px solid #e6e8eb;margin-bottom:22px}
+  .com-cab h1{font-size:24px;font-weight:600;letter-spacing:-.3px;color:var(--ink)}
+  .com-cab p{font-size:13.5px;color:#5b6b82;margin-top:4px}
+  .com-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+  .com-card{all:unset;box-sizing:border-box;display:flex;flex-direction:column;cursor:pointer;min-width:0}
+  .com-capa{position:relative;display:block;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#0f2742;
+    box-shadow:0 1px 2px rgba(16,40,70,.06),0 8px 22px rgba(16,40,70,.10);transition:transform .2s ease,box-shadow .2s ease}
+  .com-capa video,.com-capa img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;max-width:none}
+  /* player do YouTube (vertical, formato Shorts) */
+  .com-yt[hidden],.com-player-box video[hidden]{display:none}
+  .com-yt{width:min(92vw,calc(78vh * 9 / 16),420px);aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .com-yt iframe{width:100%;height:100%;border:0;display:block}
+  .com-capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.35) 100%)}
+  .com-play{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;
+    background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .2s ease}
+  .com-play svg{width:22px;height:22px;margin-left:3px;fill:#0c6fae;stroke:none}
+  .com-card[data-i]:hover .com-capa{transform:translateY(-3px);box-shadow:0 2px 4px rgba(16,40,70,.08),0 14px 30px rgba(16,40,70,.16)}
+  .com-card[data-i]:hover .com-play{transform:translate(-50%,-50%) scale(1.08)}
+  .com-info{padding:10px 2px 0;min-width:0}
+  .com-info b{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
+  .com-info small{display:block;font-size:12.5px;color:#8a94a3;margin-top:2px}
+  .com-embreve{cursor:default}
+  .com-embreve .com-capa{background:#fff;border:1.5px dashed #d5dce4;box-shadow:none}
+  .com-embreve .com-capa::after{display:none}
+  .com-embreve-ic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .com-embreve-ic svg{width:34px;height:34px;color:#b3bcc8}
+  /* player */
+  .com-player[hidden]{display:none}
+  .com-player{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px}
+  .com-player-bg{position:absolute;inset:0;background:rgba(8,18,32,.82);animation:fadein .2s ease}
+  .com-player-box{position:relative;display:flex;flex-direction:column;align-items:center;animation:subir .25s ease}
+  .com-player-box video{display:block;max-height:78vh;max-width:min(92vw,480px);border-radius:14px;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .com-player-x{position:absolute;top:-46px;right:0;width:38px;height:38px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;
+    cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .com-player-x:hover{background:rgba(255,255,255,.26)}
+  .com-player-x svg{width:20px;height:20px;stroke-width:2.2}
+  .com-player-leg{text-align:center;margin-top:14px;color:#fff}
+  .com-player-leg b{display:block;font-size:15px;font-weight:600}
+  .com-player-leg span{font-size:13px;color:rgba(255,255,255,.7)}
+  @media(max-width:760px){
+    .com-cab h1{font-size:21px}
+    .com-grade{grid-template-columns:1fr 1fr;gap:12px}
+    .com-play{width:46px;height:46px}
+    .com-player{padding:16px}
+    .com-player-box video{max-height:72vh}
+  }
+
+  /* visão "Regulamento": só o texto do regulamento */
+  .so-regulamento .cf-hero,.so-regulamento .cf-sec-h,.so-regulamento .d-kpis,.so-regulamento .d-card,.so-regulamento .d-help{display:none!important}
+  .cf-reg[hidden]{display:none}
+  .cf-reg{max-width:none;margin:0;padding-top:14px;animation:fadein .25s ease}
+  /* cabeçalho do documento */
+  .reg-cab{display:grid;grid-template-columns:1fr auto;gap:0 20px;align-items:start;padding-bottom:22px;border-bottom:1px solid #e6e8eb}
+  .reg-tag{grid-column:1;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#0c6fae}
+  .reg-cab h1{grid-column:1;font-size:26px;font-weight:600;letter-spacing:-.4px;color:var(--ink);margin:6px 0 12px}
+  .reg-meta{grid-column:1;display:flex;flex-wrap:wrap;gap:8px 18px}
+  .reg-meta span{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#5b6b82}
+  .reg-meta svg{width:15px;height:15px;color:#98a3b3}
+  /* mesmo visual dos outros botões azuis */
+  .reg-pdf{grid-column:2;grid-row:1 / span 3;align-self:center;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;
+    border:1px solid transparent;border-radius:8px;background:var(--blue);color:#fff;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;
+    box-shadow:0 1px 2px rgba(16,40,70,.12),inset 0 1px 0 rgba(255,255,255,.12);transition:background .15s}
+  .reg-pdf:hover{background:var(--blue-d)}
+  .reg-pdf svg{width:16px;height:16px;stroke-width:2.2}
+  /* índice lateral fixo + texto */
+  .reg-corpo{display:grid;grid-template-columns:200px 1fr;gap:44px;margin-top:26px;align-items:start}
+  .reg-indice{position:sticky;top:76px;display:flex;flex-direction:column;border-left:1px solid #e6e8eb}
+  .reg-indice p{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#8a94a3;padding:0 0 8px 14px}
+  .reg-indice a{font-size:13px;color:#5b6b82;text-decoration:none;padding:6px 12px 6px 14px;margin-left:-1px;border-left:2px solid transparent;line-height:1.35;transition:color .15s,border-color .15s}
+  .reg-indice a:hover{color:var(--ink)}
+  .reg-indice a.on{color:#0c6fae;border-left-color:var(--blue);font-weight:600}
+  .reg-drop{display:none}
+  .reg-texto{min-width:0}
+  .reg-texto h2{font-size:16px;font-weight:600;color:var(--ink);margin:30px 0 10px;scroll-margin-top:70px}
+  .reg-texto h2:first-child{margin-top:0}
+  .reg-texto p{font-size:14.5px;line-height:1.7;color:#3b4656;margin-bottom:10px}
+  .reg-texto p b{color:var(--ink);font-weight:600}
+  .reg-destaque{background:#f4faff;border-left:3px solid var(--blue);padding:12px 14px;border-radius:0 8px 8px 0}
+  .reg-romano{list-style:none;margin:6px 0 12px;display:grid;gap:8px}
+  .reg-romano li{display:flex;gap:12px;font-size:14.5px;line-height:1.65;color:#3b4656}
+  .reg-romano li span{flex:none;min-width:28px;font-weight:600;color:#0c6fae}
+  .reg-lista{list-style:none;display:grid;gap:10px}
+  .reg-lista li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.65;color:#3b4656}
+  .reg-lista li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:#98a3b3}
+  @media(max-width:760px){
+    .reg-cab{grid-template-columns:1fr}
+    .reg-pdf{grid-column:1;grid-row:auto;justify-self:start;margin-top:14px}
+    .reg-cab h1{font-size:21px}
+    .reg-texto p,.reg-romano li,.reg-lista li{font-size:14px}
+  }
+
+  /* regulamento no tablet/celular: índice vira lista de seleção */
+  @media(max-width:900px){
+    .reg-corpo{grid-template-columns:1fr;gap:0;margin-top:18px}
+    .reg-indice{display:none}
+    /* menu "Nesta página": fica preso logo abaixo da barra do topo e desce com animação */
+    .reg-drop{display:block;position:sticky;top:60px;z-index:15;margin-bottom:22px}
+    .reg-texto h2{scroll-margin-top:136px}
+    .reg-drop-btn{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:9px 14px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+      border:1px solid #e3e6ea;border-radius:12px;box-shadow:0 4px 14px rgba(16,40,70,.06);cursor:pointer;transition:border-color .2s,box-shadow .2s}
+    .reg-drop.aberto .reg-drop-btn{border-color:#b9dcf3;box-shadow:0 0 0 3px rgba(26,155,224,.10)}
+    .reg-drop-txt{min-width:0}
+    .reg-drop-txt small{display:block;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8a94a3}
+    .reg-drop-txt b{display:block;font-size:14px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:1px}
+    .reg-drop-btn .chev{width:18px;height:18px;flex:none;color:#8a94a3;transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+    .reg-drop.aberto .reg-drop-btn .chev{transform:rotate(180deg);color:#0c6fae}
+    .reg-drop-lista{position:absolute;left:0;right:0;top:calc(100% + 6px);display:grid;grid-template-rows:0fr;opacity:0;transform:translateY(-6px);
+      background:#fff;border:1px solid #e3e6ea;border-radius:12px;box-shadow:0 18px 40px rgba(16,40,70,.16);pointer-events:none;
+      transition:grid-template-rows .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+    .reg-drop.aberto .reg-drop-lista{grid-template-rows:1fr;opacity:1;transform:none;pointer-events:auto}
+    .reg-drop-in{min-height:0;overflow:hidden auto;max-height:60vh;padding:0 6px}
+    .reg-drop-in > button:first-child{margin-top:6px}
+    .reg-drop-in > button:last-child{margin-bottom:6px}
+    .reg-drop-in button{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:11px 12px;border-radius:8px;font-size:14px;color:#3b4656;cursor:pointer}
+    .reg-drop-in button:active{background:#f3f6f9}
+    .reg-drop-in button .ok{width:16px;height:16px;flex:none;color:#0c6fae;stroke-width:2.4;opacity:0}
+    .reg-drop-in button.on{background:#f4faff;color:#0c6fae;font-weight:600}
+    .reg-drop-in button.on .ok{opacity:1}
+  }
+  @media(max-width:900px) and (prefers-reduced-motion:reduce){
+    .reg-drop-lista,.reg-drop-btn .chev{transition:none}
+  }
+
+  /* busca embaixo do título "Suas indicações" */
+  .cf-barra-ind{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  /* no Painel a busca já fica no topo; esta só aparece na tela "Suas indicações" */
+  .app:not(.so-indicacoes):not(.com-form) .cf-busca-ind{display:none}
+  .cf-barra-tit{display:flex;align-items:center;gap:8px}
+  .cf-conta-ind{font-size:12px;font-weight:600;color:#5b6b82;background:#eef1f4;border-radius:99px;padding:2px 9px;line-height:1.5}
+  .cf-busca-ind{width:280px;max-width:100%;margin:0}
+  .cf-busca-ind > svg{left:11px;width:15px;height:15px}
+  .cf-busca-ind input{height:36px;padding:0 32px 0 33px;font-size:13.5px;border:1px solid #e3e6ea;border-radius:8px;background:#fff;transition:border-color .15s,box-shadow .15s}
+  .cf-busca-ind input::placeholder{color:#a3adba}
+  .cf-busca-ind input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,155,224,.12)!important}
+  .cf-limpar{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:none;border-radius:6px;background:none;
+    color:#8a94a3;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .cf-limpar[hidden]{display:none}
+  .cf-limpar:hover{background:#f1f3f6;color:var(--ink)}
+  .cf-limpar svg{position:static;transform:none;width:14px;height:14px;stroke-width:2.2;color:inherit}
+  @media(max-width:760px){
+    .cf-barra-ind{flex-direction:column;align-items:stretch;gap:10px}
+    .cf-busca-ind{width:100%}
+    .cf-busca-ind input{height:44px}
+  }
+
+  /* tabela "Suas indicações": mais limpa, mostra 6 por vez com barra de rolagem */
+  .cf-main .d-card-h{display:none}
+  .cf-main .d-tabs{padding:6px 16px 0}
+  /* altura fixa: trocar de aba não muda o tamanho da tabela (nada "pula") */
+  .d-scroll{height:342px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#cfd6de transparent}
+  .d-scroll::-webkit-scrollbar{width:8px}
+  .d-scroll::-webkit-scrollbar-track{background:transparent}
+  .d-scroll::-webkit-scrollbar-thumb{background:#d5dbe2;border-radius:99px;border:2px solid #fff}
+  .d-scroll::-webkit-scrollbar-thumb:hover{background:#b9c2cc}
+  .cf-main .d-table th{position:sticky;top:0;z-index:2;background:#fafbfc;border-bottom:none;box-shadow:inset 0 -1px 0 #e6e8eb;
+    font-size:11.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#8a94a3;padding:10px 20px}
+  .cf-main .d-table td{padding:13px 20px;border-bottom:1px solid #f1f3f5}
+  .cf-main .d-pessoa b{font-weight:500}
+  .cf-main .d-table td.c-data{color:#8a94a3}
+  .cf-main .d-table tbody tr:hover{background:#f8fafc}
+  .cf-main .d-cred.z{font-size:0}
+  .cf-main .d-cred.z::after{content:"—";font-size:14px;color:#c3cad4}
+  @media(max-width:760px){
+    .cf-main .d-card-h{display:flex}
+    .d-scroll{height:430px}
+    .cf-main .d-table td{padding:0;border-bottom:none}
+  }
+
+  /* visão "Suas indicações": só resumo + tabela */
+  .so-indicacoes .cf-hero,.so-indicacoes .d-help{display:none}
+  .so-indicacoes .cf-main > .cf-sec-h:first-of-type{margin-top:6px}
+
+  /* títulos das seções */
+  .cf-sec-h{margin:34px 0 12px}
+  .cf-sec-h h2{font-size:15px;font-weight:600;color:var(--ink)}
+
+  /* resumo: cartões separados, bordas finas */
+  .cf-main .d-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;background:none;border:none;box-shadow:none;border-radius:0;overflow:visible;margin-bottom:0}
+  .cf-main .d-kpi{background:#fff!important;border:1px solid #e6e8eb!important;border-radius:8px;padding:14px 16px 16px;box-shadow:none!important}
+  .cf-main .d-kpi-h{font-size:12px;color:#5b6b82}
+  .cf-main .d-kpi-h svg{display:none}
+  .cf-main .d-kpi-v{font-size:22px;font-weight:600;color:var(--ink);margin-top:6px}
+  .cf-main .d-kpi.main .d-kpi-v{color:#0c6fae}
+
+  /* tabela e ajuda no mesmo estilo */
+  .cf-main .d-card{border:1px solid #e6e8eb;border-radius:8px;box-shadow:none}
+  .cf-main .d-card-h{padding:14px 18px 0}
+  .cf-main .d-card-h h2{font-size:13.5px;font-weight:600;color:#3b4656}
+  .cf-main .d-tabs{padding:10px 14px 0}
+  .cf-main .d-help{margin-top:16px}
+  .cf-main .d-help > div{border:1px solid #e6e8eb;border-radius:8px;box-shadow:none}
+
+  /* tablet e celular: menu lateral vira gaveta */
+  @media(max-width:900px){
+    .cf-side{position:fixed;left:0;top:0;bottom:0;height:auto;transform:translateX(-100%);transition:transform .25s ease;box-shadow:none}
+    .cf-side.aberto{transform:none;box-shadow:12px 0 40px rgba(15,30,50,.18)}
+    .cf-hamb{display:flex}
+    .cf-logo-top{display:block}
+    .cf-top{padding:0 14px}
+    .cf-main{padding:18px 16px calc(40px + env(safe-area-inset-bottom,0px))}
+    .cf-hero{padding-top:10px}
+    .cf-hero h1{font-size:22px;margin:14px 0 16px}
+    .cf-atalhos{grid-template-columns:1fr 1fr;gap:12px}
+    .cf-campos{grid-template-columns:1fr;gap:12px}
+    .cf-indicar-sub{margin-bottom:18px}
+    .cf-indicar-acts{flex-direction:column-reverse;align-items:stretch}
+    .cf-indicar-acts .d-btn{width:100%;height:48px}
+    .cf-indicar-acts .err{order:10;margin:0;text-align:center}
+    .cf-atalhos > div:last-child{grid-column:1/-1}
+    .cf-sec-h{margin:26px 0 10px}
+    .cf-main .d-kpis{grid-template-columns:1fr 1fr;gap:8px}
+    .cf-main .d-kpi.main{grid-column:1/-1}
+    .cf-main .d-kpi.main .d-kpi-v{font-size:26px}
+    .cf-main .d-kpi-v{font-size:17px}
+    .cf-nav button,.cf-nav a{padding:11px 10px;font-size:15px}
+  }
+  @media(max-width:760px){
+    /* resumo no celular: crédito disponível em destaque + os outros 3 numa lista */
+    .cf-main .d-kpis{grid-template-columns:1fr;gap:0}
+    .cf-main .d-kpi.main{margin-bottom:10px;padding:16px 16px 18px}
+    .cf-main .d-kpi:not(.main){display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;
+      border-radius:0!important;margin-top:-1px}
+    .cf-main .d-kpi:nth-child(2){border-radius:8px 8px 0 0!important;margin-top:0}
+    .cf-main .d-kpi:last-child{border-radius:0 0 8px 8px!important}
+    .cf-main .d-kpi:not(.main) .d-kpi-h{font-size:13.5px;color:#5b6b82}
+    .cf-main .d-kpi:not(.main) .d-kpi-v{margin-top:0;font-size:15px;font-weight:600}
+    .cf-main .d-card-h{padding:12px 14px 12px}
+
+    /* cabeçalho do cartão: nome do filtro à esquerda, botão "Filtrar" à direita */
+    .cf-main .d-card-h{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px}
+    .cf-main .d-card-h h2{font-size:14.5px;font-weight:600;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .cf-main .d-card-acts{width:auto;flex:none}
+    /* botão de filtro minimalista: só as 3 barrinhas, sem borda */
+    .d-filtro-btn{width:36px;height:36px;padding:0;border:none;border-radius:8px;background:transparent;color:#5b6b82}
+    .d-filtro-btn:hover,.d-filtro-btn:active{background:#f1f3f6}
+    .d-filtro-btn svg{width:20px;height:20px;stroke-width:2}
+    .d-filtro-txt{display:none}
+    .d-filtro-btn[aria-expanded="true"]{background:#f1f3f6;color:#0c6fae}
+    .d-filtro-ponto{display:none!important}
+    /* cor do botão de acordo com o filtro (mesmas cores dos pontinhos de status) */
+    .d-filtro-btn{transition:color .2s}
+    .d-filtro-btn,.d-filtro-btn:hover,.d-filtro-btn:active,.d-filtro-btn[aria-expanded="true"]{background:transparent!important}
+    .d-filtro-btn[data-f="and"]{color:#e8892b}
+    .d-filtro-btn[data-f="ok"]{color:#2fa84f}
+    .d-filtro-btn[data-f="res"]{color:#1a9be0}
+    .d-filtro-btn[data-f="no"]{color:#6b7686}
+
+    /* lista de filtros: painel que sobe de baixo, com o fundo escurecido */
+    .d-filtro-menu{position:fixed;left:0;right:0;top:auto;bottom:0;width:auto;z-index:60;border:none;border-radius:18px 18px 0 0;
+      padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 0 0 100vmax rgba(15,30,50,.42),0 -10px 30px rgba(15,30,50,.18);
+      animation:gaveta .3s cubic-bezier(.2,.8,.2,1)}
+    .d-filtro-menu::before{content:"";display:block;width:40px;height:4px;border-radius:99px;background:#d5dce4;margin:4px auto 6px}
+    .d-filtro-tit{font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);padding:8px 12px 10px}
+    .d-filtro-menu button{padding:14px 12px;font-size:15.5px;border-radius:10px}
+    .d-filtro-menu button em{font-size:12.5px;padding:2px 9px}
+    .d-filtro-menu button.on{background:#f0f7fd}
+    .d-filtro-menu button.on em{background:#0c6fae;color:#fff}
+    .d-filtro-menu button.on::after{content:"";flex:none;width:6px;height:11px;margin:0 4px 3px 4px;
+      border-right:2px solid #0c6fae;border-bottom:2px solid #0c6fae;transform:rotate(45deg)}
+    .cf-top-link span{display:none}
   }
 </style>
 </head>
@@ -860,7 +1274,7 @@
 
   <form id="form-cad" class="cad" autocomplete="off" style="display:none" novalidate>
     <h1>Criar sua conta</h1>
-    <p class="sub">Leva menos de 1 minuto. Depois é só entrar com seu e-mail e senha.</p>
+    <p class="sub">Leva menos de 1 minuto.</p>
 
     <label for="c-nome">Nome completo</label>
     <input id="c-nome" placeholder="Nome e sobrenome" autocomplete="name">
@@ -876,30 +1290,27 @@
       <input id="c-senha" type="password" placeholder="Crie uma senha" autocomplete="new-password">
       <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
     </div>
-    <label for="c-senha2">Confirmar senha</label>
-    <input id="c-senha2" type="password" placeholder="Digite a senha novamente" autocomplete="new-password">
     <ul class="regras" id="regras-cad">
       <li data-r="tam">Pelo menos 8 caracteres</li>
       <li data-r="mai">1 letra maiúscula</li>
       <li data-r="min">1 letra minúscula</li>
       <li data-r="num">1 número</li>
     </ul>
+    <label for="c-senha2">Confirmar senha</label>
+    <input id="c-senha2" type="password" placeholder="Digite a senha novamente" autocomplete="new-password">
 
     <label class="aceite"><input type="checkbox" id="c-aceite"> <span>Li e aceito o <a href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">regulamento do programa</a> e autorizo o uso dos meus dados para participar do programa, conforme a <abbr title="Lei Geral de Proteção de Dados (Lei nº 13.709/2018)">LGPD</abbr>.</span></label>
 
     <button class="btn" type="submit">Criar conta</button>
     <div class="err" id="err-cad"></div>
-    <p class="links"><a href="#" data-voltar>Voltar para o login</a></p>
+    <p class="links voltar"><a href="#" data-voltar>← Voltar para o login</a></p>
   </form>
 
   <form id="form-rapida" class="cad" autocomplete="off" style="display:none" novalidate>
     <h1>Indicar sem cadastro</h1>
-    <p class="sub">Não precisa criar conta. Se a venda sair, entramos em contato com você pelo WhatsApp para liberar seu crédito.</p>
+    <p class="sub">Sem criar conta. Se a venda sair, avisamos você pelo WhatsApp.</p>
 
-    <div class="r-step">
-      <span>1</span>
-      <div><b>Seus dados</b><small>Para avisarmos você e liberar seu crédito</small></div>
-    </div>
+    <div class="r-step"><span>1</span><b>Seus dados</b></div>
     <div class="g2">
       <div><label for="r-nome">Nome</label><input id="r-nome" placeholder="Nome e sobrenome" autocomplete="name"></div>
       <div><label for="r-tel">Telefone com DDD</label><input id="r-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel"></div>
@@ -910,10 +1321,7 @@
         <select id="r-vend"><option value="">Selecione</option><option>Cleo</option><option>Victor</option><option>Tamara</option><option>Carlos</option><option>Poliana</option><option>Não sei</option></select></div>
     </div>
 
-    <div class="r-step dois">
-      <span>2</span>
-      <div><b>Quem você está indicando</b><small>Nosso vendedor entra em contato com essa pessoa</small></div>
-    </div>
+    <div class="r-step dois"><span>2</span><b>Quem você está indicando</b></div>
     <div class="g2">
       <div><label for="r-inome">Nome</label><input id="r-inome" placeholder="Nome e sobrenome"></div>
       <div><label for="r-itel">Telefone com DDD</label><input id="r-itel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15"></div>
@@ -921,7 +1329,7 @@
 
     <button class="btn btn-seta" type="submit">Fazer indicação <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <div class="err" id="err-rapida"></div>
-    <p class="links"><a href="#" data-voltar>Voltar para o login</a></p>
+    <p class="links voltar"><a href="#" data-voltar>← Voltar para o login</a></p>
   </form>
 
   <div id="rapida-ok" class="cad r-ok" style="display:none">
@@ -938,135 +1346,82 @@
 
 <!-- PAINEL DO CLIENTE -->
 <div class="app" id="tela-app">
-  <header class="d-bar">
-    <div class="d-bar-in">
-      <div class="d-marca">
-        <img class="logo d-logo" alt="Estilo Ar">
-      </div>
-      <div class="d-user">
-        <button class="d-menu-btn" id="menu-btn" type="button" aria-haspopup="true" aria-expanded="false">
-          <span class="ic-user"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg></span>
-          <span class="d-user-txt"><b id="u-nome"></b></span>
-          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+ <div class="cf-layout">
+  <!-- MENU LATERAL (no celular vira gaveta) -->
+  <aside class="cf-side" id="cf-side" aria-label="Menu">
+    <div class="cf-side-logo">
+      <span class="cf-ic"><img class="logo" alt="Estilo Ar"></span>
+      <span class="cf-quem"><b id="u-nome"></b><small id="u-email"></small></span>
+    </div>
+
+    <div class="d-user cf-conta">
+      <button class="d-menu-btn" id="menu-btn" type="button" tabindex="-1" aria-hidden="true">
+        <span class="d-user-txt"></span>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg>
+      </button>
+      <div class="d-menu" id="menu" hidden>
+        <div class="d-menu-h"><b id="m-nome"></b><span id="m-email"></span></div>
+        <button type="button" id="abrir-conta">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Configurações da conta
         </button>
-        <div class="d-menu" id="menu" hidden>
-          <div class="d-menu-h"><b id="m-nome"></b><span id="m-email"></span></div>
-          <button type="button" id="abrir-conta">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            Configurações da conta
-          </button>
-          <button type="button" id="sair" class="sair">
-            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-            Sair
-          </button>
-        </div>
+        <button type="button" id="sair" class="sair">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          Sair
+        </button>
       </div>
     </div>
-  </header>
 
-  <main class="d-main">
-    <section class="d-kpis" id="kpis"></section>
+    <nav class="cf-nav">
+      <button type="button" class="on" data-nav="painel"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Painel</button>
+      <button type="button" data-nav="indicacoes"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>Suas indicações</button>
+      <button type="button" data-nav="nova"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Nova indicação</button>
+      <button type="button" data-nav="comunidade"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 8.5v5l4.5-2.5z"/><path d="M8 21h8"/></svg>Comunidade</button>
 
-    <section class="d-card">
-      <div class="d-card-h">
-        <h2>Suas indicações</h2>
-        <div class="d-card-acts">
-          <div class="d-search">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-            <input id="busca" type="search" placeholder="Buscar por nome" autocomplete="off">
-          </div>
-          <!-- celular: botão de 3 barrinhas que abre a lista de filtros -->
-          <div class="d-filtro">
-            <button class="d-filtro-btn" id="filtro-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Filtrar indicações">
-              <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-              <span class="d-filtro-ponto" id="filtro-ponto" hidden></span>
-            </button>
-            <div class="d-filtro-menu" id="filtro-menu" hidden>
-              <p class="d-filtro-tit">Mostrar indicações</p>
-              <div id="filtro-opcoes"></div>
-            </div>
-          </div>
-          <button class="d-btn d-btn-pri" id="abrir-ind" type="button">
-            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nova indicação
-          </button>
-        </div>
-      </div>
-      <div class="d-tabs" id="tabs" role="tablist"></div>      <table class="d-table">
-        <thead><tr><th>Indicado</th><th>Data</th><th>Status</th><th class="r">Unidades</th><th class="r">Crédito</th></tr></thead>
-        <tbody id="lista"></tbody>
-      </table>
-    </section>
+      <p class="cf-grupo">Conta</p>
+      <button type="button" data-nav="config"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg>Configurações</button>
+      <button type="button" data-nav="regulamento"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Regulamento</button>
 
-    <section class="d-help">
-      <div>
-        <div class="d-kpi-i"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
-        <div><b>Como usar seu crédito</b><p>O crédito disponível pode ser usado na compra de produtos Estilo Ar. Não é pago em dinheiro. É só falar com o seu vendedor na hora da compra.</p></div>
-      </div>
-    </section>
-  </main>
+      <div class="cf-sep"></div>
+      <button type="button" data-nav="sair"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Sair</button>
+    </nav>
+  </aside>
+  <div class="cf-fundo" id="cf-fundo" hidden></div>
 
-  <div class="d-modal" id="modal-ind" hidden>
-    <div class="d-modal-bg" data-fechar></div>
-    <form class="d-dialog" id="form-ind" autocomplete="off" role="dialog" aria-modal="true" aria-labelledby="mi-t">
-      <div class="d-dialog-h">
-        <div>
-          <h3 id="mi-t">Nova indicação</h3>        </div>
-        <button type="button" class="d-x" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  <div class="cf-corpo">
+    <!-- barra do topo -->
+    <header class="cf-top">
+      <button class="cf-hamb" id="cf-hamb" type="button" aria-label="Abrir menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <img class="logo cf-logo-top" alt="Estilo Ar">
+      <div class="cf-top-dir">
+        <button class="cf-top-link" type="button" id="ajuda-reg">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.5M12 17h.01"/></svg>Ajuda
+        </button>
       </div>
-      <div class="d-dialog-b">
-        <label for="i-nome">Nome do indicado</label>
-        <input id="i-nome" placeholder="Nome completo">
-        <label for="i-tel">Telefone com DDD</label>
-        <input id="i-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15">
-        <label for="i-vend">Vendedor que te atende</label>
-        <select id="i-vend"><option value="">Selecione…</option><option>Cleo</option><option>Victor</option><option>Tamara</option><option>Carlos</option><option>Poliana</option><option>Não sei</option></select>
-      </div>
-      <div class="d-dialog-f">
-        <div class="err" id="err-ind"></div>
-        <button class="d-btn d-btn-sec" type="button" id="cancelar-ind">Cancelar</button>
-        <button class="d-btn d-btn-pri" type="submit">Enviar indicação</button>
-      </div>
-    </form>
-  </div>
+    </header>
 
-  <div class="d-modal" id="modal-conta" hidden>
-    <div class="d-modal-bg" data-fechar-conta></div>
-    <div class="d-dialog cfg" role="dialog" aria-modal="true" aria-labelledby="mc-t">
-      <div class="d-dialog-h">
-        <div class="cfg-tit">
-          <span class="cfg-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg></span>
-          <div>
-            <h3 id="mc-t">Configurações da conta</h3>
-            <p>Gerencie seus dados e sua senha de acesso.</p>
-          </div>
-        </div>
-        <button type="button" class="d-x" data-fechar-conta aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <main class="d-main cf-main">
+      <section class="cf-config" id="modal-conta" hidden>
+    <div class="cfg" aria-labelledby="mc-t">
+      <div class="cfg-cab">
+        <h1 id="mc-t">Configurações da conta</h1>
+        <p>Gerencie seus dados e sua senha de acesso.</p>
       </div>
       <div class="d-seg" role="tablist">
-        <button type="button" role="tab" data-aba="form-dados" class="on" aria-selected="true">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Dados pessoais
-        </button>
-        <button type="button" role="tab" data-aba="form-email" aria-selected="false">
-          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>E-mail
-        </button>
-        <button type="button" role="tab" data-aba="form-senha" aria-selected="false">
-          <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Senha
-        </button>
+        <button type="button" role="tab" data-aba="form-dados" class="on" aria-selected="true">Dados pessoais</button>
+        <button type="button" role="tab" data-aba="form-email" aria-selected="false">E-mail</button>
+        <button type="button" role="tab" data-aba="form-senha" aria-selected="false">Senha</button>
       </div>
 
+      <!-- DADOS PESSOAIS -->
       <form class="d-aba" id="form-dados" autocomplete="off" novalidate>
-        <div class="d-dialog-b">
-          <label for="a-nome">Nome completo</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input id="a-nome" placeholder="Nome e sobrenome" autocomplete="name">
-          </div>
-          <label for="a-tel">Celular (WhatsApp)</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
-            <input id="a-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel">
-          </div>
-          <p class="d-hint">É por aqui que avisamos quando uma venda for confirmada.</p>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-nome">Nome completo</label><p>Como você aparece para a nossa equipe.</p></div>
+          <div class="cfg-c"><input id="a-nome" placeholder="Nome e sobrenome" autocomplete="name"></div>
+        </div>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-tel">Celular (WhatsApp)</label><p>É por aqui que avisamos quando uma venda for confirmada.</p></div>
+          <div class="cfg-c"><input id="a-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel"></div>
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-dados"></div>
@@ -1075,31 +1430,26 @@
         </div>
       </form>
 
+      <!-- E-MAIL -->
       <form class="d-aba" id="form-email" autocomplete="off" novalidate hidden>
-        <div class="d-dialog-b">
-          <p class="cfg-lbl">E-mail atual</p>
-          <div class="cfg-atual">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <span id="email-atual"></span>
-            <em>Em uso</em>
+        <div class="cfg-linha">
+          <div class="cfg-l"><p class="cfg-lbl">E-mail atual</p><p>Usado para entrar na sua conta.</p></div>
+          <div class="cfg-c">
+            <div class="cfg-atual"><span id="email-atual"></span><em>Em uso</em></div>
           </div>
-
-          <label for="a-email">Novo e-mail</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <input id="a-email" type="email" inputmode="email" placeholder="novo@email.com" autocomplete="email">
+        </div>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-email">Novo e-mail</label><p>Depois da troca, você passa a entrar com ele.</p></div>
+          <div class="cfg-c"><input id="a-email" type="email" inputmode="email" placeholder="novo@email.com" autocomplete="email"></div>
+        </div>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-email-senha">Sua senha</label><p>Por segurança, confirme com a senha atual.</p></div>
+          <div class="cfg-c">
+            <div class="fi">
+              <input id="a-email-senha" class="com-olho" type="password" placeholder="Senha atual" autocomplete="current-password">
+              <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+            </div>
           </div>
-          <p class="d-hint">Depois da troca, você passa a entrar com o novo e-mail.</p>
-
-          <div class="cfg-sep"></div>
-
-          <label for="a-email-senha">Confirme com sua senha</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <input id="a-email-senha" class="com-olho" type="password" placeholder="Digite sua senha atual" autocomplete="current-password">
-            <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
-          </div>
-          <p class="d-hint">Por segurança, pedimos sua senha para trocar o e-mail.</p>
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-email"></div>
@@ -1108,40 +1458,39 @@
         </div>
       </form>
 
+      <!-- SENHA -->
       <form class="d-aba" id="form-senha" autocomplete="off" novalidate hidden>
-        <div class="d-dialog-b">
-          <label for="a-s0">Senha atual</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <input id="a-s0" class="com-olho" type="password" placeholder="Digite sua senha atual" autocomplete="current-password">
-            <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-s0">Senha atual</label><p>A senha que você usa hoje para entrar.</p></div>
+          <div class="cfg-c">
+            <div class="fi">
+              <input id="a-s0" class="com-olho" type="password" placeholder="Senha atual" autocomplete="current-password">
+              <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+            </div>
           </div>
-
-          <div class="cfg-sep"></div>
-
-          <label for="a-s1">Nova senha</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>
-            <input id="a-s1" class="com-olho" type="password" placeholder="Crie uma nova senha" autocomplete="new-password">
-            <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+        </div>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-s1">Nova senha</label><p>Mínimo 8 caracteres, com maiúscula, minúscula e número.</p></div>
+          <div class="cfg-c">
+            <div class="fi">
+              <input id="a-s1" class="com-olho" type="password" placeholder="Nova senha" autocomplete="new-password">
+              <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+            </div>
+            <div class="forca" id="forca" data-n="0">
+              <div class="forca-barras"><i></i><i></i><i></i></div>
+              <span id="forca-txt">Força da senha</span>
+            </div>
+            <ul class="regras" id="regras">
+              <li data-r="tam">Pelo menos 8 caracteres</li>
+              <li data-r="mai">1 letra maiúscula</li>
+              <li data-r="min">1 letra minúscula</li>
+              <li data-r="num">1 número</li>
+            </ul>
           </div>
-          <div class="forca" id="forca" data-n="0">
-            <div class="forca-barras"><i></i><i></i><i></i></div>
-            <span id="forca-txt">Força da senha</span>
-          </div>
-
-          <label for="a-s2">Confirmar nova senha</label>
-          <div class="fi">
-            <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-            <input id="a-s2" type="password" placeholder="Digite a nova senha de novo" autocomplete="new-password">
-          </div>
-
-          <ul class="regras" id="regras">
-            <li data-r="tam">Pelo menos 8 caracteres</li>
-            <li data-r="mai">1 letra maiúscula</li>
-            <li data-r="min">1 letra minúscula</li>
-            <li data-r="num">1 número</li>
-          </ul>
+        </div>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-s2">Confirmar nova senha</label><p>Digite a nova senha mais uma vez.</p></div>
+          <div class="cfg-c"><input id="a-s2" type="password" placeholder="Repita a nova senha" autocomplete="new-password"></div>
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-senha"></div>
@@ -1149,6 +1498,268 @@
           <button class="d-btn d-btn-pri" type="submit" id="salvar-senha" disabled>Alterar senha</button>
         </div>
       </form>
+    </div>
+  </section>
+
+      <!-- REGULAMENTO (aparece pelo menu lateral) -->
+      <section class="cf-reg" id="sec-regulamento" hidden>
+        <div class="reg-cab">
+          <p class="reg-tag">Documento oficial · Campanha promocional</p>
+          <h1>Regulamento do Programa de Indicação</h1>
+          <div class="reg-meta">
+            <span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Em vigor desde 20/02/2025</span>
+            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Todo o território nacional</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Não é sorteio</span>
+          </div>
+          <a class="reg-pdf" href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Baixar PDF
+          </a>
+        </div>
+
+        <div class="reg-corpo">
+        <nav class="reg-indice" aria-label="Seções do regulamento">
+          <p>Nesta página</p>
+          <a href="#reg-1" data-sec="reg-1">1. Objetivo</a>
+          <a href="#reg-2" data-sec="reg-2">2. Como participar</a>
+          <a href="#reg-3" data-sec="reg-3">3. Vigência</a>
+          <a href="#reg-4" data-sec="reg-4">4. Do prêmio</a>
+          <a href="#reg-5" data-sec="reg-5">5. Entrega dos prêmios</a>
+          <a href="#reg-6" data-sec="reg-6">6. Perda do direito</a>
+          <a href="#reg-7" data-sec="reg-7">7. Qualificação</a>
+          <a href="#reg-8" data-sec="reg-8">8. Resgate</a>
+          <a href="#reg-9" data-sec="reg-9">9. Disposições gerais</a>
+          <a href="#reg-10" data-sec="reg-10">10. Proteção de dados</a>
+          <a href="#reg-cg" data-sec="reg-cg">Condições gerais</a>
+        </nav>
+        <div class="reg-drop" id="reg-drop">
+          <button type="button" class="reg-drop-btn" id="reg-drop-btn" aria-expanded="false" aria-controls="reg-drop-lista">
+            <span class="reg-drop-txt"><small>Nesta página</small><b id="reg-drop-atual">1. Objetivo</b></span>
+            <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="reg-drop-lista" id="reg-drop-lista">
+            <div class="reg-drop-in">
+              <button type="button" data-sec="reg-1"><span>1. Objetivo</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-2"><span>2. Como participar</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-3"><span>3. Vigência</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-4"><span>4. Do prêmio</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-5"><span>5. Entrega dos prêmios</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-6"><span>6. Perda do direito</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-7"><span>7. Qualificação</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-8"><span>8. Resgate</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-9"><span>9. Disposições gerais</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-10"><span>10. Proteção de dados</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+              <button type="button" data-sec="reg-cg"><span>Condições gerais</span><svg class="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <article class="reg-texto">
+          <h2 id="reg-1">1. Objetivo do programa de indicação</h2>
+          <p><b>1.1.</b> O Programa de Indicação é uma iniciativa promovida pela Estilo Ar, com o propósito de reconhecer e valorizar a confiança depositada em nós. Por meio deste programa, pessoas têm a oportunidade de realizar indicações e, a partir delas, serem contempladas com benefícios previamente estabelecidos.</p>
+
+          <h2 id="reg-2">2. Como participar</h2>
+          <p><b>2.1.</b> A presente campanha possui abrangência em todo o território nacional e é destinada a pessoas, clientes, que queiram recomendar o ar-condicionado Estilo Ar.</p>
+          <p><b>2.2.</b> A participação ocorrerá mediante a indicação de novas pessoas, potenciais clientes que não mantenham, nem tenham mantido anteriormente, qualquer vínculo contratual com a Estilo Ar, devendo a indicação ser formalizada por meio do preenchimento de formulário específico disponibilizado pela empresa e posteriormente seja convertida em compra.</p>
+          <p><b>2.3.</b> A pessoa responsável pela indicação será denominada Pessoa Indicadora, e a pessoa por ela indicada será denominada Pessoa Indicada. Para que a indicação seja considerada válida, a Pessoa Indicadora deverá fornecer corretamente os dados mínimos da Pessoa Indicada, como nome completo e número de telefone, por intermédio do site oficial do Programa de Indicação www.indicaestilo.com.br.</p>
+
+          <h2 id="reg-3">3. Período de vigência</h2>
+          <p><b>3.1.</b> O programa terá início em 20/02/2025, com término indeterminado.</p>
+          <p><b>3.2.</b> A continuidade ou renovação do Programa em ciclos posteriores será definida a critério exclusivo da Estilo Ar, mediante divulgação prévia em seus canais oficiais.</p>
+
+          <h2 id="reg-4">4. Do prêmio</h2>
+          <p><b>4.1.</b> A pessoa física ou jurídica responsável pela indicação, denominada neste Programa como Pessoa Indicadora, fará jus ao recebimento de recompensas conforme o número de indicações válidas que forem convertidas em compras realizadas no respectivo período, nos seguintes termos:</p>
+          <p class="reg-destaque">A cada indicação que resultar em compra de ar-condicionado pela Pessoa Indicada a Pessoa Indicadora ganhará um (01) voucher no valor de R$ 400,00. Caso a Pessoa Indicada compre mais de um ar-condicionado no mesmo momento, o voucher será reajustado na proporção de R$ 400,00 a cada ar-condicionado adquirido pelo Indicado.</p>
+          <p><b>4.2.</b> Para efeito de premiação, será considerada apenas a primeira compra feita pela Pessoa Indicada.</p>
+          <p><b>4.3.</b> As recompensas concedidas no âmbito desta Campanha terão validade de 1 (um) ano, contado a partir da data de liberação do voucher, devendo ser utilizadas dentro deste período, sob pena de expiração definitiva do direito ao benefício.</p>
+          <p><b>4.4.</b> A utilização do voucher poderá ser feita única e exclusivamente pelo CPF/CNPJ do titular para a compra de outra unidade de ar-condicionado Estilo Ar, modelo a livre escolha, não sendo permitido transferência de crédito entre pessoas ou resgate em dinheiro.</p>
+          <p><b>4.5.</b> Fica reservado à Estilo Ar o direito de incluir, de forma excepcional e a seu exclusivo critério, recompensas adicionais ao Programa de Indicação, sem necessidade de alteração deste regulamento.</p>
+
+          <h2 id="reg-5">5. Da entrega dos prêmios</h2>
+          <p><b>5.1.</b> O direito à recompensa será informado pela Estilo Ar à Pessoa Indicadora por meio digital em até 30 dias após a confirmação da venda do produto à Pessoa Indicada.</p>
+          <p><b>5.2.</b> Os prêmios previstos neste Programa possuem caráter cumulativo, de modo que a Pessoa Indicadora fará jus a todas as recompensas correspondentes ao número de indicações válidas realizadas e convertidas em vendas no período.</p>
+
+          <h2 id="reg-6">6. Das hipóteses de perda do direito ao prêmio</h2>
+          <p><b>6.1.</b> A Pessoa Indicadora perderá o direito ao recebimento da recompensa nas seguintes situações:</p>
+          <ol class="reg-romano">
+            <li><span>I</span>Quando a Pessoa Indicada desistir ou deixar de concluir a compra junto à Estilo Ar, por qualquer motivo;</li>
+            <li><span>II</span>Caso a Pessoa Indicada já tenha sido cadastrada por outra Pessoa Indicadora, a pontuação/prêmio será contabilizada para aquele que foi o primeiro a fazer a indicação, ou seja, a indicação que tiver registro mais antigo;</li>
+            <li><span>III</span>Caso o CPF/CNPJ indicado já exista na base cadastral Estilo Ar;</li>
+            <li><span>IV</span>Após expirado o prazo de 1 ano após a liberação do direito à recompensa.</li>
+          </ol>
+          <p><b>6.2.</b> Em qualquer das hipóteses acima, a Pessoa Indicadora não fará jus ao recebimento da recompensa, sem que isso gere qualquer direito de indenização ou compensação.</p>
+
+          <h2 id="reg-7">7. Qualificação da indicação</h2>
+          <p><b>7.1.</b> Fica reservado à empresa criadora do Programa o direito de aplicar, futuramente, possíveis qualificações adicionais para pagamento da recompensa.</p>
+          <p><b>7.2.</b> Fica igualmente reservado o direito de potencializar o canal de indicação por meio de programas complementares que envolvam pagamento de recompensas pela geração de leads qualificados pela Pessoa Indicadora.</p>
+          <p><b>7.3.</b> É facultado à Pessoa Indicadora informar à Pessoa Indicada sobre o encaminhamento de sua indicação ao time da Estilo Ar, recomendando-se que o faça de forma ética, clara e respeitosa.</p>
+
+          <h2 id="reg-8">8. Resgate da premiação</h2>
+          <p><b>8.1.</b> A entrega da premiação observará os prazos e condições previstos neste regulamento, não sendo devida em casos de desistência, rescisão contratual ou qualquer outra circunstância que inviabilize a efetivação do contrato pela Pessoa Indicada.</p>
+          <p><b>8.2.</b> O prêmio não poderá ser resgatado em forma de dinheiro. É destinado única e exclusivamente para aquisição de outro aparelho de ar-condicionado com modelo a livre escolha.</p>
+
+          <h2 id="reg-9">9. Disposições gerais</h2>
+          <p><b>9.1.</b> O Programa de Indicação não se enquadra nas disposições da Lei nº 5.768/71 e do Decreto nº 70.951/72, por não se tratar de concurso, sorteio ou operação assemelhada, mas sim de programa promocional baseado em metas objetivas de indicação.</p>
+          <p><b>9.2.</b> Durante a vigência deste Programa, a Estilo Ar poderá promover missões específicas ou campanhas de ativação, com prêmios e condições próprias. Nesses casos, as regras aplicáveis serão divulgadas exclusivamente pelos canais oficiais de comunicação da empresa.</p>
+          <p><b>9.3.</b> A participação no Programa implica ciência, concordância e aceitação integral das condições deste regulamento.</p>
+
+          <h2 id="reg-10">10. Proteção de dados (LGPD)</h2>
+          <p><b>10.1.</b> Ao participar do Programa, a Pessoa Indicadora declara estar ciente e de acordo com a Política de Privacidade da Estilo Ar, autorizando o uso de seus dados pessoais exclusivamente para fins de gestão do Programa.</p>
+          <p><b>10.2.</b> A Estilo Ar compromete-se a tratar todos os dados pessoais em conformidade com a Lei nº 13.709/2018 (LGPD).</p>
+          <p><b>10.3.</b> A pessoa participante, seja ela Indicadora ou Indicada, poderá solicitar a exclusão ou atualização de seus dados pessoais a qualquer momento pelos canais oficiais da Estilo Ar.</p>
+
+          <h2 id="reg-cg">Condições gerais</h2>
+          <ul class="reg-lista">
+            <li>Eventuais dúvidas ou situações não previstas neste regulamento serão analisadas e decididas, de forma soberana e definitiva, pela Estilo Ar.</li>
+            <li>A participação implica aceitação integral e incondicional de todos os termos deste regulamento.</li>
+            <li>A utilização da premiação é de caráter pessoal, intransferível e inegociável, salvo hipóteses expressamente previstas.</li>
+            <li>A Estilo Ar poderá excluir do Programa qualquer pessoa participante envolvida em fraude, má-fé ou descumprimento das regras.</li>
+            <li>Quaisquer custos adicionais necessários para usufruir da premiação serão de responsabilidade da pessoa participante contemplada.</li>
+            <li>A Estilo Ar poderá alterar, suspender ou encerrar este regulamento a qualquer tempo, mediante aviso prévio em seus canais oficiais.</li>
+            <li>A natureza ou forma de entrega dos prêmios poderá ser modificada, desde que não haja prejuízo às pessoas participantes que já tenham adquirido direitos.</li>
+            <li>Indicações realizadas por parceiros (assistência técnica autorizada, revendedor autorizado ou sócio operador) e colaboradores <b>não</b> poderão ser contempladas nas regras de premiação.</li>
+            <li>A ESTILO AR COMERCIO DE PEÇAS LTDA reserva-se o direito de desqualificar qualquer participante e de revogar Recompensas obtidas com indícios de fraude ou abuso do Programa de Indicações ou que viole estes termos de qualquer outro modo.</li>
+            <li>Também nos reservamos o direito de cancelar este Programa de Indicações ou alterar os critérios de qualificação a qualquer momento e por qualquer motivo a nosso exclusivo critério. Caso ocorra tal fato serão honradas as recompensas conquistadas previamente.</li>
+            <li>As dúvidas e controvérsias oriundas de reclamações dos participantes serão dirimidas pela organizadora, por meio do canal de atendimento <b>contato@estiloar.com.br</b>.</li>
+          </ul>
+        </article>
+        </div>
+      </section>
+
+      <!-- COMUNIDADE: vídeos de depoimento -->
+      <section class="cf-com" id="sec-comunidade" hidden>
+        <div class="com-cab">
+          <h1>Comunidade</h1>
+          <p>Veja quem já participou do nosso programa de indicação e compartilha sua experiência com a Estilo Ar.</p>
+        </div>
+        <div class="com-grade" id="com-grade"></div>
+      </section>
+
+      <!-- topo central: título + busca + atalhos -->
+      <section class="cf-hero">
+       <!-- formulário de indicação: aparece aqui no lugar do topo, sem janela -->
+       <div class="cf-indicar" id="modal-ind" hidden>
+        <form id="form-ind" autocomplete="off" novalidate>
+          <h1>Nova indicação</h1>
+          <p class="cf-indicar-sub">Passe o contato da pessoa. Nosso vendedor liga pra ela e cuida do resto.</p>
+
+          <div class="cf-campos">
+            <div>
+              <label for="i-nome">Nome do indicado</label>
+              <div class="fi">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg>
+                <input id="i-nome" placeholder="Nome completo">
+              </div>
+            </div>
+            <div>
+              <label for="i-tel">Telefone com DDD</label>
+              <div class="fi">
+                <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                <input id="i-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15">
+              </div>
+            </div>
+            <div>
+              <label for="i-vend">Vendedor que te atende</label>
+              <div class="fi">
+                <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+                <select id="i-vend"><option value="">Selecione…</option><option>Cleo</option><option>Victor</option><option>Tamara</option><option>Carlos</option><option>Poliana</option><option>Não sei</option></select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cf-indicar-acts">
+            <div class="err" id="err-ind"></div>
+            <button class="d-btn d-btn-sec" type="button" id="cancelar-ind">Cancelar</button>
+            <button class="d-btn d-btn-pri" type="submit">Enviar indicação <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </form>
+       </div>
+
+       <div id="hero-inicio">
+        <h1>Quem você vai indicar hoje?</h1>
+        <div class="d-search cf-search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="busca" type="search" placeholder="Buscar indicação por nome" autocomplete="off">
+        </div>
+
+        <div class="cf-atalhos">
+          <div>
+            <p class="cf-rot">Indicações <span>›</span></p>
+            <button class="cf-acao" id="abrir-ind" type="button"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nova indicação</button>
+          </div>
+          <div>
+            <p class="cf-rot">Regulamento <span>›</span></p>
+            <button class="cf-acao" type="button" id="ver-regras"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Ver as regras</button>
+          </div>
+          <div>
+            <p class="cf-rot">Recentes</p>
+            <div class="cf-recentes" id="recentes"></div>
+          </div>
+        </div>
+       </div>
+      </section>
+
+      <!-- resumo -->
+      <div class="cf-sec-h" id="sec-resumo"><h2>Resumo</h2></div>
+      <section class="d-kpis" id="kpis"></section>
+
+      <!-- tabela -->
+      <div class="cf-sec-h cf-barra-ind" id="sec-ind">
+        <div class="cf-barra-tit">
+          <h2>Suas indicações</h2>
+        </div>
+        <div class="d-search cf-busca-ind">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="busca2" type="text" placeholder="Buscar por nome" autocomplete="off" aria-label="Buscar indicação por nome">
+          <button type="button" class="cf-limpar" id="limpar-busca" aria-label="Limpar busca" hidden><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
+      </div>
+      <section class="d-card">
+        <div class="d-card-h">
+          <h2 id="tit-filtro">Todas as indicações</h2>
+          <div class="d-card-acts">
+            <!-- celular: botão de 3 barrinhas que abre a lista de filtros -->
+            <div class="d-filtro">
+              <button class="d-filtro-btn" id="filtro-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Filtrar indicações">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span class="d-filtro-txt">Filtrar</span>
+                <span class="d-filtro-ponto" id="filtro-ponto" hidden></span>
+              </button>
+              <div class="d-filtro-menu" id="filtro-menu" hidden>
+                <p class="d-filtro-tit">Filtrar indicações</p>
+                <div id="filtro-opcoes"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-tabs" id="tabs" role="tablist"></div>
+        <div class="d-scroll">
+          <table class="d-table">
+            <thead><tr><th>Indicado</th><th>Data</th><th>Status</th><th class="r">Unidades</th><th class="r">Crédito</th></tr></thead>
+            <tbody id="lista"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="d-help">
+        <div>
+          <div class="d-kpi-i"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 21V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+          <div><b>Como usar seu crédito</b><p>O crédito disponível pode ser usado na compra de produtos Estilo Ar. Não é pago em dinheiro. É só falar com o seu vendedor na hora da compra.</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+ </div>
+
+
+
+  <!-- player dos depoimentos -->
+  <div class="com-player" id="com-player" hidden>
+    <div class="com-player-bg" data-fechar-video></div>
+    <div class="com-player-box" role="dialog" aria-modal="true" aria-label="Depoimento em vídeo">
+      <button type="button" class="com-player-x" data-fechar-video aria-label="Fechar vídeo"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <video id="com-video" controls playsinline></video>
+      <div class="com-yt" id="com-yt" hidden></div>
+      <div class="com-player-leg"><b id="com-video-tit"></b><span id="com-video-sub"></span></div>
     </div>
   </div>
 
@@ -1181,6 +1792,9 @@ const CLIENTE_EXEMPLO = {
 const VALOR = 400;
 
 const $ = id => document.getElementById(id);
+/* no celular/tablet não coloca o cursor sozinho (senão o teclado abre sem a pessoa pedir) */
+const TELA_TOQUE = window.matchMedia("(hover:none) and (pointer:coarse)").matches;
+function focar(el){ if(el && !TELA_TOQUE) el.focus(); }
 const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const dt  = s => s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4);
 const esc = s => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -1250,7 +1864,7 @@ document.querySelectorAll(".m-tel").forEach(el=>el.addEventListener("input",e=>{
 
 /* marca o campo com erro em vermelho e leva o cursor até ele */
 function campoErrado(id){
-  const el=$(id); el.classList.add("invalido"); el.focus();
+  const el=$(id); el.classList.add("invalido"); focar(el);
   el.addEventListener("input",()=>el.classList.remove("invalido"),{once:true});
 }
 
@@ -1283,19 +1897,19 @@ if(vendedorLembrado()) $("r-vend").value=vendedorLembrado();
 $("r-vend").addEventListener("change",e=>lembrarVendedor(e.target.value));
 let VEND_DA_RAPIDA = ""; // vendedor escolhido no "indicar sem cadastro", levado para o cadastro
 ["r-tel","r-itel"].forEach(id=>$(id).addEventListener("input",e=>{ e.target.value=formatarTel(e.target.value); }));
-$("ir-rapida").addEventListener("click",()=>{ mostrar("rapida"); $("r-nome").focus(); });
+$("ir-rapida").addEventListener("click",()=>{ mostrar("rapida"); focar($("r-nome")); });
 document.querySelectorAll("[data-voltar]").forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); mostrar("login"); }));
 $("rapida-outra").addEventListener("click",()=>{
   /* mantém os dados de quem indica, limpa só o indicado */
   $("r-inome").value=""; $("r-itel").value="";
-  mostrar("rapida"); $("r-inome").focus();
+  mostrar("rapida"); focar($("r-inome"));
 });
 /* vai para o cadastro aproveitando o que a pessoa já digitou */
 function cadastroDaRapida(){
   mostrar("cad");
   $("c-nome").value=$("r-nome").value; $("c-tel").value=$("r-tel").value; VEND_DA_RAPIDA=$("r-vend").value;
   $("c-email").value=$("r-email").value;
-  (["c-nome","c-email","c-senha"].map($).find(el=>!el.value) || $("c-senha")).focus();
+  focar(["c-nome","c-email","c-senha"].map($).find(el=>!el.value) || $("c-senha"));
 }
 $("rapida-cad").addEventListener("click",e=>{ e.preventDefault(); cadastroDaRapida(); });
 $("alt-cad").addEventListener("click",cadastroDaRapida);
@@ -1316,16 +1930,14 @@ $("form-rapida").addEventListener("submit",e=>{
   $("rapida-ok-txt").textContent="Recebemos a indicação de "+inome+". Nosso vendedor vai entrar em contato. Se a compra sair, avisamos você no WhatsApp "+formatarTel(tel)+".";
   mostrar("rapidaOk");
 });
-$("ir-cad").addEventListener("click",e=>{e.preventDefault(); mostrar("cad"); $("c-nome").focus();});
-document.querySelectorAll("[data-cad]").forEach(b=>b.addEventListener("click",()=>{mostrar("cad");$("c-nome").focus();}));
+$("ir-cad").addEventListener("click",e=>{e.preventDefault(); mostrar("cad"); focar($("c-nome"));});
+document.querySelectorAll("[data-cad]").forEach(b=>b.addEventListener("click",()=>{mostrar("cad");focar($("c-nome"));}));
 
 /* cadastro: regras da senha marcando sozinhas enquanto digita */
-function conferirSenhaCad(){
-  const r=regrasSenha($("c-senha").value);
-  document.querySelectorAll("#regras-cad li").forEach(li=>li.classList.toggle("ok",r[li.dataset.r]));
-}
+function conferirSenhaCad(){ mostrarRegras($("c-senha"),$("regras-cad")); }
 $("c-senha").addEventListener("input",conferirSenhaCad);
-$("form-cad").addEventListener("reset",()=>setTimeout(conferirSenhaCad,0));
+$("c-senha").addEventListener("blur",()=>marcarTocado($("c-senha"),$("regras-cad")));
+$("form-cad").addEventListener("reset",()=>{ delete $("c-senha").dataset.tocado; setTimeout(conferirSenhaCad,0); });
 
 $("form-cad").addEventListener("submit",e=>{
   e.preventDefault();
@@ -1339,7 +1951,7 @@ $("form-cad").addEventListener("submit",e=>{
   if(USUARIOS.some(u=>u.email===email)) return erro("Esse e-mail já tem cadastro. Clique em Entrar.","c-email");
   if(!celularValido(tel)) return erro("Celular inválido. Use o formato (34) 99999-9999.","c-tel");
   const msgSenha=mensagemSenha(regrasSenha(s1));
-  if(msgSenha) return erro(msgSenha,"c-senha");
+  if(msgSenha){ marcarTocado($("c-senha"),$("regras-cad")); return erro(msgSenha,"c-senha"); }
   if(s1!==s2) return erro("As senhas não são iguais.","c-senha2");
   if(!$("c-aceite").checked) return erro("Para continuar, aceite o regulamento e o uso dos dados (LGPD).","c-aceite");
 
@@ -1352,8 +1964,13 @@ $("form-cad").addEventListener("submit",e=>{
   avisar("Conta criada","Bem-vindo(a), "+nome.split(" ")[0]+"! Agora é só indicar e acompanhar tudo por aqui.");
 });
 
+/* TEMPORÁRIO: "Entrar" vai direto para a conta de teste, sem pedir e-mail nem senha.
+   Para voltar a pedir login de verdade, troque para false. */
+const ENTRADA_DIRETA = true;
+
 $("form-login").addEventListener("submit",e=>{
   e.preventDefault();
+  if(ENTRADA_DIRETA){ limparErrosLogin(); $("esqueci-linha").hidden=true; abrirPainel(CLIENTE_EXEMPLO); return; }
   const email=chaveEmail($("email").value), senha=$("senha").value;
   limparErrosLogin(); $("err").textContent="";
   if(!email) return erroLogin("email","Digite seu e-mail.");
@@ -1363,7 +1980,7 @@ $("form-login").addEventListener("submit",e=>{
     erroLogin("email",'E-mail não cadastrado. <a href="#" id="err-cad-link">Clique aqui para se cadastrar</a>',true);
     $("err-cad-link").addEventListener("click",ev=>{
       ev.preventDefault(); const v=$("email").value; mostrar("cad");
-      $("c-email").value=v; $("c-nome").focus();
+      $("c-email").value=v; focar($("c-nome"));
     });
     return;
   }
@@ -1376,7 +1993,7 @@ $("form-login").addEventListener("submit",e=>{
 function erroLogin(campo,msg,html){
   const caixa=$("err-login-"+campo);
   if(html) caixa.innerHTML=msg; else caixa.textContent=msg;
-  $(campo).classList.add("invalido"); $(campo).focus();
+  $(campo).classList.add("invalido"); focar($(campo));
 }
 function limparErrosLogin(){
   ["email","senha"].forEach(c=>{ $("err-login-"+c).textContent=""; $(c).classList.remove("invalido"); });
@@ -1384,29 +2001,142 @@ function limparErrosLogin(){
 ["email","senha"].forEach(c=>$(c).addEventListener("input",()=>{ $("err-login-"+c).textContent=""; $(c).classList.remove("invalido"); }));
 $("sair").addEventListener("click",()=>{
   fecharModal(); fecharConta(); fecharMenu(); fecharFiltro(); $("ok-ind").classList.remove("on");
+  $("tela-app").classList.remove("so-indicacoes"); fecharRegulamento(); fecharComunidade(); marcarNav("painel");
   $("tela-app").style.display="none"; $("tela-login").style.display="";
-  ULTIMO_NOVO=null; FILTRO="todas"; $("busca").value="";
+  ULTIMO_NOVO=null; FILTRO="todas"; $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true;
   $("email").value=""; $("senha").value="";
 });
 
 /* ===== NOVA INDICAÇÃO (no exemplo, só entra na lista da tela; no real, gravaria no Supabase) ===== */
 let CLIENTE_ATUAL = null, ULTIMO_NOVO = null, FILTRO = "todas", toastTimer = null;
+function marcarNav(qual){ document.querySelectorAll(".cf-nav [data-nav]").forEach(x=>x.classList.toggle("on",x.dataset.nav===qual)); }
+
+/* página do regulamento dentro da conta (esconde o resto) */
+function abrirRegulamento(){
+  fecharGaveta(); fecharConta(); fecharComunidade();
+  if(!$("modal-ind").hidden) fecharModal();
+  $("tela-app").classList.remove("so-indicacoes"); $("tela-app").classList.add("so-regulamento");
+  $("sec-regulamento").hidden=false; marcarNav("regulamento");
+  window.scrollTo({top:0,behavior:"smooth"}); setTimeout(marcarSecao,50);
+}
+function fecharRegulamento(){
+  if($("sec-regulamento").hidden) return;
+  $("sec-regulamento").hidden=true; $("tela-app").classList.remove("so-regulamento"); marcarNav("painel");
+}
+$("ver-regras").addEventListener("click",abrirRegulamento);
+$("ajuda-reg").addEventListener("click",abrirRegulamento);
+
+/* índice do regulamento: rola suave até a seção e marca a seção que está sendo lida */
+function irSecao(id){ const el=$(id); if(el) el.scrollIntoView({behavior:"smooth",block:"start"}); }
+document.querySelectorAll(".reg-indice a").forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); irSecao(a.dataset.sec); }));
+/* celular: menu "Nesta página" que desce com animação */
+function fecharDrop(){ $("reg-drop").classList.remove("aberto"); $("reg-drop-btn").setAttribute("aria-expanded","false"); }
+$("reg-drop-btn").addEventListener("click",e=>{
+  e.stopPropagation();
+  const abrir=!$("reg-drop").classList.contains("aberto");
+  $("reg-drop").classList.toggle("aberto",abrir); $("reg-drop-btn").setAttribute("aria-expanded",abrir);
+});
+document.querySelectorAll("#reg-drop-lista [data-sec]").forEach(b=>b.addEventListener("click",()=>{ fecharDrop(); irSecao(b.dataset.sec); }));
+document.addEventListener("click",e=>{ if(!$("reg-drop").contains(e.target)) fecharDrop(); });
+const REG_TITULOS=[...document.querySelectorAll(".reg-texto h2")];
+function marcarSecao(){
+  if($("sec-regulamento").hidden) return;
+  let atual=REG_TITULOS[0];
+  const limite = window.innerWidth<=900 ? 150 : 120; // no celular o menu "Nesta página" ocupa o topo
+  REG_TITULOS.forEach(h=>{ if(h.getBoundingClientRect().top<=limite) atual=h; });
+  document.querySelectorAll(".reg-indice a").forEach(a=>a.classList.toggle("on",a.dataset.sec===atual.id));
+  document.querySelectorAll("#reg-drop-lista [data-sec]").forEach(b=>{
+    const on=b.dataset.sec===atual.id; b.classList.toggle("on",on);
+    if(on) $("reg-drop-atual").textContent=b.textContent.trim();
+  });
+}
+window.addEventListener("scroll",marcarSecao,{passive:true});
+
+/* ===== COMUNIDADE: vídeos de depoimento =====
+   Para colocar um vídeo novo do YouTube (Shorts), acrescente uma linha com o código do vídeo:
+   o código é o final do link, ex.: youtube.com/shorts/HeNYKAxRx-U  →  yt:"HeNYKAxRx-U"
+   (também aceita vídeo da pasta IMG: { titulo:"...", legenda:"...", video:"IMG/arquivo.mp4" }) */
+const DEPOIMENTOS = [
+  { titulo:"Investimento que valeu a pena!",                          legenda:"Estilo Ar · YouTube", yt:"HeNYKAxRx-U" },
+  { titulo:"Ar-elétrico ou original do caminhão?",                    legenda:"Estilo Ar · YouTube", yt:"l7bimWDCWYg" },
+  { titulo:"Os motoras das máquinas pesadas também merecem Estilo Ar", legenda:"Estilo Ar · YouTube", yt:"KQ_CdgGGfJY" },
+  { titulo:"Mimando os funcionários???",                              legenda:"Estilo Ar · YouTube", yt:"m6dBOh66D74" },
+  { titulo:"Um ano de uso e ele tá como??!",                          legenda:"Estilo Ar · YouTube", yt:"5fkifpNch6E" },
+  { titulo:"Tá criando pinguim aí motora??!",                         legenda:"Estilo Ar · YouTube", yt:"oqM7hRb5QfM" },
+  { titulo:"Consumo de bateria: ar elétrico Estilo Ar 24V",           legenda:"Estilo Ar · YouTube", yt:"bKhhMj-rKeY" },
+  { titulo:"Minas e Bahia agora ficou até mais perto!! kkk",          legenda:"Estilo Ar · YouTube", yt:"y7zQivForDo" },
+];
+function desenharComunidade(){
+  const play='<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  $("com-grade").innerHTML = DEPOIMENTOS.map((d,i)=>{
+    const capa = d.yt
+      ? `<img src="https://i.ytimg.com/vi/${encodeURIComponent(d.yt)}/hqdefault.jpg" alt="" loading="lazy">`
+      : `<video src="${esc(d.video)}#t=0.5" preload="metadata" muted playsinline tabindex="-1"></video>`;
+    return `
+    <button type="button" class="com-card" data-i="${i}" aria-label="Assistir: ${esc(d.titulo)}">
+      <span class="com-capa">${capa}<span class="com-play">${play}</span></span>
+      <span class="com-info"><b>${esc(d.titulo)}</b><small>${esc(d.legenda)}</small></span>
+    </button>`;
+  }).join("");
+}
+desenharComunidade();
+$("com-grade").addEventListener("click",e=>{
+  const c=e.target.closest(".com-card[data-i]"); if(!c) return;
+  const d=DEPOIMENTOS[+c.dataset.i];
+  $("com-video-tit").textContent=d.titulo; $("com-video-sub").textContent=d.legenda;
+  if(d.yt){
+    $("com-video").hidden=true; $("com-yt").hidden=false;
+    $("com-yt").innerHTML=`<iframe src="https://www.youtube.com/embed/${encodeURIComponent(d.yt)}?autoplay=1&rel=0&playsinline=1&modestbranding=1"
+      title="${esc(d.titulo)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  } else {
+    $("com-yt").hidden=true; $("com-yt").innerHTML=""; $("com-video").hidden=false;
+    $("com-video").src=d.video; $("com-video").play().catch(()=>{});
+  }
+  $("com-player").hidden=false; document.body.style.overflow="hidden";
+});
+function fecharVideo(){
+  if($("com-player").hidden) return;
+  $("com-video").pause(); $("com-video").removeAttribute("src"); $("com-video").load();
+  $("com-yt").innerHTML=""; // tirar o iframe para o vídeo do YouTube parar
+  $("com-player").hidden=true; document.body.style.overflow="";
+}
+document.querySelectorAll("[data-fechar-video]").forEach(b=>b.addEventListener("click",fecharVideo));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") fecharVideo(); });
+
+function abrirComunidade(){
+  fecharGaveta(); fecharConta(); fecharRegulamento();
+  if(!$("modal-ind").hidden) fecharModal();
+  $("tela-app").classList.remove("so-indicacoes"); $("tela-app").classList.add("so-comunidade");
+  $("sec-comunidade").hidden=false; marcarNav("comunidade");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function fecharComunidade(){
+  if($("sec-comunidade").hidden) return;
+  fecharVideo();
+  $("sec-comunidade").hidden=true; $("tela-app").classList.remove("so-comunidade"); marcarNav("painel");
+}
+
+/* "Nova indicação": o topo da página troca para o formulário (sem janela por cima) */
 function abrirModal(){
-  $("modal-ind").hidden=false; document.body.style.overflow="hidden";
+  fecharConta(); fecharRegulamento(); fecharComunidade();
+  $("tela-app").classList.remove("so-indicacoes");
+  $("hero-inicio").hidden=true; $("modal-ind").hidden=false; $("tela-app").classList.add("com-form");
   /* cada conta começa em "Selecione…"; depois da primeira escolha, fica o vendedor daquela conta */
   $("i-vend").value=(CLIENTE_ATUAL && CLIENTE_ATUAL.vendedor) || "";
-  setTimeout(()=>$("i-nome").focus(),50);
+  document.querySelectorAll(".cf-nav [data-nav]").forEach(x=>x.classList.toggle("on",x.dataset.nav==="nova"));
+  window.scrollTo({top:0,behavior:"smooth"});
+  setTimeout(()=>focar($("i-nome")),50);
 }
 function fecharModal(){
-  $("modal-ind").hidden=true; document.body.style.overflow="";
+  $("modal-ind").hidden=true; $("hero-inicio").hidden=false; $("tela-app").classList.remove("com-form");
   $("form-ind").reset(); $("err-ind").textContent="";
+  document.querySelectorAll(".cf-nav [data-nav]").forEach(x=>x.classList.toggle("on",x.dataset.nav==="painel"));
 }
 $("abrir-ind").addEventListener("click",abrirModal);
 /* escolheu o vendedor: já fica salvo nesta conta */
 $("i-vend").addEventListener("change",e=>{ if(CLIENTE_ATUAL && e.target.value) CLIENTE_ATUAL.vendedor=e.target.value; });
 $("abrir-ind-2").addEventListener("click",abrirModal);
-$("cancelar-ind").addEventListener("click",fecharModal);
-document.querySelectorAll("[data-fechar]").forEach(b=>b.addEventListener("click",fecharModal));
+$("cancelar-ind").addEventListener("click",fecharModal);document.querySelectorAll("[data-fechar]").forEach(b=>b.addEventListener("click",fecharModal));
 document.addEventListener("keydown",e=>{
   if(e.key!=="Escape") return;
   if(!$("modal-ind").hidden) fecharModal();
@@ -1455,7 +2185,7 @@ function conferirEmail(){
 }));
 $("form-email").addEventListener("submit",e=>{
   e.preventDefault();
-  const erro=(m,id)=>{ $("err-email").textContent=m; if(id){ $(id).classList.add("invalido"); $(id).focus(); } };
+  const erro=(m,id)=>{ $("err-email").textContent=m; if(id){ $(id).classList.add("invalido"); focar($(id)); } };
   const novo=chaveEmail($("a-email").value), senha=$("a-email-senha").value;
   if(!emailValido(novo)) return erro("E-mail inválido. Confira o que foi digitado.","a-email");
   if(novo===CLIENTE_ATUAL.email) return erro("Esse já é o seu e-mail atual.","a-email");
@@ -1486,15 +2216,23 @@ function mensagemSenha(r){
   if(!r.num) return "A senha precisa ter pelo menos 1 número.";
   return "";
 }
+/* regras da senha: sempre visíveis e discretas; cada uma fica verde quando é cumprida */
+function mostrarRegras(campo,lista){
+  const r=regrasSenha(campo.value);
+  lista.querySelectorAll("li").forEach(li=>li.classList.toggle("ok",r[li.dataset.r]));
+}
+function marcarTocado(campo,lista){ campo.dataset.tocado="1"; mostrarRegras(campo,lista); }
+
 function conferirSenha(){
   const s0=$("a-s0").value, s1=$("a-s1").value, s2=$("a-s2").value;
   const n=forcaSenha(s1);
   $("forca").dataset.n=n;
   $("forca-txt").textContent=["Força da senha","Senha fraca","Senha média","Senha forte"][n];
   const regras=regrasSenha(s1);
-  document.querySelectorAll("#regras li").forEach(li=>li.classList.toggle("ok",regras[li.dataset.r]));
+  mostrarRegras($("a-s1"),$("regras"));
   $("salvar-senha").disabled = !(s0 && s2 && senhaForteOk(regras));
 }
+$("a-s1").addEventListener("blur",()=>marcarTocado($("a-s1"),$("regras")));
 ["a-s0","a-s1","a-s2"].forEach(id=>$(id).addEventListener("input",conferirSenha));
 $("a-s0").addEventListener("input",()=>{ $("a-s0").classList.remove("invalido"); $("err-senha").textContent=""; });
 
@@ -1503,18 +2241,26 @@ function abrirConta(){
   $("a-nome").value=c.nome; $("a-tel").value=formatarTel(c.tel||"");
   DADOS_ORIGINAIS=dadosAtuais(); conferirDados();
   $("email-atual").textContent=c.email; $("form-email").reset(); conferirEmail();
-  $("form-senha").reset(); conferirSenha(); abaConta("form-dados");
+  $("form-senha").reset(); delete $("a-s1").dataset.tocado; conferirSenha(); abaConta("form-dados");
   document.querySelectorAll("#modal-conta .invalido").forEach(el=>el.classList.remove("invalido"));
   /* senhas voltam escondidas */
   document.querySelectorAll("#modal-conta .olho").forEach(b=>{ b.classList.remove("on"); b.previousElementSibling.type="password"; });
-  $("modal-conta").hidden=false; document.body.style.overflow="hidden";
-  setTimeout(()=>$("a-nome").focus(),50);
+  /* configurações aparecem na própria página (sem janela): esconde o resto */
+  if(!$("modal-ind").hidden) fecharModal();
+  fecharRegulamento(); fecharComunidade();
+  $("tela-app").classList.remove("so-indicacoes"); $("tela-app").classList.add("so-config");
+  $("modal-conta").hidden=false; marcarNav("config");
+  window.scrollTo({top:0,behavior:"smooth"});
+  setTimeout(()=>focar($("a-nome")),50);
 }
-function fecharConta(){ $("modal-conta").hidden=true; document.body.style.overflow=""; }
+function fecharConta(){
+  if($("modal-conta").hidden) return;
+  $("modal-conta").hidden=true; $("tela-app").classList.remove("so-config"); marcarNav("painel");
+}
 $("abrir-conta").addEventListener("click",abrirConta);
 document.querySelectorAll("[data-fechar-conta]").forEach(b=>b.addEventListener("click",fecharConta));
 document.querySelectorAll(".d-seg button").forEach(b=>b.addEventListener("click",()=>{
-  abaConta(b.dataset.aba); $(b.dataset.aba).querySelector("input:not([disabled])").focus();
+  abaConta(b.dataset.aba); focar($(b.dataset.aba).querySelector("input:not([disabled])"));
 }));
 $("form-dados").addEventListener("submit",e=>{
   e.preventDefault();
@@ -1530,7 +2276,7 @@ $("form-senha").addEventListener("submit",e=>{
   e.preventDefault();
   const erro=m=>{ $("err-senha").textContent=m; };
   const s0=$("a-s0").value, s1=$("a-s1").value, s2=$("a-s2").value;
-  if(s0!==CLIENTE_ATUAL.senha){ erro("A senha atual está incorreta."); $("a-s0").classList.add("invalido"); $("a-s0").focus(); return; }
+  if(s0!==CLIENTE_ATUAL.senha){ erro("A senha atual está incorreta."); $("a-s0").classList.add("invalido"); focar($("a-s0")); return; }
   const msg=mensagemSenha(regrasSenha(s1));
   if(msg) return erro(msg);
   if(s1===s0) return erro("A nova senha precisa ser diferente da atual.");
@@ -1551,7 +2297,7 @@ $("form-ind").addEventListener("submit",e=>{
   const nova={ nome, tel, data:iso, status:"andamento", quantidade:0, resgate:null };
   CLIENTE_ATUAL.indicacoes.push(nova); ULTIMO_NOVO=nova;
   CLIENTE_ATUAL.vendedor=vend; lembrarVendedor(vend); // fica marcado nas próximas, até a pessoa trocar
-  fecharModal(); FILTRO="todas"; $("busca").value="";
+  fecharModal(); FILTRO="todas"; $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true;
   abrirPainel(CLIENTE_ATUAL);
   avisar("Indicação enviada",nome+" foi indicado(a). Nossa equipe vai entrar em contato e você acompanha tudo por aqui.");
 });
@@ -1592,12 +2338,47 @@ const ICONES={
   ind:'<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
 };
 
+
+/* ===== MENU LATERAL (conta do cliente) ===== */
+function abrirGaveta(){ $("cf-side").classList.add("aberto"); $("cf-fundo").hidden=false; }
+function fecharGaveta(){ $("cf-side").classList.remove("aberto"); $("cf-fundo").hidden=true; }
+$("cf-hamb").addEventListener("click",abrirGaveta);
+$("cf-fundo").addEventListener("click",fecharGaveta);
+document.querySelectorAll(".cf-nav [data-nav]").forEach(b=>b.addEventListener("click",()=>{
+  const acao=b.dataset.nav;
+  if(acao==="painel"||acao==="indicacoes"){
+    document.querySelectorAll(".cf-nav [data-nav]").forEach(x=>x.classList.toggle("on",x===b));
+  }
+  fecharGaveta();
+  if(acao!=="config" && acao!=="sair") fecharConta();
+  if(acao!=="regulamento" && acao!=="sair") fecharRegulamento();
+  if(acao!=="comunidade" && acao!=="sair") fecharComunidade();
+  if(acao==="regulamento") abrirRegulamento();
+  if(acao==="comunidade") abrirComunidade();
+  /* "Suas indicações" mostra só o resumo e a tabela; "Painel" mostra tudo */
+  $("tela-app").classList.toggle("so-indicacoes", acao==="indicacoes");
+  if(acao==="painel"){ if(!$("modal-ind").hidden) fecharModal(); window.scrollTo({top:0,behavior:"smooth"}); }
+  if(acao==="indicacoes"){ if(!$("modal-ind").hidden) fecharModal(); marcarNav("indicacoes"); window.scrollTo({top:0,behavior:"smooth"}); }
+  if(acao==="nova") abrirModal();
+  if(acao==="config") abrirConta();
+  if(acao==="sair") $("sair").click();
+}));
+
+/* "Recentes": as 3 últimas indicações, no topo da página */
+const TEXTO_STATUS={ and:"Em andamento", ok:"Venda concluída", res:"Resgatado", no:"Não fechou" };
+function desenharRecentes(c){
+  const ult=[...c.indicacoes].sort((a,b)=>b.data.localeCompare(a.data)).slice(0,3);
+  $("recentes").innerHTML = ult.length
+    ? ult.map(i=>`<div class="cf-rec"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>${TEXTO_STATUS[situacao(i)]} /</span><b>${esc(i.nome)}</b></div>`).join("")
+    : `<p class="cf-rec-vazio">Nenhuma indicação ainda.</p>`;
+}
+
 function abrirPainel(c){
   CLIENTE_ATUAL=c;
   atualizarVencidas(c);
   if($("tela-app").style.display!=="block") window.scrollTo(0,0);
   $("tela-login").style.display="none"; $("tela-app").style.display="block";
-  $("u-nome").textContent=c.nome.split(" ")[0];
+  $("u-nome").textContent=c.nome; $("u-email").textContent=c.email; desenharRecentes(c);
   $("m-nome").textContent=c.nome; $("m-email").textContent=c.email;
 
   const vendas=c.indicacoes.filter(i=>i.status==="venda");
@@ -1618,14 +2399,16 @@ function abrirPainel(c){
 
 function desenharLista(){
   const c=CLIENTE_ATUAL, todas=c.indicacoes;
-  const conta=s=>todas.filter(i=>situacao(i)===s).length;
-  const filtros=[["todas","Todas",todas.length],["and","Negociação em andamento",conta("and")],["ok","Concluídas",conta("ok")],["res","Resgatadas",conta("res")],["no","Não fecharam",conta("no")]];
+  const conta=s=>todas.filter(i=>situacao(i)===s).length;  const filtros=[["todas","Todas",todas.length],["and","Negociação em andamento",conta("and")],["ok","Concluídas",conta("ok")],["res","Resgatadas",conta("res")],["no","Não fecharam",conta("no")]];
   $("tabs").innerHTML=filtros
     .map(([id,t,n])=>`<button type="button" role="tab" data-f="${id}" class="${FILTRO===id?"on":""}" aria-selected="${FILTRO===id}">${t}<em>${n}</em></button>`).join("");
   /* celular: mesma lista dentro do menu de 3 barrinhas */
   $("filtro-opcoes").innerHTML=filtros
     .map(([id,t,n])=>`<button type="button" data-f="${id}" class="${FILTRO===id?"on":""}"><span class="pt"></span>${t}<em>${n}</em></button>`).join("");
   $("filtro-ponto").hidden = FILTRO==="todas";
+  $("filtro-btn").dataset.f = FILTRO; // cor do botão acompanha o filtro escolhido
+  /* título do cartão mostra o filtro escolhido */
+  $("tit-filtro").textContent = FILTRO==="todas" ? "Todas as indicações" : filtros.find(f=>f[0]===FILTRO)[1];
 
   const busca=$("busca").value.trim().toLowerCase();
   const lista=todas
@@ -1654,6 +2437,7 @@ function desenharLista(){
 $("tabs").addEventListener("click",e=>{
   const b=e.target.closest("[data-f]"); if(!b) return;
   FILTRO=b.dataset.f; desenharLista();
+  document.querySelector(".d-scroll").scrollTop=0;
 });
 
 /* menu de 3 barrinhas (celular) */
@@ -1669,7 +2453,11 @@ $("filtro-opcoes").addEventListener("click",e=>{
 });
 document.addEventListener("click",e=>{ if(!$("filtro-menu").hidden && !$("filtro-menu").contains(e.target)) fecharFiltro(); });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !$("filtro-menu").hidden){ fecharFiltro(); $("filtro-btn").focus(); } });
-$("busca").addEventListener("input",desenharLista);
+/* as duas buscas (topo do painel e embaixo de "Suas indicações") andam juntas */
+function botaoLimpar(){ $("limpar-busca").hidden = !$("busca2").value; }
+$("busca").addEventListener("input",()=>{ $("busca2").value=$("busca").value; botaoLimpar(); desenharLista(); });
+$("busca2").addEventListener("input",()=>{ $("busca").value=$("busca2").value; botaoLimpar(); desenharLista(); document.querySelector(".d-scroll").scrollTop=0; });
+$("limpar-busca").addEventListener("click",()=>{ $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true; botaoLimpar(); desenharLista(); focar($("busca2")); });
 </script>
 </body>
 </html>
