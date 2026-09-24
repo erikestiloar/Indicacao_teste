@@ -754,8 +754,8 @@
   .cf-conta{display:none}
   /* topo do menu: só o símbolo quadrado do logo + nome e e-mail ao lado (texto, não é botão) */
   .cf-side-logo{display:flex;align-items:center;gap:10px;padding:4px 6px 10px;border-bottom:1px solid #eceef1;min-width:0}
-  .cf-ic{width:52px;height:30px;flex:none;overflow:hidden;border-radius:6px;display:block}
-  .cf-ic img{height:30px;width:auto;max-width:none;display:block}
+  .cf-ic{width:40px;height:23px;flex:none;overflow:hidden;border-radius:5px;display:block}
+  .cf-ic img{height:23px;width:auto;max-width:none;display:block}
   .cf-quem{min-width:0;line-height:1.3}
   .cf-quem b{display:block;font-size:13px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cf-quem small{display:block;font-size:11.5px;color:#8a94a3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -795,6 +795,9 @@
   .cf-logo-top{display:none!important}
   .cf-hamb{border:none!important;background:transparent!important;width:38px;height:38px;border-radius:10px;margin-left:-6px;transition:background .15s}
   .cf-hamb:hover,.cf-hamb:active{background:#f1f3f6!important}
+  /* 3 barrinhas do topo com borda fina */
+  .cf-hamb{border:1px solid #dfe5ec!important;background:#fff!important;border-radius:9px;margin-left:-2px}
+  .cf-hamb:hover,.cf-hamb:active{background:#f3f5f8!important;border-color:#cfd6de!important}
   .cf-hamb svg{width:20px;height:20px;stroke-width:2}
   .cf-top .cf-top-link{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 10px;border:none;border-radius:8px;
     background:transparent;color:#5b6b82;font-size:13px;font-weight:500;transition:background .15s,color .15s}
@@ -942,6 +945,25 @@
     .com-yt{width:min(92vw,calc(68vh * 9 / 16))}
   }
 
+  /* visão "Nova indicação": só o formulário (sem a tabela e sem o "Como usar seu crédito") */
+  .com-form .cf-sec-h,.com-form .d-kpis,.com-form .d-card,.com-form .d-help{display:none!important}
+  .com-form .cf-indicar-acts{border-bottom:none;padding-bottom:0}
+  /* nova indicação no mesmo formato das configurações: uma linha por campo */
+  .cf-indicar{max-width:780px;margin:0 auto;padding-top:14px}
+  .cf-indicar h1{font-size:24px;font-weight:600;letter-spacing:-.3px;margin-bottom:4px}
+  .cf-indicar-sub{font-size:13.5px;margin-bottom:22px}
+  .ind-linhas .cfg-linha{padding:18px 0;align-items:center}
+  .ind-linhas .cfg-linha:last-child{border-bottom:none}
+  .ind-linhas .cfg-l label{margin:0 0 3px;font-size:14px;font-weight:600;color:var(--ink)}
+  .ind-linhas .cfg-l p{font-size:12.5px;color:#9aa3af}
+  /* campos sem ícone */
+  .ind-linhas .cfg-c input,#tela-app .ind-linhas .cfg-c select{height:42px;padding-left:12px}
+  .com-form .cf-indicar-acts{margin-top:22px}
+  @media(max-width:760px){
+    .cf-indicar{padding-top:4px}
+    .cf-indicar h1{font-size:21px}
+  }
+
   /* visão "Regulamento": só o texto do regulamento */
   .so-regulamento .cf-hero,.so-regulamento .cf-sec-h,.so-regulamento .d-kpis,.so-regulamento .d-card,.so-regulamento .d-help{display:none!important}
   .cf-reg[hidden]{display:none}
@@ -958,6 +980,11 @@
     border:1px solid transparent;border-radius:8px;background:var(--blue);color:#fff;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;
     box-shadow:0 1px 2px rgba(16,40,70,.12),inset 0 1px 0 rgba(255,255,255,.12);transition:background .15s}
   .reg-pdf:hover{background:var(--blue-d)}
+  /* Voltar + Baixar PDF lado a lado */
+  .reg-acoes{grid-column:2;grid-row:1 / span 3;align-self:center;display:flex;gap:10px;align-items:center}
+  .reg-voltar{display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #dfe5ec;border-radius:8px;background:#fff;
+    color:#344256;font:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s}
+  .reg-voltar:hover{background:#f3f6f9}
   .reg-pdf svg{width:16px;height:16px;stroke-width:2.2}
   /* índice lateral fixo + texto */
   .reg-corpo{display:grid;grid-template-columns:200px 1fr;gap:44px;margin-top:26px;align-items:start}
@@ -981,7 +1008,7 @@
   .reg-lista li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:#98a3b3}
   @media(max-width:760px){
     .reg-cab{grid-template-columns:1fr}
-    .reg-pdf{grid-column:1;grid-row:auto;justify-self:start;margin-top:14px}
+    .reg-acoes{grid-column:1;grid-row:auto;justify-self:start;margin-top:14px}
     .reg-cab h1{font-size:21px}
     .reg-texto p,.reg-romano li,.reg-lista li{font-size:14px}
   }
@@ -1066,7 +1093,7 @@
   }
 
   /* visão "Suas indicações": só resumo + tabela */
-  .so-indicacoes .cf-hero,.so-indicacoes .d-help{display:none}
+  .so-indicacoes .cf-hero{display:none}
   .so-indicacoes .cf-main > .cf-sec-h:first-of-type{margin-top:6px}
 
   /* títulos das seções */
@@ -1087,7 +1114,7 @@
   .cf-main .d-card-h h2{font-size:13.5px;font-weight:600;color:#3b4656}
   .cf-main .d-tabs{padding:10px 14px 0}
   .cf-main .d-help{margin-top:16px}
-  .cf-main .d-help > div{border:1px solid #e6e8eb;border-radius:8px;box-shadow:none}
+  .cf-main .d-help > div{border:none;border-radius:0;box-shadow:none;background:transparent;padding:6px 0}
 
   /* tablet e celular: menu lateral vira gaveta */
   @media(max-width:900px){
@@ -1143,7 +1170,6 @@
     .d-filtro-btn[data-f="ok"]{color:#2fa84f}
     .d-filtro-btn[data-f="res"]{color:#1a9be0}
     .d-filtro-btn[data-f="no"]{color:#6b7686}
-
     /* lista de filtros: painel que sobe de baixo, com o fundo escurecido */
     .d-filtro-menu{position:fixed;left:0;right:0;top:auto;bottom:0;width:auto;z-index:60;border:none;border-radius:18px 18px 0 0;
       padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 0 0 100vmax rgba(15,30,50,.42),0 -10px 30px rgba(15,30,50,.18);
@@ -1158,7 +1184,86 @@
       border-right:2px solid #0c6fae;border-bottom:2px solid #0c6fae;transform:rotate(45deg)}
     .cf-top-link span{display:none}
   }
-</style>
+
+  /* ===================================================================
+     LOGIN, CADASTRO E INDICAR SEM CADASTRO — mais leves
+     o nome de cada campo fica dentro dele; os títulos ficam só para leitores de tela
+     =================================================================== */
+  #form-login label,#form-cad label:not(.aceite),#form-rapida label{
+    position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0}
+  .login > form{max-width:340px}
+  .login > form#form-rapida{max-width:420px}
+  .login h1{font-size:24px;margin-bottom:22px}
+  .login .cad h1{margin-bottom:6px}
+  .login .cad p.sub{margin:0 0 18px;font-size:13.5px;color:#7b8594}
+  #form-login input,#form-cad input:not([type="checkbox"]),#form-rapida input,#tela-login #form-rapida select{
+    height:46px;padding-top:0;padding-bottom:0;margin-top:10px;font-size:15px;border:1px solid #dfe5ec;border-radius:10px;background-color:#fbfcfd}
+  #form-login input:focus,#form-cad input:focus,#form-rapida input:focus,#form-rapida select:focus{background-color:#fff;border-color:var(--blue)}
+  #form-login input::placeholder,#form-cad input::placeholder,#form-rapida input::placeholder{color:#98a2b0}
+  #form-login .fi,#form-cad .fi{margin-top:10px}
+  #form-login .fi input,#form-cad .fi input{margin-top:0}
+  #form-cad .regras{margin:8px 2px 0}
+  .login .cad label.aceite{margin-top:16px}
+  #form-login .btn,#form-cad .btn,#form-rapida .btn{margin-top:18px;min-height:46px;border-radius:10px}
+  #form-login .err-campo{margin-top:5px}
+  .login .links{margin-top:14px}
+  .login .div{margin:18px 0 12px}
+  .login .btn-out{min-height:46px;border-radius:10px}
+  .legal{margin-top:22px}
+  /* indicar sem cadastro: etapas mais discretas e campos lado a lado sem espaço sobrando */
+  #form-rapida .r-step{margin:18px 0 0}
+  #form-rapida .r-step.dois{margin-top:22px}
+  #form-rapida .r-step b{font-size:13.5px;color:#3b4656}
+  #form-rapida .g2{gap:0 10px}
+  @media(max-width:900px){
+    .login h1{font-size:22px}
+    #form-login input,#form-cad input:not([type="checkbox"]),#form-rapida input,#tela-login #form-rapida select{height:48px;font-size:16px}
+  }
+
+  /* ===================================================================
+     LISTA DE SELEÇÃO PRÓPRIA (vendedor)
+     =================================================================== */
+  .sel-nativo{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;overflow:hidden}
+  .sel{position:relative;width:100%}
+  .sel-btn{all:unset;box-sizing:border-box;width:100%;height:42px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:0 12px;border:1px solid #dfe5ec;border-radius:8px;background:#fff;font-size:14.5px;color:var(--ink);cursor:pointer;
+    transition:border-color .15s,box-shadow .15s}
+  .sel-btn:hover{border-color:#cfd6de}
+  .sel-val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sel-btn.vazio .sel-val{color:#98a2b0}
+  .sel.aberto .sel-btn{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,155,224,.12)}
+  .sel-btn.invalido{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,83,79,.15)}
+  .sel-chev{flex:none;width:16px;height:16px;fill:none;stroke:#8a94a3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .sel.aberto .sel-chev{transform:rotate(180deg);stroke:#0c6fae}
+  .sel-lista{position:fixed;top:0;left:0;width:260px;z-index:200;max-height:300px;overflow:auto;padding:6px;box-sizing:border-box;
+    background:#fff;border:1px solid #e3e6ea;border-radius:12px;box-shadow:0 16px 40px rgba(16,40,70,.16);
+    visibility:hidden;opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top center;pointer-events:none;
+    transition:opacity .18s ease,transform .22s cubic-bezier(.2,.8,.2,1),visibility 0s linear .22s}
+  .sel-lista.cima{transform:translateY(6px) scale(.98);transform-origin:bottom center}
+  .sel-lista.aberto{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s}
+  .sel-tit{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#8a94a3;padding:8px 10px 6px}
+  .sel-op{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:10px;border-radius:8px;font-size:14.5px;color:#344256;cursor:pointer}
+  .sel-op:hover{background:#f3f6f9}
+  .sel-op.on{background:#f0f7fd;color:#0c6fae;font-weight:600}
+  .sel-op svg{flex:none;width:16px;height:16px;fill:none;stroke:#0c6fae;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+  .sel-op.on svg{opacity:1}
+  /* tamanho igual aos outros campos em cada tela */
+  #form-rapida .sel-btn{height:46px;margin-top:10px;border-radius:10px;background:#fbfcfd;font-size:15px}
+  /* celular: a lista sobe de baixo da tela, com o fundo escurecido */
+  @media(max-width:760px){
+    #form-rapida .sel-btn{height:48px;font-size:16px}
+    .ind-linhas .sel-btn{height:46px;font-size:16px;border-radius:10px}
+    .sel-lista,.sel-lista.cima{left:0;right:0;top:auto;bottom:0;width:auto;max-height:72vh;border:none;border-radius:18px 18px 0 0;
+      padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px));transform:translateY(100%);opacity:1;
+      box-shadow:0 0 0 100vmax rgba(15,30,50,.42),0 -10px 30px rgba(15,30,50,.18);
+      transition:transform .3s cubic-bezier(.2,.8,.2,1),visibility 0s linear .3s}
+    .sel-lista::before{content:"";display:block;width:40px;height:4px;border-radius:99px;background:#d5dce4;margin:4px auto 6px}
+    .sel-lista.aberto{transform:none;transition-delay:0s}
+    .sel-tit{font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);padding:8px 12px 10px}
+    .sel-op{padding:14px 12px;font-size:15.5px;border-radius:10px}
+  }
+  @media(prefers-reduced-motion:reduce){.sel-lista,.sel-chev{transition:none}}</style>
 </head>
 <body>
 
@@ -1260,11 +1365,11 @@
   <form id="form-login" autocomplete="off" novalidate>
     <h1>Entrar na sua conta</h1>
     <label for="email">E-mail</label>
-    <input id="email" name="login-email" type="email" inputmode="email" placeholder="seuemail@exemplo.com" autocomplete="off">
+    <input id="email" name="login-email" type="email" inputmode="email" placeholder="E-mail" autocomplete="off">
     <div class="err-campo" id="err-login-email" aria-live="polite"></div>
     <label for="senha">Senha</label>
     <div class="fi">
-      <input id="senha" name="login-senha" type="password" placeholder="" autocomplete="new-password">
+      <input id="senha" name="login-senha" type="password" placeholder="Senha" autocomplete="new-password">
       <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
     </div>
     <div class="err-campo" id="err-login-senha" aria-live="polite"></div>
@@ -1282,13 +1387,13 @@
     <p class="sub">Leva menos de 1 minuto.</p>
 
     <label for="c-nome">Nome completo</label>
-    <input id="c-nome" placeholder="Nome e sobrenome" autocomplete="name">
+    <input id="c-nome" placeholder="Nome completo" autocomplete="name">
 
     <label for="c-email">E-mail</label>
-    <input id="c-email" type="email" inputmode="email" placeholder="voce@email.com" autocomplete="email">
+    <input id="c-email" type="email" inputmode="email" placeholder="E-mail" autocomplete="email">
 
     <label for="c-tel">Celular (WhatsApp)</label>
-    <input id="c-tel" class="m-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel">
+    <input id="c-tel" class="m-tel" inputmode="numeric" placeholder="WhatsApp com DDD" maxlength="15" autocomplete="tel">
 
     <label for="c-senha">Senha</label>
     <div class="fi">
@@ -1301,8 +1406,6 @@
       <li data-r="min">1 letra minúscula</li>
       <li data-r="num">1 número</li>
     </ul>
-    <label for="c-senha2">Confirmar senha</label>
-    <input id="c-senha2" type="password" placeholder="Digite a senha novamente" autocomplete="new-password">
 
     <label class="aceite"><input type="checkbox" id="c-aceite"> <span>Li e aceito o <a href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">regulamento do programa</a> e autorizo o uso dos meus dados para participar do programa, conforme a <abbr title="Lei Geral de Proteção de Dados (Lei nº 13.709/2018)">LGPD</abbr>.</span></label>
 
@@ -1317,19 +1420,19 @@
 
     <div class="r-step"><span>1</span><b>Seus dados</b></div>
     <div class="g2">
-      <div><label for="r-nome">Nome</label><input id="r-nome" placeholder="Nome e sobrenome" autocomplete="name"></div>
-      <div><label for="r-tel">Telefone com DDD</label><input id="r-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel"></div>
+      <div><label for="r-nome">Nome</label><input id="r-nome" placeholder="Seu nome" autocomplete="name"></div>
+      <div><label for="r-tel">Telefone com DDD</label><input id="r-tel" inputmode="numeric" placeholder="Seu WhatsApp" maxlength="15" autocomplete="tel"></div>
     </div>
     <div class="g2">
-      <div><label for="r-email">E-mail</label><input id="r-email" type="email" inputmode="email" placeholder="voce@email.com" autocomplete="email"></div>
+      <div><label for="r-email">E-mail</label><input id="r-email" type="email" inputmode="email" placeholder="Seu e-mail" autocomplete="email"></div>
       <div><label for="r-vend">Vendedor</label>
-        <select id="r-vend"><option value="">Selecione</option><option>Cleo</option><option>Victor</option><option>Tamara</option><option>Carlos</option><option>Poliana</option><option>Não sei</option></select></div>
+        <select id="r-vend"><option value="">Seu vendedor</option><option>Alex</option><option>Alves</option><option>Carlos</option><option>Fabiano</option><option>Ianna</option><option>Karen</option><option>Luiz Carlos</option><option>Luiza</option><option>Marco</option><option>Milton</option><option>Murilo</option><option>Poliana</option><option>Ricardo</option><option>Tamara</option><option>Vanessa</option><option>Victor</option><option>Wagner</option></select></div>
     </div>
 
     <div class="r-step dois"><span>2</span><b>Quem você está indicando</b></div>
     <div class="g2">
-      <div><label for="r-inome">Nome</label><input id="r-inome" placeholder="Nome e sobrenome"></div>
-      <div><label for="r-itel">Telefone com DDD</label><input id="r-itel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15"></div>
+      <div><label for="r-inome">Nome</label><input id="r-inome" placeholder="Nome de quem você indica"></div>
+      <div><label for="r-itel">Telefone com DDD</label><input id="r-itel" inputmode="numeric" placeholder="Telefone de quem você indica" maxlength="15"></div>
     </div>
 
     <button class="btn btn-seta" type="submit">Fazer indicação <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -1342,7 +1445,6 @@
     <h1>Indicação enviada!</h1>
     <p class="sub" id="rapida-ok-txt"></p>
     <button class="btn" type="button" id="rapida-outra">Indicar outra pessoa</button>
-    <p class="links">Quer acompanhar suas indicações? <a href="#" id="rapida-cad">Crie sua conta</a></p>
     <p class="links"><a href="#" data-voltar>Voltar para o login</a></p>
   </div>
   </div>
@@ -1379,8 +1481,8 @@
 
     <nav class="cf-nav">
       <button type="button" class="on" data-nav="painel"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Painel</button>
-      <button type="button" data-nav="indicacoes"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>Suas indicações</button>
       <button type="button" data-nav="nova"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Nova indicação</button>
+      <button type="button" data-nav="indicacoes"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>Suas indicações</button>
       <button type="button" data-nav="comunidade"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 8.5v5l4.5-2.5z"/><path d="M8 21h8"/></svg>Comunidade</button>
 
       <p class="cf-grupo">Conta</p>
@@ -1516,9 +1618,12 @@
             <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Todo o território nacional</span>
             <span><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Não é sorteio</span>
           </div>
-          <a class="reg-pdf" href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Baixar PDF
-          </a>
+          <div class="reg-acoes">
+            <button type="button" class="reg-voltar" id="reg-voltar">Voltar</button>
+            <a class="reg-pdf" href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Baixar PDF
+            </a>
+          </div>
         </div>
 
         <div class="reg-corpo">
@@ -1647,26 +1752,29 @@
           <h1>Nova indicação</h1>
           <p class="cf-indicar-sub">Passe o contato da pessoa. Nosso vendedor liga pra ela e cuida do resto.</p>
 
-          <div class="cf-campos">
-            <div>
-              <label for="i-nome">Nome do indicado</label>
-              <div class="fi">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 16 0v1"/></svg>
-                <input id="i-nome" placeholder="Nome completo">
+          <div class="ind-linhas">
+            <div class="cfg-linha">
+              <div class="cfg-l"><label for="i-nome">Nome do indicado</label></div>
+              <div class="cfg-c">
+                <div class="fi">
+                  <input id="i-nome" placeholder="Nome completo">
+                </div>
               </div>
             </div>
-            <div>
-              <label for="i-tel">Telefone com DDD</label>
-              <div class="fi">
-                <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-                <input id="i-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15">
+            <div class="cfg-linha">
+              <div class="cfg-l"><label for="i-tel">Telefone com DDD</label></div>
+              <div class="cfg-c">
+                <div class="fi">
+                  <input id="i-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15">
+                </div>
               </div>
             </div>
-            <div>
-              <label for="i-vend">Vendedor que te atende</label>
-              <div class="fi">
-                <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
-                <select id="i-vend"><option value="">Selecione…</option><option>Cleo</option><option>Victor</option><option>Tamara</option><option>Carlos</option><option>Poliana</option><option>Não sei</option></select>
+            <div class="cfg-linha">
+              <div class="cfg-l"><label for="i-vend">Vendedor que te atende</label></div>
+              <div class="cfg-c">
+                <div class="fi">
+                  <select id="i-vend"><option value="">Selecione…</option><option>Alex</option><option>Alves</option><option>Carlos</option><option>Fabiano</option><option>Ianna</option><option>Karen</option><option>Luiz Carlos</option><option>Luiza</option><option>Marco</option><option>Milton</option><option>Murilo</option><option>Poliana</option><option>Ricardo</option><option>Tamara</option><option>Vanessa</option><option>Victor</option><option>Wagner</option></select>
+                </div>
               </div>
             </div>
           </div>
@@ -1674,8 +1782,8 @@
 
           <div class="cf-indicar-acts">
             <div class="err" id="err-ind"></div>
-            <button class="d-btn d-btn-sec" type="button" id="cancelar-ind">Cancelar</button>
-            <button class="d-btn d-btn-pri" type="submit">Enviar indicação <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button class="d-btn d-btn-sec" type="button" id="cancelar-ind">Voltar</button>
+            <button class="d-btn d-btn-pri" type="submit">Enviar indicação</button>
           </div>
         </form>
        </div>
@@ -1821,7 +1929,7 @@ setTimeout(limparLogin,300); setTimeout(limparLogin,1200); // o preenchimento au
 /* no cadastro, o mesmo olhinho mostra/esconde também o "Confirmar senha" */
 document.querySelectorAll(".olho").forEach(b=>b.addEventListener("click",()=>{
   const s=b.previousElementSibling, mostra=s.type==="password";
-  const campos = s.id==="c-senha" ? [s,$("c-senha2")] : [s];
+  const campos = [s];
   campos.forEach(c=>{ c.type=mostra?"text":"password"; });
   b.classList.toggle("on",mostra); b.setAttribute("aria-label",mostra?"Esconder senha":"Mostrar senha");
   b.classList.remove("pula"); void b.offsetWidth; b.classList.add("pula"); // reinicia a animação a cada clique
@@ -1919,7 +2027,6 @@ function cadastroDaRapida(){
   $("c-email").value=$("r-email").value;
   focar(["c-nome","c-email","c-senha"].map($).find(el=>!el.value) || $("c-senha"));
 }
-$("rapida-cad").addEventListener("click",e=>{ e.preventDefault(); cadastroDaRapida(); });
 $("alt-cad").addEventListener("click",cadastroDaRapida);
 $("form-rapida").addEventListener("submit",e=>{
   e.preventDefault();
@@ -1933,7 +2040,6 @@ $("form-rapida").addEventListener("submit",e=>{
   if(itel.length<10) return erro("Informe o telefone do indicado com DDD.");
   if(itel===tel) return erro("O telefone do indicado não pode ser o seu.");
   if(!vend) return erro("Selecione o seu vendedor.");
-  if(INDICACOES_AVULSAS.some(i=>i.itel===itel)) return erro("Esse telefone já foi indicado.");
   INDICACOES_AVULSAS.push({ nome, tel, email, inome, itel, vendedor:vend, data:new Date().toISOString().slice(0,10) });
   $("rapida-ok-txt").textContent="Recebemos a indicação de "+inome+". Nosso vendedor vai entrar em contato. Se a compra sair, avisamos você no WhatsApp "+formatarTel(tel)+".";
   mostrar("rapidaOk");
@@ -1952,7 +2058,7 @@ $("form-cad").addEventListener("submit",e=>{
   const erro=(m,id)=>{ $("err-cad").textContent=m; if(id) campoErrado(id); };
   const nome=$("c-nome").value.trim().replace(/\s+/g," "), email=chaveEmail($("c-email").value),
         tel=$("c-tel").value.replace(/\D/g,""),
-        s1=$("c-senha").value, s2=$("c-senha2").value;
+        s1=$("c-senha").value;
   /* só cria a conta com tudo certo */
   if(nome.split(" ").filter(p=>p.length>=2).length<2) return erro("Informe seu nome completo (nome e sobrenome).","c-nome");
   if(!emailValido(email)) return erro("E-mail inválido. Confira o que foi digitado.","c-email");
@@ -1960,7 +2066,6 @@ $("form-cad").addEventListener("submit",e=>{
   if(!celularValido(tel)) return erro("Celular inválido. Use o formato (34) 99999-9999.","c-tel");
   const msgSenha=mensagemSenha(regrasSenha(s1));
   if(msgSenha){ marcarTocado($("c-senha"),$("regras-cad")); return erro(msgSenha,"c-senha"); }
-  if(s1!==s2) return erro("As senhas não são iguais.","c-senha2");
   if(!$("c-aceite").checked) return erro("Para continuar, aceite o regulamento e o uso dos dados (LGPD).","c-aceite");
 
   /* vendedor: se veio do "indicar sem cadastro", aproveita o que a pessoa escolheu lá */
@@ -2032,6 +2137,7 @@ function fecharRegulamento(){
   $("sec-regulamento").hidden=true; $("tela-app").classList.remove("so-regulamento"); marcarNav("painel");
 }
 $("ver-regras").addEventListener("click",abrirRegulamento);
+$("reg-voltar").addEventListener("click",()=>{ fecharRegulamento(); window.scrollTo({top:0,behavior:"smooth"}); });
 $("ajuda-reg").addEventListener("click",abrirRegulamento);
 
 /* índice do regulamento: rola suave até a seção e marca a seção que está sendo lida */
@@ -2299,15 +2405,15 @@ $("form-ind").addEventListener("submit",e=>{
   if(nome.length<3){ $("err-ind").textContent="Informe o nome do indicado."; return; }
   if(tel.length<10){ $("err-ind").textContent="Informe um telefone válido com DDD."; return; }
   if(!vend){ $("err-ind").textContent="Selecione o vendedor."; return; }
-  const jaExiste=CLIENTE_ATUAL.indicacoes.some(i=>(i.tel||"")===tel);
-  if(jaExiste){ $("err-ind").textContent="Você já indicou esse telefone."; return; }
   const hoje=new Date(), iso=hoje.getFullYear()+"-"+String(hoje.getMonth()+1).padStart(2,"0")+"-"+String(hoje.getDate()).padStart(2,"0");
   const nova={ nome, tel, data:iso, status:"andamento", quantidade:0, resgate:null };
   CLIENTE_ATUAL.indicacoes.push(nova); ULTIMO_NOVO=nova;
   CLIENTE_ATUAL.vendedor=vend; lembrarVendedor(vend); // fica marcado nas próximas, até a pessoa trocar
-  fecharModal(); FILTRO="todas"; $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true;
+  /* continua na tela de Nova indicação: limpa nome e telefone, mantém o vendedor, pronto para indicar outra pessoa */
+  $("i-nome").value=""; $("i-tel").value=""; $("err-ind").textContent="";
+  FILTRO="todas"; $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true;
   abrirPainel(CLIENTE_ATUAL);
-  avisar("Indicação enviada",nome+" foi indicado(a). Nossa equipe vai entrar em contato e você acompanha tudo por aqui.");
+  avisar("Indicação enviada",nome+" foi indicado(a). Nossa equipe vai entrar em contato. Quer indicar mais alguém? É só preencher de novo.");
 });
 
 /* mesma regra da tabela do admin: venda sem resgate = quantidade × 400; resgatado = 0 */
@@ -2465,6 +2571,69 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !$("filtro-menu"
 function botaoLimpar(){ $("limpar-busca").hidden = !$("busca2").value; }
 $("busca").addEventListener("input",()=>{ $("busca2").value=$("busca").value; botaoLimpar(); desenharLista(); });
 $("busca2").addEventListener("input",()=>{ $("busca").value=$("busca2").value; botaoLimpar(); desenharLista(); document.querySelector(".d-scroll").scrollTop=0; });
+/* ===== LISTA DE SELEÇÃO PRÓPRIA (vendedor) =====
+   A lista padrão do navegador não dá para estilizar; aqui a <select> original fica escondida
+   (o resto do código continua lendo e mudando .value dela) e aparece uma lista bonita no lugar. */
+function melhorarSelect(sel,titulo){
+  const box=document.createElement("div"); box.className="sel";
+  const btn=document.createElement("button"); btn.type="button"; btn.className="sel-btn";
+  btn.setAttribute("aria-haspopup","listbox"); btn.setAttribute("aria-expanded","false");
+  btn.innerHTML='<span class="sel-val"></span><svg class="sel-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>';
+  const lista=document.createElement("div"); lista.className="sel-lista"; lista.setAttribute("role","listbox");
+  const ops=[...sel.options].filter(o=>o.value);
+  lista.innerHTML=`<p class="sel-tit">${esc(titulo)}</p>`+ops.map(o=>
+    `<button type="button" class="sel-op" role="option" data-v="${esc(o.value)}"><span>${esc(o.text)}</span><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>`).join("");
+  sel.classList.add("sel-nativo"); sel.tabIndex=-1;
+  sel.after(box); box.append(btn); document.body.append(lista);
+  const lbl=sel.id && document.querySelector(`label[for="${sel.id}"]`);
+  if(lbl) lbl.addEventListener("click",e=>{ e.preventDefault(); btn.focus(); });
+
+  function atualizar(){
+    const o=sel.options[sel.selectedIndex];
+    btn.querySelector(".sel-val").textContent = o ? o.text : "";
+    btn.classList.toggle("vazio", !sel.value);
+    lista.querySelectorAll(".sel-op").forEach(b=>{ const on=b.dataset.v===sel.value; b.classList.toggle("on",on); b.setAttribute("aria-selected",on); });
+  }
+  const celular=()=>matchMedia("(max-width:760px)").matches;
+  function posicionar(){
+    if(celular()){ lista.style.cssText=""; return; }
+    const r=btn.getBoundingClientRect(), h=Math.min(lista.scrollHeight,300);
+    const cima = innerHeight-r.bottom < h+16 && r.top > innerHeight-r.bottom;
+    lista.classList.toggle("cima",cima);
+    lista.style.left=r.left+"px"; lista.style.width=r.width+"px";
+    lista.style.top = cima ? (r.top-h-6)+"px" : (r.bottom+6)+"px";
+  }
+  function fechar(){ box.classList.remove("aberto"); lista.classList.remove("aberto"); btn.setAttribute("aria-expanded","false"); }
+  btn.addEventListener("click",e=>{
+    e.stopPropagation();
+    const abrir=!box.classList.contains("aberto");
+    document.querySelectorAll(".sel.aberto,.sel-lista.aberto").forEach(s=>s.classList.remove("aberto"));
+    if(abrir) posicionar();
+    box.classList.toggle("aberto",abrir); lista.classList.toggle("aberto",abrir); btn.setAttribute("aria-expanded",abrir);
+  });
+  addEventListener("resize",fechar);
+  addEventListener("scroll",e=>{ if(!celular() && !lista.contains(e.target)) fechar(); },true);
+  lista.addEventListener("click",e=>{
+    e.stopPropagation();
+    const b=e.target.closest(".sel-op"); if(!b) return;
+    sel.value=b.dataset.v;
+    sel.dispatchEvent(new Event("input",{bubbles:true})); sel.dispatchEvent(new Event("change",{bubbles:true}));
+    fechar();
+  });
+  /* erro no campo (borda vermelha) aparece também no botão */
+  new MutationObserver(()=>btn.classList.toggle("invalido",sel.classList.contains("invalido"))).observe(sel,{attributes:true,attributeFilter:["class"]});
+  document.addEventListener("click",e=>{ if(!box.contains(e.target) && !lista.contains(e.target)) fechar(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") fechar(); });
+  /* quando o código muda o valor (ex.: vendedor lembrado), a lista acompanha */
+  const d=Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,"value");
+  Object.defineProperty(sel,"value",{configurable:true,get(){ return d.get.call(this); },set(v){ d.set.call(this,v); atualizar(); }});
+  sel.addEventListener("change",atualizar);
+  if(sel.form) sel.form.addEventListener("reset",()=>setTimeout(atualizar,0));
+  atualizar();
+}
+melhorarSelect($("i-vend"),"Selecione o vendedor");
+melhorarSelect($("r-vend"),"Selecione o vendedor");
+
 $("limpar-busca").addEventListener("click",()=>{ $("busca").value=""; $("busca2").value=""; $("limpar-busca").hidden=true; botaoLimpar(); desenharLista(); focar($("busca2")); });
 </script>
 </body>
