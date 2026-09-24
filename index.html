@@ -922,10 +922,14 @@
   .com-player-bg{position:absolute;inset:0;background:rgba(8,18,32,.82);animation:fadein .2s ease}
   .com-player-box{position:relative;display:flex;flex-direction:column;align-items:center;animation:subir .25s ease}
   .com-player-box video{display:block;max-height:78vh;max-width:min(92vw,480px);border-radius:14px;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-  .com-player-x{position:absolute;top:-46px;right:0;width:38px;height:38px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;
-    cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .com-player-x:hover{background:rgba(255,255,255,.26)}
-  .com-player-x svg{width:20px;height:20px;stroke-width:2.2}
+  /* X de fechar: fixo no canto de cima da tela, sempre visível em qualquer vídeo */
+  .com-player-x{position:fixed;z-index:3;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));
+    width:44px;height:44px;border:none;border-radius:50%;background:#fff;color:#16233a;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);
+    animation:fadein .2s ease;transition:transform .15s ease,background .15s}
+  .com-player-x:hover{background:#eef3f8;transform:scale(1.06)}
+  .com-player-x:active{transform:scale(.94)}
+  .com-player-x svg{width:20px;height:20px;stroke-width:2.4}
   .com-player-leg{text-align:center;margin-top:14px;color:#fff}
   .com-player-leg b{display:block;font-size:15px;font-weight:600}
   .com-player-leg span{font-size:13px;color:rgba(255,255,255,.7)}
@@ -933,8 +937,9 @@
     .com-cab h1{font-size:21px}
     .com-grade{grid-template-columns:1fr 1fr;gap:12px}
     .com-play{width:46px;height:46px}
-    .com-player{padding:16px}
-    .com-player-box video{max-height:72vh}
+    .com-player{padding:76px 16px 20px}
+    .com-player-box video{max-height:68vh}
+    .com-yt{width:min(92vw,calc(68vh * 9 / 16))}
   }
 
   /* visão "Regulamento": só o texto do regulamento */
@@ -1755,8 +1760,8 @@
   <!-- player dos depoimentos -->
   <div class="com-player" id="com-player" hidden>
     <div class="com-player-bg" data-fechar-video></div>
+    <button type="button" class="com-player-x" data-fechar-video aria-label="Fechar vídeo"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <div class="com-player-box" role="dialog" aria-modal="true" aria-label="Depoimento em vídeo">
-      <button type="button" class="com-player-x" data-fechar-video aria-label="Fechar vídeo"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
       <video id="com-video" controls playsinline></video>
       <div class="com-yt" id="com-yt" hidden></div>
       <div class="com-player-leg"><b id="com-video-tit"></b><span id="com-video-sub"></span></div>
@@ -1793,8 +1798,11 @@ const VALOR = 400;
 
 const $ = id => document.getElementById(id);
 /* no celular/tablet não coloca o cursor sozinho (senão o teclado abre sem a pessoa pedir) */
-const TELA_TOQUE = window.matchMedia("(hover:none) and (pointer:coarse)").matches;
-function focar(el){ if(el && !TELA_TOQUE) el.focus(); }
+function telaToque(){
+  return window.innerWidth<=900 || navigator.maxTouchPoints>0 ||
+    window.matchMedia("(hover:none), (pointer:coarse)").matches;
+}
+function focar(el){ if(el && !telaToque()) el.focus(); }
 const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const dt  = s => s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4);
 const esc = s => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
