@@ -236,12 +236,21 @@
   .k-cad h2{margin-top:0}
   /* foto do caminhão no fundo do azul, só no cadastro, tingida de azul */
   .info > .k-cad-bg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .5s ease;
-    background:url("IMG/cainhao.png") center 75%/cover no-repeat;mix-blend-mode:luminosity}
+    background:url("IMG/cainhao.png") center 75%/cover no-repeat;mix-blend-mode:luminosity;
+    transform-origin:50% 60%;will-change:transform;animation:kbg2 16s ease-in-out infinite alternate}
   .info.modo-cad > .k-cad-bg,.info.modo-rapida > .k-cad-bg{opacity:.18}
   /* no login e no "indicar sem cadastro": foto do ar instalado na cabine, mesmo estilo */
   .info > .k-bg2{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.18;transition:opacity .5s ease;
-    background:url("IMG/img2.jpg") center 30%/cover no-repeat;mix-blend-mode:luminosity}
+    background:url("IMG/img2.jpg") center 30%/cover no-repeat;mix-blend-mode:luminosity;
+    transform-origin:60% 40%;will-change:transform;animation:kbg2 16s ease-in-out infinite alternate}
   .info.modo-cad > .k-bg2,.info.modo-rapida > .k-bg2{opacity:0}
+  /* movimento suave da foto de fundo (zoom + deslize lento) */
+  @keyframes kbg2{
+    0%{transform:scale(1.08) translate3d(0,0,0)}
+    50%{transform:scale(1.22) translate3d(-4%,2.5%,0)}
+    100%{transform:scale(1.14) translate3d(4%,-2.5%,0)}
+  }
+  @media(prefers-reduced-motion:reduce){.info > .k-bg2,.info > .k-cad-bg{animation:none}}
   .k-cad .lead b{color:#fff}
 
   /* painel azul no modo "indicar sem cadastro" */
@@ -896,7 +905,10 @@
   .com-cab{padding-bottom:20px;border-bottom:1px solid #e6e8eb;margin-bottom:22px}
   .com-cab h1{font-size:24px;font-weight:600;letter-spacing:-.3px;color:var(--ink)}
   .com-cab p{font-size:13.5px;color:#5b6b82;margin-top:4px}
-  .com-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+  .com-grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  /* segundo título ("Nossos influenciadores"), igual ao de cima, entre as duas fileiras */
+  .com-cab-2{margin-top:40px}
+  @media(max-width:900px){.com-grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
   .com-card{all:unset;box-sizing:border-box;display:flex;flex-direction:column;cursor:pointer;min-width:0}
   .com-capa{position:relative;display:block;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#0f2742;
     box-shadow:0 1px 2px rgba(16,40,70,.06),0 8px 22px rgba(16,40,70,.10);transition:transform .2s ease,box-shadow .2s ease}
@@ -912,7 +924,8 @@
   .com-card[data-i]:hover .com-capa{transform:translateY(-3px);box-shadow:0 2px 4px rgba(16,40,70,.08),0 14px 30px rgba(16,40,70,.16)}
   .com-card[data-i]:hover .com-play{transform:translate(-50%,-50%) scale(1.08)}
   .com-info{padding:10px 2px 0;min-width:0}
-  .com-info b{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
+  .com-info b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;
+    overflow-wrap:anywhere;word-break:break-word;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
   .com-info small{display:block;font-size:12.5px;color:#8a94a3;margin-top:2px}
   .com-embreve{cursor:default}
   .com-embreve .com-capa{background:#fff;border:1.5px dashed #d5dce4;box-shadow:none}
@@ -922,20 +935,43 @@
   /* player */
   .com-player[hidden]{display:none}
   .com-player{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px}
-  .com-player-bg{position:absolute;inset:0;background:rgba(8,18,32,.82);animation:fadein .2s ease}
-  .com-player-box{position:relative;display:flex;flex-direction:column;align-items:center;animation:subir .25s ease}
-  .com-player-box video{display:block;max-height:78vh;max-width:min(92vw,480px);border-radius:14px;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-  /* X de fechar: fixo no canto de cima da tela, sempre visível em qualquer vídeo */
-  .com-player-x{position:fixed;z-index:3;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));
-    width:44px;height:44px;border:none;border-radius:50%;background:#fff;color:#16233a;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);
-    animation:fadein .2s ease;transition:transform .15s ease,background .15s}
-  .com-player-x:hover{background:#eef3f8;transform:scale(1.06)}
-  .com-player-x:active{transform:scale(.94)}
-  .com-player-x svg{width:20px;height:20px;stroke-width:2.4}
-  .com-player-leg{text-align:center;margin-top:14px;color:#fff}
-  .com-player-leg b{display:block;font-size:15px;font-weight:600}
-  .com-player-leg span{font-size:13px;color:rgba(255,255,255,.7)}
+  .com-player-bg{position:absolute;inset:0;background:rgba(6,14,26,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);animation:fadein .2s ease}
+  .com-player-box{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;animation:subir .25s ease}
+  .com-player-box.troca{animation:comtroca .28s cubic-bezier(.2,.8,.2,1)}
+  @keyframes comtroca{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+  .com-player-box video{display:block;max-height:78vh;max-width:min(92vw,480px);border-radius:16px;background:#000;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  .com-yt{border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+  /* barra de cima: contador à esquerda, X à direita */
+  .com-player-top{position:fixed;z-index:3;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;
+    padding:calc(18px + env(safe-area-inset-top,0px)) calc(20px + env(safe-area-inset-right,0px)) 0 calc(24px + env(safe-area-inset-left,0px));
+    pointer-events:none;animation:fadein .2s ease}
+  .com-player-cont{font-size:13px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.72);font-variant-numeric:tabular-nums}
+  /* X e setas: botões de vidro, discretos, que acendem ao passar o mouse */
+  .com-player-x,.com-player-seta{pointer-events:auto;border:1px solid rgba(255,255,255,.16);border-radius:50%;
+    background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease,opacity .2s ease,border-color .2s ease}
+  .com-player-x{width:44px;height:44px}
+  .com-player-x:hover,.com-player-seta:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3)}
+  .com-player-x:hover{transform:rotate(90deg)}
+  .com-player-x:active,.com-player-seta:active{transform:scale(.92)}
+  .com-player-x:focus-visible,.com-player-seta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .com-player-x svg,.com-player-seta svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+  .com-player-x svg{width:18px;height:18px;stroke-width:2.2}
+  .com-player-seta{position:fixed;z-index:3;top:50%;width:52px;height:52px;margin-top:-26px;animation:fadein .25s ease}
+  .com-player-seta.ant{left:calc(28px + env(safe-area-inset-left,0px))}
+  .com-player-seta.prox{right:calc(28px + env(safe-area-inset-right,0px))}
+  .com-player-seta svg{width:22px;height:22px;stroke-width:2.2}
+  .com-player-seta:disabled{opacity:.25;cursor:default;pointer-events:none}
+  .com-player-leg{max-width:min(92vw,440px);text-align:center;margin-top:16px;color:#fff}
+  .com-player-leg b{display:block;font-size:15px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+  .com-player-leg span{display:block;margin-top:3px;font-size:12.5px;color:rgba(255,255,255,.6)}
+  @media(max-width:760px){
+    /* no celular as setas ficam embaixo, dos dois lados da legenda */
+    .com-player-seta{top:auto;bottom:calc(18px + env(safe-area-inset-bottom,0px));margin-top:0;width:46px;height:46px}
+    .com-player-seta.ant{left:16px}.com-player-seta.prox{right:16px}
+    .com-player-leg{padding:0 54px}
+  }
+  @media(prefers-reduced-motion:reduce){.com-player-box.troca{animation:none}.com-player-x:hover{transform:none}}
   @media(max-width:760px){
     .com-cab h1{font-size:21px}
     .com-grade{grid-template-columns:1fr 1fr;gap:12px}
@@ -982,9 +1018,10 @@
   .reg-pdf:hover{background:var(--blue-d)}
   /* Voltar + Baixar PDF lado a lado */
   .reg-acoes{grid-column:2;grid-row:1 / span 3;align-self:center;display:flex;gap:10px;align-items:center}
-  .reg-voltar{display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #dfe5ec;border-radius:8px;background:#fff;
-    color:#344256;font:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s}
-  .reg-voltar:hover{background:#f3f6f9}
+  /* "← Voltar" como link, igual ao da Nova indicação */
+  .reg-voltar{display:inline-flex;align-items:center;padding:4px 8px;border:none;background:none;
+    color:#5b8fb9;font:inherit;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap}
+  .reg-voltar:hover{text-decoration:underline}
   .reg-pdf svg{width:16px;height:16px;stroke-width:2.2}
   /* índice lateral fixo + texto */
   .reg-corpo{display:grid;grid-template-columns:200px 1fr;gap:44px;margin-top:26px;align-items:start}
@@ -1203,6 +1240,20 @@
   #form-login .fi,#form-cad .fi{margin-top:10px}
   #form-login .fi input,#form-cad .fi input{margin-top:0}
   #form-cad .regras{margin:8px 2px 0}
+  /* esqueci a senha: mesmo visual do cadastro */
+  #form-esq label,#form-conf label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0}
+  #form-esq input,#form-conf input{height:46px;padding-top:0;padding-bottom:0;margin-top:10px;font-size:15px;border:1px solid #dfe5ec;border-radius:10px;background-color:#fbfcfd}
+  #form-esq input:focus,#form-conf input:focus{background-color:#fff;border-color:var(--blue)}
+  #form-esq input::placeholder,#form-conf input::placeholder{color:#98a2b0}
+  #form-esq .fi,#form-conf .fi{margin-top:10px}
+  #form-esq .fi input,#form-conf .fi input{margin-top:0}
+  #form-esq .regras,#form-conf .regras{margin:8px 2px 0}
+  #form-esq .btn,#form-conf .btn{margin-top:18px;min-height:46px;border-radius:10px}
+  #form-esq .cod-seg,#form-conf .cod-seg{padding-top:0}
+  #form-esq .cod-seg p.sub,#form-conf .cod-seg p.sub{margin-bottom:0}
+  #form-esq .cod-teste,#form-conf .cod-teste{margin-top:14px}
+  #form-esq input.cod-campo,#form-conf input.cod-campo{text-align:center;font-size:22px;font-weight:600;letter-spacing:.5em;padding-left:calc(14px + .5em);font-variant-numeric:tabular-nums}
+  #form-esq input.cod-campo::placeholder,#form-conf input.cod-campo::placeholder{color:#cfd6de;font-weight:500}
   .login .cad label.aceite{margin-top:16px}
   #form-login .btn,#form-cad .btn,#form-rapida .btn{margin-top:18px;min-height:46px;border-radius:10px}
   #form-login .err-campo{margin-top:5px}
@@ -1218,6 +1269,82 @@
   @media(max-width:900px){
     .login h1{font-size:22px}
     #form-login input,#form-cad input:not([type="checkbox"]),#form-rapida input,#tela-login #form-rapida select{height:48px;font-size:16px}
+    #form-esq input,#form-conf input{height:48px;font-size:16px}
+    #form-esq input.cod-campo,#form-conf input.cod-campo{font-size:22px}
+  }
+
+  /* NOVA INDICAÇÃO (dentro do painel): mesmo visual do "Criar sua conta" —
+     centralizado, nome do campo dentro dele, botão azul largo e "Voltar" como link */
+  #form-ind{max-width:340px;margin:0 auto;padding:18px 0 8px;text-align:center}
+  #form-ind h1{font-size:24px;font-weight:600;text-align:center;margin:0 0 6px;color:#1b1f24;letter-spacing:-.3px}
+  #form-ind .cf-indicar-sub{text-align:center;font-size:13.5px;color:#7b8594;margin:0 0 18px;line-height:1.5}
+  #form-ind .ind-linhas .cfg-linha{display:block;padding:0;border:none;margin-top:10px}
+  #form-ind .cfg-l label{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;padding:0}
+  #form-ind .cfg-c{max-width:none}
+  #form-ind .ind-linhas .cfg-c input,#form-ind .sel-btn{height:46px;padding:0 14px;font-size:15px;border:1px solid #dfe5ec;border-radius:10px;background-color:#fbfcfd;text-align:left}
+  #form-ind .ind-linhas .cfg-c input:focus{background-color:#fff;border-color:var(--blue)}
+  #form-ind input::placeholder{color:#98a2b0}
+  #form-ind .cf-indicar-acts{display:flex;flex-direction:column;align-items:stretch;gap:0;margin-top:18px;padding:0;border:none}
+  #form-ind .cf-indicar-acts .d-btn-pri{order:1;width:100%;height:auto;min-height:46px;border-radius:10px;font-size:15px;font-weight:600;justify-content:center}
+  #form-ind .cf-indicar-acts .err{order:2;margin:10px 0 0;text-align:center}
+  #form-ind .cf-indicar-acts .d-btn-sec{order:3;width:auto;height:auto;min-height:0;align-self:center;margin-top:14px;padding:4px 8px;
+    background:none;border:none;box-shadow:none;font-size:13.5px;font-weight:500;color:#5b8fb9}
+  #form-ind .cf-indicar-acts .d-btn-sec::before{content:"← "}
+  #form-ind .cf-indicar-acts .d-btn-sec:hover{text-decoration:underline;background:none}
+  @media(max-width:900px){
+    #form-ind .ind-linhas .cfg-c input,#form-ind .sel-btn{height:48px;font-size:16px}
+    #form-ind .cf-indicar-acts .d-btn-pri{min-height:50px;font-size:16px}
+  }
+
+  /* CONFIGURAÇÕES DA CONTA: mesmo visual da Nova indicação e do cadastro */
+  #modal-conta .cfg{max-width:340px;margin:0 auto;padding:18px 0 8px}
+  #modal-conta .cfg-cab{text-align:center}
+  #modal-conta .cfg-cab h1{font-size:24px;font-weight:600;color:#1b1f24;margin:0 0 6px}
+  #modal-conta .cfg-cab p{font-size:13.5px;color:#7b8594;margin:0}
+  #modal-conta .cfg .d-seg{justify-content:center;margin:18px 0 6px}
+  #modal-conta .cfg-linha{display:block;padding:0;border:none;margin-top:10px}
+  #modal-conta .cfg-l{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0}
+  #modal-conta .cfg-c{max-width:none}
+  #modal-conta .cfg-c input{height:46px;padding:0 14px!important;font-size:15px;border:1px solid #dfe5ec;border-radius:10px;background-color:#fbfcfd}
+  #modal-conta .cfg-c input.com-olho{padding-right:44px!important}
+  #modal-conta .cfg-c input:focus{background-color:#fff;border-color:var(--blue)}
+  #modal-conta .cfg-c input::placeholder{color:#98a2b0}
+  #modal-conta .cfg-c .cfg-atual{height:46px;padding:0 14px;border-radius:10px}
+  #modal-conta .cfg-c .forca,#modal-conta .cfg-c .regras{margin-left:2px;margin-right:2px}
+  #modal-conta .d-dialog-f{display:flex;flex-direction:column;align-items:stretch;gap:0;margin-top:18px;padding:0;border:none;background:none}
+  #modal-conta .d-dialog-f .d-btn-pri{order:1;width:100%;height:auto;min-height:46px;border-radius:10px;font-size:15px;font-weight:600;justify-content:center}
+  #modal-conta .d-dialog-f .err{order:2;margin:10px 0 0;text-align:center}
+  #modal-conta .cfg-linha[hidden]{display:none}
+  #modal-conta .d-dialog-f .cfg-esqueci{all:unset;order:3;align-self:center;margin-top:14px;padding:4px 8px;font-size:13.5px;font-weight:600;color:var(--blue);cursor:pointer}
+  #modal-conta .d-dialog-f .cfg-esqueci:hover{text-decoration:underline}
+  #modal-conta .d-dialog-f .cfg-esqueci[hidden]{display:none}
+  .ok-redef{color:#1e7a39}
+  #modal-conta .d-dialog-f .cfg-esqueci:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+  #modal-conta .d-dialog-f .cfg-esqueci + .d-btn-sec{margin-top:4px}
+  #modal-conta .d-dialog-f .d-btn-sec{order:4;width:auto;height:auto;min-height:0;align-self:center;margin-top:14px;padding:4px 8px;
+    background:none;border:none;box-shadow:none;font-size:13.5px;font-weight:500;color:#5b8fb9}
+  #modal-conta .d-dialog-f .d-btn-sec::before{content:"← "}
+  #modal-conta .d-dialog-f .d-btn-sec:hover{text-decoration:underline;background:none}
+  /* tela do código de segurança */
+  .cod-seg[hidden]{display:none}
+  .cod-seg{text-align:center;padding-top:14px;animation:fadein .25s ease}
+  .cod-ic{width:52px;height:52px;margin:0 auto 14px;border-radius:50%;background:#eaf5fc;display:flex;align-items:center;justify-content:center}
+  .cod-ic svg{width:24px;height:24px;fill:none;stroke:#0c6fae;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cod-seg h2{font-size:19px;font-weight:600;color:#1b1f24;margin:0 0 6px}
+  .cod-sub{font-size:13.5px;color:#7b8594;line-height:1.5;margin:0}
+  .cod-sub b{color:#344256;font-weight:600;overflow-wrap:anywhere}
+  .cod-teste{margin:14px 0 4px;padding:9px 12px;border-radius:10px;background:#fff8e6;border:1px dashed #f0c96a;font-size:12.5px;color:#7a5a12;line-height:1.45}
+  .cod-teste b{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;letter-spacing:.12em;color:#5c420a}
+  #modal-conta .cfg-c input.cod-campo{text-align:center;font-size:22px;font-weight:600;letter-spacing:.5em;padding-left:calc(14px + .5em)!important;font-variant-numeric:tabular-nums}
+  #modal-conta .cfg-c input.cod-campo::placeholder{color:#cfd6de;font-weight:500}
+  .cod-reenviar{all:unset;display:inline-block;margin-top:12px;font-size:13px;color:#5b8fb9;cursor:pointer}
+  .cod-reenviar:hover:not(:disabled){text-decoration:underline}
+  .cod-reenviar:disabled{color:#a3adba;cursor:default}
+  #modal-conta.cod-aberto .d-seg{display:none}
+  @media(max-width:900px){
+    #modal-conta .cfg-c input,#modal-conta .cfg-c .cfg-atual{height:48px;font-size:16px}
+    #modal-conta .cfg-c input.cod-campo{font-size:22px}
+    #modal-conta .d-dialog-f .d-btn-pri{min-height:50px;font-size:16px}
   }
 
   /* ===================================================================
@@ -1277,7 +1404,6 @@
   <aside class="info">
     <div class="k-cad-bg" aria-hidden="true"></div>
     <div class="k-bg2" aria-hidden="true"></div>
-    <button type="button" class="k-topbtn" data-cad>Criar cadastro</button>
     <div class="k-body">
     <div class="k-slides">
     <div class="slide on">
@@ -1291,6 +1417,7 @@
       <li>Fechou a compra, o crédito aparece aqui na sua conta.</li>
     </ul>
     <p class="k-foot">Não tem limite: quanto mais gente você indica, mais crédito vai somando.</p>
+    <button type="button" class="k-cta" data-cad>Criar cadastro</button>
     </div>
 
     <div class="slide">
@@ -1380,6 +1507,68 @@
     <div class="div">ou</div>
     <button class="btn-out" type="button" id="ir-rapida">Indicar sem cadastro</button>
     <p class="legal">Ao entrar, você concorda com o <a href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">regulamento do programa</a>.</p>
+  </form>
+
+  <!-- ESQUECI A SENHA — MODO DE TESTE: nenhum e-mail é enviado; o código aparece na faixa amarela -->
+  <form id="form-esq" class="cad" autocomplete="off" style="display:none" novalidate>
+    <!-- passo 1: e-mail -->
+    <div class="esq-passo" id="esq-1">
+      <h1>Esqueceu sua senha?</h1>
+      <p class="sub">Informe o e-mail da sua conta. Vamos enviar um código para você criar uma nova senha.</p>
+      <label for="esq-email">E-mail</label>
+      <input id="esq-email" type="email" inputmode="email" placeholder="E-mail" autocomplete="off">
+      <button class="btn" type="submit">Enviar código</button>
+    </div>
+    <!-- passo 2: código -->
+    <div class="esq-passo cod-seg" id="esq-2" hidden>
+      <div class="cod-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></div>
+      <h1>Confira seu e-mail</h1>
+      <p class="sub">Enviamos um código de 6 números para <b id="esq-dest"></b>.</p>
+      <p class="cod-teste">Modo de teste: nenhum e-mail foi enviado. Use o código <b id="esq-teste"></b></p>
+      <label for="esq-cod">Código de segurança</label>
+      <input id="esq-cod" class="cod-campo" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+      <button type="button" class="cod-reenviar" id="esq-reenviar" disabled></button>
+      <button class="btn" type="submit">Confirmar código</button>
+    </div>
+    <!-- passo 3: nova senha -->
+    <div class="esq-passo" id="esq-3" hidden>
+      <h1>Crie uma nova senha</h1>
+      <p class="sub">Use uma senha que você não usou antes.</p>
+      <label for="esq-s1">Nova senha</label>
+      <div class="fi">
+        <input id="esq-s1" type="password" placeholder="Nova senha" autocomplete="new-password">
+        <button type="button" class="olho" aria-label="Mostrar senha"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><path class="risco" d="M3 3l18 18"/></svg></button>
+      </div>
+      <ul class="regras" id="regras-esq">
+        <li data-r="tam">Pelo menos 8 caracteres</li>
+        <li data-r="mai">1 letra maiúscula</li>
+        <li data-r="min">1 letra minúscula</li>
+        <li data-r="num">1 número</li>
+      </ul>
+      <label for="esq-s2">Confirmar nova senha</label>
+      <div class="fi">
+        <input id="esq-s2" type="password" placeholder="Confirme a nova senha" autocomplete="new-password">
+      </div>
+      <button class="btn" type="submit">Salvar nova senha</button>
+    </div>
+    <div class="err" id="err-esq"></div>
+    <p class="links voltar"><a href="#" data-voltar>← Voltar para o login</a></p>
+  </form>
+
+  <!-- CONFIRMAR E-MAIL DO CADASTRO — MODO DE TESTE: nenhum e-mail é enviado; o código aparece na faixa amarela -->
+  <form id="form-conf" class="cad" autocomplete="off" style="display:none" novalidate>
+    <div class="cod-seg">
+      <div class="cod-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></div>
+      <h1>Confirme seu e-mail</h1>
+      <p class="sub">Enviamos um código de 6 números para <b id="conf-dest"></b>. Digite abaixo para ativar sua conta.</p>
+      <p class="cod-teste">Modo de teste: nenhum e-mail foi enviado. Use o código <b id="conf-teste"></b></p>
+      <label for="conf-cod">Código de confirmação</label>
+      <input id="conf-cod" class="cod-campo" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+      <button type="button" class="cod-reenviar" id="conf-reenviar" disabled></button>
+      <button class="btn" type="submit">Confirmar e criar conta</button>
+    </div>
+    <div class="err" id="err-conf"></div>
+    <p class="links voltar"><a href="#" id="conf-voltar">← Voltar e corrigir o e-mail</a></p>
   </form>
 
   <form id="form-cad" class="cad" autocomplete="off" style="display:none" novalidate>
@@ -1524,15 +1713,15 @@
       <form class="d-aba" id="form-dados" autocomplete="off" novalidate>
         <div class="cfg-linha">
           <div class="cfg-l"><label for="a-nome">Nome completo</label><p>Como você aparece para a nossa equipe.</p></div>
-          <div class="cfg-c"><input id="a-nome" placeholder="Nome e sobrenome" autocomplete="name"></div>
+          <div class="cfg-c"><input id="a-nome" placeholder="Nome completo" autocomplete="name"></div>
         </div>
         <div class="cfg-linha">
           <div class="cfg-l"><label for="a-tel">Celular (WhatsApp)</label><p>É por aqui que avisamos quando uma venda for confirmada.</p></div>
-          <div class="cfg-c"><input id="a-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15" autocomplete="tel"></div>
+          <div class="cfg-c"><input id="a-tel" inputmode="numeric" placeholder="WhatsApp com DDD" maxlength="15" autocomplete="tel"></div>
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-dados"></div>
-          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Cancelar</button>
+          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Voltar</button>
           <button class="d-btn d-btn-pri" type="submit" id="salvar-dados" disabled>Salvar alterações</button>
         </div>
       </form>
@@ -1547,7 +1736,7 @@
         </div>
         <div class="cfg-linha">
           <div class="cfg-l"><label for="a-email">Novo e-mail</label><p>Depois da troca, você passa a entrar com ele.</p></div>
-          <div class="cfg-c"><input id="a-email" type="email" inputmode="email" placeholder="novo@email.com" autocomplete="email"></div>
+          <div class="cfg-c"><input id="a-email" type="email" inputmode="email" placeholder="Novo e-mail" autocomplete="email"></div>
         </div>
         <div class="cfg-linha">
           <div class="cfg-l"><label for="a-email-senha">Sua senha</label><p>Por segurança, confirme com a senha atual.</p></div>
@@ -1560,14 +1749,15 @@
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-email"></div>
-          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Cancelar</button>
+          <button type="button" class="cfg-esqueci" data-esqueci-conta>Esqueceu sua senha?</button>
+          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Voltar</button>
           <button class="d-btn d-btn-pri" type="submit" id="salvar-email" disabled>Alterar e-mail</button>
         </div>
       </form>
 
       <!-- SENHA -->
       <form class="d-aba" id="form-senha" autocomplete="off" novalidate hidden>
-        <div class="cfg-linha">
+        <div class="cfg-linha" id="linha-s0">
           <div class="cfg-l"><label for="a-s0">Senha atual</label><p>A senha que você usa hoje para entrar.</p></div>
           <div class="cfg-c">
             <div class="fi">
@@ -1597,12 +1787,31 @@
         </div>
         <div class="cfg-linha">
           <div class="cfg-l"><label for="a-s2">Confirmar nova senha</label><p>Digite a nova senha mais uma vez.</p></div>
-          <div class="cfg-c"><input id="a-s2" type="password" placeholder="Repita a nova senha" autocomplete="new-password"></div>
+          <div class="cfg-c"><input id="a-s2" type="password" placeholder="Confirme a nova senha" autocomplete="new-password"></div>
         </div>
         <div class="d-dialog-f">
           <div class="err" id="err-senha"></div>
-          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Cancelar</button>
+          <button type="button" class="cfg-esqueci" data-esqueci-conta>Esqueceu sua senha?</button>
+          <button class="d-btn d-btn-sec" type="button" data-fechar-conta>Voltar</button>
           <button class="d-btn d-btn-pri" type="submit" id="salvar-senha" disabled>Alterar senha</button>
+        </div>
+      </form>
+
+      <!-- CÓDIGO DE SEGURANÇA (troca de e-mail e de senha) — MODO DE TESTE: nenhum e-mail é enviado de verdade -->
+      <form class="cod-seg" id="form-codigo" autocomplete="off" novalidate hidden>
+        <div class="cod-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></div>
+        <h2 id="cod-tit">Confirme que é você</h2>
+        <p class="cod-sub">Enviamos um código de 6 números para <b id="cod-email"></b>. Digite abaixo para concluir.</p>
+        <p class="cod-teste">Modo de teste: nenhum e-mail foi enviado. Use o código <b id="cod-teste"></b></p>
+        <div class="cfg-linha">
+          <div class="cfg-l"><label for="a-cod">Código de segurança</label></div>
+          <div class="cfg-c"><input id="a-cod" class="cod-campo" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code"></div>
+        </div>
+        <button type="button" class="cod-reenviar" id="cod-reenviar" disabled></button>
+        <div class="d-dialog-f">
+          <div class="err" id="err-cod"></div>
+          <button class="d-btn d-btn-sec" type="button" id="cod-voltar">Voltar</button>
+          <button class="d-btn d-btn-pri" type="submit" id="cod-confirmar" disabled>Confirmar</button>
         </div>
       </form>
     </div>
@@ -1619,7 +1828,7 @@
             <span><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Não é sorteio</span>
           </div>
           <div class="reg-acoes">
-            <button type="button" class="reg-voltar" id="reg-voltar">Voltar</button>
+            <button type="button" class="reg-voltar" id="reg-voltar">← Voltar</button>
             <a class="reg-pdf" href="https://estiloardistribuidora.com.br/wp-content/uploads/2026/03/REGULAMENTO-PROGRAMA-DE-INDICACAO-DE-CLIENTES-ESTILO-AR_4.pdf" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Baixar PDF
             </a>
@@ -1742,6 +1951,11 @@
           <p>Veja quem já participou do nosso programa de indicação e compartilha sua experiência com a Estilo Ar.</p>
         </div>
         <div class="com-grade" id="com-grade"></div>
+        <div class="com-cab com-cab-2">
+          <h1>Nossos influenciadores</h1>
+          <p>Eles compraram, usam no dia a dia e indicam a Estilo Ar.</p>
+        </div>
+        <div class="com-grade" id="com-grade-2"></div>
       </section>
 
       <!-- topo central: título + busca + atalhos -->
@@ -1757,7 +1971,7 @@
               <div class="cfg-l"><label for="i-nome">Nome do indicado</label></div>
               <div class="cfg-c">
                 <div class="fi">
-                  <input id="i-nome" placeholder="Nome completo">
+                  <input id="i-nome" placeholder="Nome do indicado">
                 </div>
               </div>
             </div>
@@ -1765,7 +1979,7 @@
               <div class="cfg-l"><label for="i-tel">Telefone com DDD</label></div>
               <div class="cfg-c">
                 <div class="fi">
-                  <input id="i-tel" inputmode="numeric" placeholder="(34) 99999-9999" maxlength="15">
+                  <input id="i-tel" inputmode="numeric" placeholder="Telefone com DDD" maxlength="15">
                 </div>
               </div>
             </div>
@@ -1773,7 +1987,7 @@
               <div class="cfg-l"><label for="i-vend">Vendedor que te atende</label></div>
               <div class="cfg-c">
                 <div class="fi">
-                  <select id="i-vend"><option value="">Selecione…</option><option>Alex</option><option>Alves</option><option>Carlos</option><option>Fabiano</option><option>Ianna</option><option>Karen</option><option>Luiz Carlos</option><option>Luiza</option><option>Marco</option><option>Milton</option><option>Murilo</option><option>Poliana</option><option>Ricardo</option><option>Tamara</option><option>Vanessa</option><option>Victor</option><option>Wagner</option></select>
+                  <select id="i-vend"><option value="">Vendedor que te atende</option><option>Alex</option><option>Alves</option><option>Carlos</option><option>Fabiano</option><option>Ianna</option><option>Karen</option><option>Luiz Carlos</option><option>Luiza</option><option>Marco</option><option>Milton</option><option>Murilo</option><option>Poliana</option><option>Ricardo</option><option>Tamara</option><option>Vanessa</option><option>Victor</option><option>Wagner</option></select>
                 </div>
               </div>
             </div>
@@ -1868,7 +2082,12 @@
   <!-- player dos depoimentos -->
   <div class="com-player" id="com-player" hidden>
     <div class="com-player-bg" data-fechar-video></div>
-    <button type="button" class="com-player-x" data-fechar-video aria-label="Fechar vídeo"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="com-player-top">
+      <span class="com-player-cont" id="com-video-cont"></span>
+      <button type="button" class="com-player-x" data-fechar-video aria-label="Fechar vídeo"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <button type="button" class="com-player-seta ant" id="com-ant" aria-label="Vídeo anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="com-player-seta prox" id="com-prox" aria-label="Próximo vídeo"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
     <div class="com-player-box" role="dialog" aria-modal="true" aria-label="Depoimento em vídeo">
       <video id="com-video" controls playsinline></video>
       <div class="com-yt" id="com-yt" hidden></div>
@@ -1960,9 +2179,115 @@ document.querySelectorAll(".fq-q").forEach(q=>q.addEventListener("click",()=>{
     o.classList.toggle("open",on); o.querySelector(".fq-q").setAttribute("aria-expanded",on);
   });
 }));
+/* ===== BLOQUEIO POR TENTATIVAS ERRADAS =====
+   Em tudo que tem segurança (login, senha, e-mail, códigos): depois de TENTATIVAS_MAX erros seguidos,
+   o botão trava por BLOQUEIO_SEG segundos com contagem. Fica guardado neste aparelho (recarregar não libera).
+   No real, o servidor também precisa bloquear — aqui é só na tela. */
+const TENTATIVAS_MAX=3, BLOQUEIO_SEG=30;
+const TRAVAS=(()=>{ try{ return JSON.parse(localStorage.getItem("estiloar_travas")||"{}")||{}; }catch(e){ return {}; } })();
+function salvarTravas(){ try{ localStorage.setItem("estiloar_travas",JSON.stringify(TRAVAS)); }catch(e){} }
+const segundosTrava=k=>{ const t=TRAVAS[k]; return t && t.ate>Date.now() ? Math.ceil((t.ate-Date.now())/1000) : 0; };
+/* conta um erro; devolve true quando acabou de travar */
+function errou(k){
+  const t=TRAVAS[k]||(TRAVAS[k]={n:0,ate:0});
+  t.n++; let travou=false;
+  if(t.n>=TENTATIVAS_MAX){ t.n=0; t.ate=Date.now()+BLOQUEIO_SEG*1000; travou=true; }
+  salvarTravas(); return travou;
+}
+function acertou(k){ if(TRAVAS[k]){ delete TRAVAS[k]; salvarTravas(); } }
+/* trava o botão com "Aguarde 30s" e mensagem; ao acabar, devolve o botão (depois() decide se liga) */
+function mostrarTrava(k,btn,msgEl,depois){
+  const orig=btn.dataset.txt||(btn.dataset.txt=btn.textContent);
+  clearInterval(btn._trava);
+  const pinta=()=>{
+    const s=segundosTrava(k);
+    if(s>0){
+      btn.disabled=true; btn.textContent=`Aguarde ${s}s`;
+      if(msgEl) msgEl.textContent=`Muitas tentativas erradas. Tente de novo em ${s} segundos.`;
+    } else {
+      clearInterval(btn._trava); btn.textContent=orig; btn.disabled=false;
+      if(msgEl) msgEl.textContent="";
+      if(depois) depois();
+    }
+  };
+  pinta();
+  if(segundosTrava(k)>0) btn._trava=setInterval(pinta,1000);
+}
+/* erro de segurança: conta e, se travou, mostra o bloqueio. Devolve true se travou. */
+function erroSeguro(k,btn,msgEl,depois){
+  if(errou(k)){ mostrarTrava(k,btn,msgEl,depois); return true; }
+  return false;
+}
+
+/* ===== ESQUECI A SENHA — MODO DE TESTE =====
+   1) e-mail  2) código "enviado" por e-mail (aparece na faixa amarela; nada é enviado)  3) nova senha.
+   No real: o servidor (ex.: Supabase) gera e manda o código; tirar a faixa .cod-teste. */
+const ESQ={ passo:1, conta:null, cod:"", timer:0 };
+function esqPasso(n){
+  ESQ.passo=n;
+  [1,2,3].forEach(i=>{ $("esq-"+i).hidden=i!==n; });
+  $("err-esq").textContent="";
+  const alvo={1:"esq-email",2:"esq-cod",3:"esq-s1"}[n];
+  setTimeout(()=>focar($(alvo)),50);
+}
+function esqNovoCodigo(){
+  ESQ.cod=String(Math.floor(100000+Math.random()*900000));
+  $("esq-teste").textContent=ESQ.cod; $("esq-cod").value="";
+  let s=30; const b=$("esq-reenviar");
+  clearInterval(ESQ.timer);
+  const pinta=()=>{ b.disabled=s>0; b.textContent= s>0 ? `Reenviar código em ${s}s` : "Não recebeu? Reenviar código"; };
+  pinta();
+  ESQ.timer=setInterval(()=>{ s--; pinta(); if(s<=0) clearInterval(ESQ.timer); },1000);
+}
 $("esqueci").addEventListener("click",e=>{
   e.preventDefault();
-  $("err").innerHTML='<div class="info-msg">Na versão real, você recebe um código no WhatsApp para criar uma nova senha.</div>';
+  const email=$("email").value;
+  mostrar("esq");
+  $("form-esq").reset(); esqPasso(1);
+  $("esq-email").value=email;
+  mostrarRegras($("esq-s1"),$("regras-esq"));
+});
+$("esq-cod").addEventListener("input",()=>{ $("esq-cod").value=$("esq-cod").value.replace(/\D/g,"").slice(0,6); $("err-esq").textContent=""; });
+$("esq-s1").addEventListener("input",()=>mostrarRegras($("esq-s1"),$("regras-esq")));
+$("esq-reenviar").addEventListener("click",()=>{ esqNovoCodigo(); $("err-esq").textContent=""; focar($("esq-cod")); });
+$("form-esq").addEventListener("submit",e=>{
+  e.preventDefault();
+  const erro=(m,id)=>{ $("err-esq").textContent=m; if(id) campoErrado(id); };
+  if(ESQ.passo===1){
+    const btn=$("esq-1").querySelector(".btn");
+    if(segundosTrava("esq-email")) return mostrarTrava("esq-email",btn,$("err-esq"));
+    const email=chaveEmail($("esq-email").value);
+    if(!emailValido(email)) return erro("Informe um e-mail válido.","esq-email");
+    ESQ.conta=USUARIOS.find(u=>u.email===email)||null;
+    if(!ESQ.conta){
+      erro("Não encontramos uma conta com esse e-mail.","esq-email");
+      erroSeguro("esq-email",btn,$("err-esq")); return;
+    }
+    acertou("esq-email");
+    $("esq-dest").textContent=email; esqNovoCodigo(); esqPasso(2);
+  } else if(ESQ.passo===2){
+    const btn=$("esq-2").querySelector(".btn");
+    if(segundosTrava("esq-cod")) return mostrarTrava("esq-cod",btn,$("err-esq"));
+    if($("esq-cod").value.length!==6) return erro("Digite os 6 números do código.","esq-cod");
+    if($("esq-cod").value!==ESQ.cod){
+      erro("Código incorreto. Confira e tente de novo.","esq-cod");
+      erroSeguro("esq-cod",btn,$("err-esq")); return;
+    }
+    acertou("esq-cod");
+    clearInterval(ESQ.timer); esqPasso(3);
+  } else {
+    const s1=$("esq-s1").value, s2=$("esq-s2").value;
+    const msg=mensagemSenha(regrasSenha(s1));
+    if(msg) return erro(msg,"esq-s1");
+    if(s1===ESQ.conta.senha) return erro("A nova senha precisa ser diferente da anterior.","esq-s1");
+    if(s1!==s2) return erro("As senhas não são iguais.","esq-s2");
+    ESQ.conta.senha=s1;
+    const email=ESQ.conta.email;
+    mostrar("login");
+    $("email").value=email; $("senha").value="";
+    $("err").innerHTML='<div class="ok-login">Senha alterada. Entre com a nova senha.</div>';
+    focar($("senha"));
+  }
 });
 
 
@@ -1988,6 +2313,10 @@ function campoErrado(id){
 function mostrar(qual){
   $("form-login").style.display  = qual==="login"    ? "" : "none";
   $("form-cad").style.display    = qual==="cad"      ? "" : "none";
+  $("form-esq").style.display    = qual==="esq"      ? "" : "none";
+  $("form-conf").style.display   = qual==="conf"     ? "" : "none";
+  if(qual!=="esq") clearInterval(ESQ.timer);
+  if(qual!=="conf") clearInterval(CONF.timer);
   $("form-rapida").style.display = qual==="rapida"   ? "" : "none";
   $("rapida-ok").style.display   = qual==="rapidaOk" ? "" : "none";
   $("err").textContent=""; $("err-cad").textContent=""; $("err-rapida").textContent="";
@@ -1996,8 +2325,8 @@ function mostrar(qual){
   const semConta = qual==="rapida" || qual==="rapidaOk";
   document.querySelector(".info").classList.toggle("modo-rapida",semConta);
   /* no cadastro o painel azul mostra o produto e uma frase de incentivo */
-  document.querySelector(".info").classList.toggle("modo-cad",qual==="cad");
-  if(semConta || qual==="cad") document.querySelectorAll(".info video").forEach(v=>v.pause());
+  document.querySelector(".info").classList.toggle("modo-cad",qual==="cad" || qual==="conf");
+  if(semConta || qual==="cad" || qual==="conf") document.querySelectorAll(".info video").forEach(v=>v.pause());
   /* no celular, ao trocar de tela volta para o topo */
   if(window.innerWidth<=900) window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -2060,7 +2389,8 @@ $("form-cad").addEventListener("submit",e=>{
         tel=$("c-tel").value.replace(/\D/g,""),
         s1=$("c-senha").value;
   /* só cria a conta com tudo certo */
-  if(nome.split(" ").filter(p=>p.length>=2).length<2) return erro("Informe seu nome completo (nome e sobrenome).","c-nome");
+  /* aceita só o primeiro nome; só não deixa o campo vazio */
+  if(nome.length<2) return erro("Informe seu nome.","c-nome");
   if(!emailValido(email)) return erro("E-mail inválido. Confira o que foi digitado.","c-email");
   if(USUARIOS.some(u=>u.email===email)) return erro("Esse e-mail já tem cadastro. Clique em Entrar.","c-email");
   if(!celularValido(tel)) return erro("Celular inválido. Use o formato (34) 99999-9999.","c-tel");
@@ -2068,18 +2398,51 @@ $("form-cad").addEventListener("submit",e=>{
   if(msgSenha){ marcarTocado($("c-senha"),$("regras-cad")); return erro(msgSenha,"c-senha"); }
   if(!$("c-aceite").checked) return erro("Para continuar, aceite o regulamento e o uso dos dados (LGPD).","c-aceite");
 
-  /* vendedor: se veio do "indicar sem cadastro", aproveita o que a pessoa escolheu lá */
-  const novo={ email, senha:s1, nome, tel, vendedor:VEND_DA_RAPIDA, indicacoes:[] };
+  /* vendedor: se veio do "indicar sem cadastro", aproveita o que a pessoa escolheu lá.
+     A conta só é criada depois de confirmar o e-mail com o código. */
+  CONF.pendente={ email, senha:s1, nome, tel, vendedor:VEND_DA_RAPIDA, indicacoes:[] };
+  $("conf-dest").textContent=email;
+  mostrar("conf"); confNovoCodigo();
+  setTimeout(()=>focar($("conf-cod")),50);
+});
+
+/* ===== CONFIRMAR E-MAIL DO CADASTRO — MODO DE TESTE =====
+   O código aparece na faixa amarela; nada é enviado.
+   No real: o servidor (ex.: Supabase) manda o código para o e-mail; tirar a faixa .cod-teste. */
+const CONF={ pendente:null, cod:"", timer:0 };
+function confNovoCodigo(){
+  CONF.cod=String(Math.floor(100000+Math.random()*900000));
+  $("conf-teste").textContent=CONF.cod; $("conf-cod").value=""; $("err-conf").textContent="";
+  let s=30; const b=$("conf-reenviar");
+  clearInterval(CONF.timer);
+  const pinta=()=>{ b.disabled=s>0; b.textContent= s>0 ? `Reenviar código em ${s}s` : "Não recebeu? Reenviar código"; };
+  pinta();
+  CONF.timer=setInterval(()=>{ s--; pinta(); if(s<=0) clearInterval(CONF.timer); },1000);
+}
+$("conf-cod").addEventListener("input",()=>{ $("conf-cod").value=$("conf-cod").value.replace(/\D/g,"").slice(0,6); $("err-conf").textContent=""; });
+$("conf-reenviar").addEventListener("click",()=>{ confNovoCodigo(); focar($("conf-cod")); });
+$("conf-voltar").addEventListener("click",e=>{ e.preventDefault(); mostrar("cad"); focar($("c-email")); });
+$("form-conf").addEventListener("submit",e=>{
+  e.preventDefault();
+  const erro=m=>{ $("err-conf").textContent=m; campoErrado("conf-cod"); };
+  const btn=$("form-conf").querySelector(".btn");
+  if(segundosTrava("conf-cod")) return mostrarTrava("conf-cod",btn,$("err-conf"));
+  const v=$("conf-cod").value;
+  if(v.length!==6) return erro("Digite os 6 números do código.");
+  if(v!==CONF.cod){ erro("Código incorreto. Confira e tente de novo."); erroSeguro("conf-cod",btn,$("err-conf")); return; }
+  acertou("conf-cod");
+  const novo=CONF.pendente; if(!novo) return;
+  CONF.pendente=null; clearInterval(CONF.timer);
   VEND_DA_RAPIDA="";
   USUARIOS.push(novo);
   $("form-cad").reset(); $("err-cad").textContent="";
   mostrar("login"); abrirPainel(novo);
-  avisar("Conta criada","Bem-vindo(a), "+nome.split(" ")[0]+"! Agora é só indicar e acompanhar tudo por aqui.");
+  avisar("Conta criada","Bem-vindo(a), "+novo.nome.split(" ")[0]+"! Agora é só indicar e acompanhar tudo por aqui.");
 });
 
 /* TEMPORÁRIO: "Entrar" vai direto para a conta de teste, sem pedir e-mail nem senha.
    Para voltar a pedir login de verdade, troque para false. */
-const ENTRADA_DIRETA = true;
+const ENTRADA_DIRETA = false;
 
 $("form-login").addEventListener("submit",e=>{
   e.preventDefault();
@@ -2175,14 +2538,18 @@ const DEPOIMENTOS = [
   { titulo:"Ar-elétrico ou original do caminhão?",                    legenda:"Estilo Ar · YouTube", yt:"l7bimWDCWYg" },
   { titulo:"Os motoras das máquinas pesadas também merecem Estilo Ar", legenda:"Estilo Ar · YouTube", yt:"KQ_CdgGGfJY" },
   { titulo:"Mimando os funcionários???",                              legenda:"Estilo Ar · YouTube", yt:"m6dBOh66D74" },
-  { titulo:"Um ano de uso e ele tá como??!",                          legenda:"Estilo Ar · YouTube", yt:"5fkifpNch6E" },
-  { titulo:"Tá criando pinguim aí motora??!",                         legenda:"Estilo Ar · YouTube", yt:"oqM7hRb5QfM" },
-  { titulo:"Consumo de bateria: ar elétrico Estilo Ar 24V",           legenda:"Estilo Ar · YouTube", yt:"bKhhMj-rKeY" },
-  { titulo:"Minas e Bahia agora ficou até mais perto!! kkk",          legenda:"Estilo Ar · YouTube", yt:"y7zQivForDo" },
 ];
+/* vídeos dos influenciadores (aparecem embaixo de "Nossos influenciadores"), mesmo formato da lista de cima */
+const INFLUENCIADORES = [
+  { titulo:"O @casaldavibee trocou de marca... ar-condicionado é Estilo Ar!",                   legenda:"Estilo Ar · YouTube", yt:"ty86oNYMfbU" },
+  { titulo:"O que o Casal Super Scania tem a dizer depois de usar o ar-condicionado Estilo Ar?", legenda:"Estilo Ar · YouTube", yt:"Om8IzIYtDSM" },
+  { titulo:"@avidaeumaviagemoficial já está desfrutando da sua kombinha geladinha!!!",          legenda:"Estilo Ar · YouTube", yt:"JKAm5CfWehA" },
+  { titulo:"@familianaboleia tem um recado: Chegou o upgrade que todo caminhoneiro sonha!",     legenda:"Estilo Ar · YouTube", yt:"sebSsCc6tx4" },
+];
+const VIDEOS_COM = [...DEPOIMENTOS, ...INFLUENCIADORES];
 function desenharComunidade(){
   const play='<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>';
-  $("com-grade").innerHTML = DEPOIMENTOS.map((d,i)=>{
+  const card=(d,i)=>{
     const capa = d.yt
       ? `<img src="https://i.ytimg.com/vi/${encodeURIComponent(d.yt)}/hqdefault.jpg" alt="" loading="lazy">`
       : `<video src="${esc(d.video)}#t=0.5" preload="metadata" muted playsinline tabindex="-1"></video>`;
@@ -2191,13 +2558,26 @@ function desenharComunidade(){
       <span class="com-capa">${capa}<span class="com-play">${play}</span></span>
       <span class="com-info"><b>${esc(d.titulo)}</b><small>${esc(d.legenda)}</small></span>
     </button>`;
-  }).join("");
+  };
+  const cards=VIDEOS_COM.map(card);
+  $("com-grade").innerHTML = cards.slice(0,DEPOIMENTOS.length).join("");
+  $("com-grade-2").innerHTML = cards.slice(DEPOIMENTOS.length).join("");
 }
 desenharComunidade();
-$("com-grade").addEventListener("click",e=>{
+let VIDEO_ATUAL=0;
+$("sec-comunidade").addEventListener("click",e=>{
   const c=e.target.closest(".com-card[data-i]"); if(!c) return;
-  const d=DEPOIMENTOS[+c.dataset.i];
+  abrirVideo(+c.dataset.i);
+});
+function abrirVideo(i){
+  const d=VIDEOS_COM[i]; if(!d) return;
+  const jaAberto=!$("com-player").hidden;
+  VIDEO_ATUAL=i;
   $("com-video-tit").textContent=d.titulo; $("com-video-sub").textContent=d.legenda;
+  $("com-video-cont").textContent=`${i+1} / ${VIDEOS_COM.length}`;
+  $("com-ant").disabled = i===0;
+  $("com-prox").disabled = i===VIDEOS_COM.length-1;
+  if(jaAberto){ const b=document.querySelector(".com-player-box"); b.classList.remove("troca"); void b.offsetWidth; b.classList.add("troca"); }
   if(d.yt){
     $("com-video").hidden=true; $("com-yt").hidden=false;
     $("com-yt").innerHTML=`<iframe src="https://www.youtube.com/embed/${encodeURIComponent(d.yt)}?autoplay=1&rel=0&playsinline=1&modestbranding=1"
@@ -2206,7 +2586,15 @@ $("com-grade").addEventListener("click",e=>{
     $("com-yt").hidden=true; $("com-yt").innerHTML=""; $("com-video").hidden=false;
     $("com-video").src=d.video; $("com-video").play().catch(()=>{});
   }
+  if(d.yt){ $("com-video").pause(); $("com-video").removeAttribute("src"); }
   $("com-player").hidden=false; document.body.style.overflow="hidden";
+}
+$("com-ant").addEventListener("click",()=>abrirVideo(VIDEO_ATUAL-1));
+$("com-prox").addEventListener("click",()=>abrirVideo(VIDEO_ATUAL+1));
+document.addEventListener("keydown",e=>{
+  if($("com-player").hidden) return;
+  if(e.key==="ArrowLeft") abrirVideo(VIDEO_ATUAL-1);
+  if(e.key==="ArrowRight") abrirVideo(VIDEO_ATUAL+1);
 });
 function fecharVideo(){
   if($("com-player").hidden) return;
@@ -2235,7 +2623,7 @@ function abrirModal(){
   fecharConta(); fecharRegulamento(); fecharComunidade();
   $("tela-app").classList.remove("so-indicacoes");
   $("hero-inicio").hidden=true; $("modal-ind").hidden=false; $("tela-app").classList.add("com-form");
-  /* cada conta começa em "Selecione…"; depois da primeira escolha, fica o vendedor daquela conta */
+  /* cada conta começa em "Vendedor que te atende"; depois da primeira escolha, fica o vendedor daquela conta */
   $("i-vend").value=(CLIENTE_ATUAL && CLIENTE_ATUAL.vendedor) || "";
   document.querySelectorAll(".cf-nav [data-nav]").forEach(x=>x.classList.toggle("on",x.dataset.nav==="nova"));
   window.scrollTo({top:0,behavior:"smooth"});
@@ -2282,7 +2670,73 @@ function abaConta(id){
   document.querySelectorAll(".d-seg button").forEach(b=>{ const on=b.dataset.aba===id; b.classList.toggle("on",on); b.setAttribute("aria-selected",on); });
   document.querySelectorAll(".d-aba").forEach(f=>{ f.hidden=f.id!==id; });
   $("err-dados").textContent=""; $("err-senha").textContent=""; $("err-email").textContent="";
+  fecharCodigo(); modoRedefinir(false);
 }
+
+/* ===== CÓDIGO DE SEGURANÇA — MODO DE TESTE =====
+   Antes de trocar o e-mail ou a senha, pede um código "enviado" para o e-mail da conta.
+   Nada é enviado de verdade: o código aparece na própria tela (faixa amarela).
+   No real: gerar e mandar o código pelo servidor (ex.: Supabase) e tirar a faixa .cod-teste. */
+let COD={ valor:"", aba:"", aoConfirmar:null, timer:0 };
+/* "Esqueceu sua senha?" dentro da conta: confirma pelo código e deixa criar a nova sem pedir a senha atual */
+let SENHA_REDEF=false;
+function modoRedefinir(on){
+  SENHA_REDEF=on;
+  $("linha-s0").hidden=on;
+  document.querySelectorAll("[data-esqueci-conta]").forEach(b=>{ b.hidden=on; });
+}
+document.querySelectorAll("[data-esqueci-conta]").forEach(b=>b.addEventListener("click",()=>{
+  const aba=b.closest(".d-aba").id;
+  pedirCodigo(aba,"Redefinir sua senha",()=>{
+    abaConta("form-senha");
+    $("form-senha").reset(); modoRedefinir(true); conferirSenha();
+    $("err-senha").innerHTML='<span class="ok-redef">E-mail confirmado. Crie sua nova senha.</span>';
+    setTimeout(()=>focar($("a-s1")),50);
+  });
+}));
+function pedirCodigo(aba,titulo,aoConfirmar){
+  COD.aba=aba; COD.aoConfirmar=aoConfirmar;
+  COD.valor=String(Math.floor(100000+Math.random()*900000));
+  $("cod-tit").textContent=titulo;
+  $("cod-email").textContent=CLIENTE_ATUAL.email;
+  $("cod-teste").textContent=COD.valor;
+  $("a-cod").value=""; $("a-cod").classList.remove("invalido"); $("err-cod").textContent=""; $("cod-confirmar").disabled=true;
+  document.querySelectorAll(".d-aba").forEach(f=>{ f.hidden=true; });
+  $("modal-conta").classList.add("cod-aberto"); $("form-codigo").hidden=false;
+  contarReenvio();
+  setTimeout(()=>focar($("a-cod")),50);
+}
+function fecharCodigo(){
+  clearInterval(COD.timer);
+  $("form-codigo").hidden=true; $("modal-conta").classList.remove("cod-aberto");
+}
+function contarReenvio(){
+  let s=30; const b=$("cod-reenviar");
+  clearInterval(COD.timer);
+  const pinta=()=>{ b.disabled=s>0; b.textContent= s>0 ? `Reenviar código em ${s}s` : "Não recebeu? Reenviar código"; };
+  pinta();
+  COD.timer=setInterval(()=>{ s--; pinta(); if(s<=0) clearInterval(COD.timer); },1000);
+}
+$("a-cod").addEventListener("input",()=>{
+  $("a-cod").value=$("a-cod").value.replace(/\D/g,"").slice(0,6);
+  $("a-cod").classList.remove("invalido"); $("err-cod").textContent="";
+  $("cod-confirmar").disabled=$("a-cod").value.length!==6;
+});
+$("cod-reenviar").addEventListener("click",()=>{
+  COD.valor=String(Math.floor(100000+Math.random()*900000));
+  $("cod-teste").textContent=COD.valor; $("a-cod").value=""; $("cod-confirmar").disabled=true;
+  $("err-cod").textContent=""; contarReenvio(); focar($("a-cod"));
+  avisar("Código reenviado","Modo de teste: o novo código aparece na tela.");
+});
+$("cod-voltar").addEventListener("click",()=>{ const a=COD.aba; abaConta(a); });
+$("form-codigo").addEventListener("submit",e=>{
+  e.preventDefault();
+  if($("a-cod").value!==COD.valor){
+    $("err-cod").textContent="Código incorreto. Confira e tente de novo.";
+    $("a-cod").classList.add("invalido"); focar($("a-cod")); return;
+  }
+  const fn=COD.aoConfirmar; fecharCodigo(); if(fn) fn();
+});
 /* "Salvar alterações" só liga quando algum dado mudou */
 let DADOS_ORIGINAIS="";
 const dadosAtuais=()=>[$("a-nome").value.trim(),$("a-tel").value.replace(/\D/g,"")].join("|");
@@ -2305,9 +2759,11 @@ $("form-email").addEventListener("submit",e=>{
   if(novo===CLIENTE_ATUAL.email) return erro("Esse já é o seu e-mail atual.","a-email");
   if(USUARIOS.some(u=>u!==CLIENTE_ATUAL && u.email===novo)) return erro("Esse e-mail já está em uso em outra conta.","a-email");
   if(senha!==CLIENTE_ATUAL.senha) return erro("Senha incorreta.","a-email-senha");
-  CLIENTE_ATUAL.email=novo;
-  fecharConta(); abrirPainel(CLIENTE_ATUAL);
-  avisar("E-mail alterado","A partir de agora, entre com "+novo+".");
+  pedirCodigo("form-email","Confirme a troca de e-mail",()=>{
+    CLIENTE_ATUAL.email=novo;
+    fecharConta(); abrirPainel(CLIENTE_ATUAL);
+    avisar("E-mail alterado","A partir de agora, entre com "+novo+".");
+  });
 });
 
 /* nova senha: barra de força + regras marcando sozinhas; "Alterar senha" só liga com tudo certo */
@@ -2344,7 +2800,7 @@ function conferirSenha(){
   $("forca-txt").textContent=["Força da senha","Senha fraca","Senha média","Senha forte"][n];
   const regras=regrasSenha(s1);
   mostrarRegras($("a-s1"),$("regras"));
-  $("salvar-senha").disabled = !(s0 && s2 && senhaForteOk(regras));
+  $("salvar-senha").disabled = !((s0 || SENHA_REDEF) && s2 && senhaForteOk(regras));
 }
 $("a-s1").addEventListener("blur",()=>marcarTocado($("a-s1"),$("regras")));
 ["a-s0","a-s1","a-s2"].forEach(id=>$(id).addEventListener("input",conferirSenha));
@@ -2380,7 +2836,7 @@ $("form-dados").addEventListener("submit",e=>{
   e.preventDefault();
   const erro=m=>{ $("err-dados").textContent=m; };
   const nome=$("a-nome").value.trim().replace(/\s+/g," "), tel=$("a-tel").value.replace(/\D/g,"");
-  if(nome.split(" ").filter(p=>p.length>=2).length<2) return erro("Informe seu nome completo (nome e sobrenome).");
+  if(nome.length<2) return erro("Informe seu nome.");
   if(tel && !celularValido(tel)) return erro("Celular inválido. Use o formato (34) 99999-9999.");
   Object.assign(CLIENTE_ATUAL,{ nome, tel });
   fecharConta(); abrirPainel(CLIENTE_ATUAL);
@@ -2390,10 +2846,10 @@ $("form-senha").addEventListener("submit",e=>{
   e.preventDefault();
   const erro=m=>{ $("err-senha").textContent=m; };
   const s0=$("a-s0").value, s1=$("a-s1").value, s2=$("a-s2").value;
-  if(s0!==CLIENTE_ATUAL.senha){ erro("A senha atual está incorreta."); $("a-s0").classList.add("invalido"); focar($("a-s0")); return; }
+  if(!SENHA_REDEF && s0!==CLIENTE_ATUAL.senha){ erro("A senha atual está incorreta."); $("a-s0").classList.add("invalido"); focar($("a-s0")); return; }
   const msg=mensagemSenha(regrasSenha(s1));
   if(msg) return erro(msg);
-  if(s1===s0) return erro("A nova senha precisa ser diferente da atual.");
+  if(s1===CLIENTE_ATUAL.senha) return erro("A nova senha precisa ser diferente da atual.");
   if(s1!==s2) return erro("As senhas não são iguais.");
   CLIENTE_ATUAL.senha=s1;
   fecharConta();
